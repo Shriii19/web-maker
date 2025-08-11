@@ -134,7 +134,6 @@ input, button, textarea, select {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: var(--space-8);
   margin: 0;
   padding: 0;
 }
