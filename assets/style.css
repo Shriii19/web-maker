@@ -1661,3 +1661,16 @@ main {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+.footer-project {
+  color: var(--text-secondary);
+}
+
+.footer-project a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.footer-project a:hover {
+  font-weight: 600;
+}
