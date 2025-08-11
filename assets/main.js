@@ -20,39 +20,232 @@ class VTCStudio {
 
   setupNavigation() {
     const navHome = document.getElementById('nav-home');
+    const navAbout = document.getElementById('nav-about');
+    const navFeatures = document.getElementById('nav-features');
+    const navTemplates = document.getElementById('nav-templates');
+    const navPricing = document.getElementById('nav-pricing');
     const navCreate = document.getElementById('nav-create');
+    
     const homeSection = document.getElementById('home-section');
+    const aboutSection = document.getElementById('about-section');
+    const featuresSection = document.getElementById('features-section');
+    const templatesSection = document.getElementById('templates-section');
+    const pricingSection = document.getElementById('pricing-section');
     const createSection = document.getElementById('create-section');
+    
     const goCreateBtn = document.getElementById('go-create');
 
     const showSection = (section) => {
-      if (section === 'home') {
-        homeSection.style.display = '';
-        createSection.style.display = 'none';
-        navHome.classList.add('active');
-        navCreate.classList.remove('active');
-      } else {
-        homeSection.style.display = 'none';
-        createSection.style.display = '';
-        navHome.classList.remove('active');
-        navCreate.classList.add('active');
-        this.updatePreview();
+      // Hide all sections
+      [homeSection, aboutSection, featuresSection, templatesSection, pricingSection, createSection].forEach(s => {
+        if (s) s.style.display = 'none';
+      });
+      
+      // Remove active class from all nav links
+      [navHome, navAbout, navFeatures, navTemplates, navPricing, navCreate].forEach(nav => {
+        if (nav) nav.classList.remove('active');
+      });
+
+      // Show selected section and activate nav
+      switch(section) {
+        case 'home':
+          if (homeSection) homeSection.style.display = '';
+          if (navHome) navHome.classList.add('active');
+          break;
+        case 'about':
+          if (aboutSection) aboutSection.style.display = '';
+          if (navAbout) navAbout.classList.add('active');
+          break;
+        case 'features':
+          if (featuresSection) featuresSection.style.display = '';
+          if (navFeatures) navFeatures.classList.add('active');
+          break;
+        case 'templates':
+          if (templatesSection) templatesSection.style.display = '';
+          if (navTemplates) navTemplates.classList.add('active');
+          break;
+        case 'pricing':
+          if (pricingSection) pricingSection.style.display = '';
+          if (navPricing) navPricing.classList.add('active');
+          break;
+        case 'create':
+          if (createSection) createSection.style.display = '';
+          if (navCreate) navCreate.classList.add('active');
+          if (this.currentTab === 'code') {
+            this.updatePreview();
+          }
+          break;
       }
     };
 
-    navHome.addEventListener('click', (e) => {
-      e.preventDefault();
-      showSection('home');
+    // Add event listeners
+    if (navHome) navHome.addEventListener('click', (e) => { e.preventDefault(); showSection('home'); });
+    if (navAbout) navAbout.addEventListener('click', (e) => { e.preventDefault(); showSection('about'); });
+    if (navFeatures) navFeatures.addEventListener('click', (e) => { e.preventDefault(); showSection('features'); });
+    if (navTemplates) navTemplates.addEventListener('click', (e) => { e.preventDefault(); showSection('templates'); });
+    if (navPricing) navPricing.addEventListener('click', (e) => { e.preventDefault(); showSection('pricing'); });
+    if (navCreate) navCreate.addEventListener('click', (e) => { e.preventDefault(); showSection('create'); });
+    if (goCreateBtn) goCreateBtn.addEventListener('click', () => showSection('create'));
+
+    // Template and pricing actions
+    this.setupTemplateActions();
+    this.setupPricingActions();
+  }
+
+  setupTemplateActions() {
+    // Add event listeners for template preview and use buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.textContent === 'Preview') {
+        e.preventDefault();
+        this.previewTemplate(e.target);
+      } else if (e.target.textContent === 'Use Template') {
+        e.preventDefault();
+        this.useTemplate(e.target);
+      }
+    });
+  }
+
+  setupPricingActions() {
+    // Add event listeners for pricing buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.textContent === 'Get Started Free') {
+        e.preventDefault();
+        this.showSectionByName('create');
+      } else if (e.target.textContent === 'Start Pro Trial') {
+        e.preventDefault();
+        this.showProSignup();
+      } else if (e.target.textContent === 'Contact Sales') {
+        e.preventDefault();
+        this.showContactSales();
+      }
+    });
+  }
+
+  previewTemplate(button) {
+    const templateCard = button.closest('.template-card');
+    const templateName = templateCard.querySelector('h3').textContent;
+    
+    // Create a preview modal
+    const modal = this.createModal({
+      title: `Preview: ${templateName}`,
+      content: `
+        <div style="padding: 1rem;">
+          <iframe src="data:text/html,${encodeURIComponent(this.vtcTemplate)}" 
+                  style="width: 100%; height: 500px; border: 1px solid var(--border); border-radius: var(--radius);">
+          </iframe>
+          <div style="margin-top: 1rem; text-align: center;">
+            <button class="btn-primary" onclick="this.closest('[style*=\"position: fixed\"]').remove(); window.vtcStudio.useTemplate('${templateName}')">
+              Use This Template
+            </button>
+          </div>
+        </div>
+      `
+    });
+    
+    document.body.appendChild(modal);
+    window.vtcStudio = this; // Make instance available globally for the modal
+  }
+
+  useTemplate(templateName) {
+    // Switch to create section and load template
+    this.showSectionByName('create');
+    this.loadTemplate();
+    this.showNotification(`${templateName || 'Template'} loaded successfully!`, 'success');
+  }
+
+  showProSignup() {
+    const modal = this.createModal({
+      title: 'Start Your Pro Trial',
+      content: `
+        <div style="padding: 2rem; text-align: center;">
+          <div style="margin-bottom: 2rem;">
+            <h3 style="color: var(--accent); margin-bottom: 1rem;">🚀 7-Day Free Trial</h3>
+            <p>Start your Pro trial today and unlock all premium features!</p>
+          </div>
+          <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; margin: 0 auto;">
+            <input type="email" placeholder="Your email address" 
+                   style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+            <input type="text" placeholder="VTC Name" 
+                   style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+            <button type="submit" class="btn-primary">Start Free Trial</button>
+          </form>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">
+            No credit card required. Cancel anytime.
+          </p>
+        </div>
+      `
+    });
+    
+    document.body.appendChild(modal);
+  }
+
+  showContactSales() {
+    const modal = this.createModal({
+      title: 'Contact Enterprise Sales',
+      content: `
+        <div style="padding: 2rem;">
+          <div style="margin-bottom: 2rem;">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Let's Build Something Great Together</h3>
+            <p>Our enterprise team will help you find the perfect solution for your organization.</p>
+          </div>
+          <form style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <input type="text" placeholder="First Name" 
+                     style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+              <input type="text" placeholder="Last Name" 
+                     style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+            </div>
+            <input type="email" placeholder="Work Email" 
+                   style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+            <input type="text" placeholder="Organization Name" 
+                   style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);" required>
+            <textarea placeholder="Tell us about your needs..." rows="4"
+                      style="padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); resize: vertical;"></textarea>
+            <button type="submit" class="btn-primary">Contact Sales</button>
+          </form>
+        </div>
+      `
+    });
+    
+    document.body.appendChild(modal);
+  }
+
+  showSectionByName(section) {
+    // Navigation helper method
+    const sections = {
+      'home': 'home-section',
+      'about': 'about-section', 
+      'features': 'features-section',
+      'templates': 'templates-section',
+      'pricing': 'pricing-section',
+      'create': 'create-section'
+    };
+
+    // Hide all sections
+    Object.values(sections).forEach(sectionId => {
+      const el = document.getElementById(sectionId);
+      if (el) el.style.display = 'none';
     });
 
-    navCreate.addEventListener('click', (e) => {
-      e.preventDefault();
-      showSection('create');
-    });
+    // Show target section
+    const targetSection = document.getElementById(sections[section]);
+    if (targetSection) {
+      targetSection.style.display = '';
+    }
 
-    goCreateBtn.addEventListener('click', () => {
-      showSection('create');
+    // Update navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
     });
+    
+    const activeNav = document.getElementById(`nav-${section}`);
+    if (activeNav) {
+      activeNav.classList.add('active');
+    }
+
+    if (section === 'create') {
+      this.updatePreview();
+    }
   }
 
   setupEditor() {
