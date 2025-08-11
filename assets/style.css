@@ -1,23 +1,32 @@
-/* ETS2 VTC Studio - Modern Design System */
+/* TruckCraft Studio - Modern Design System */
 :root {
-  /* Colors */
-  --primary: #0f172a;
-  --primary-light: #1e293b;
-  --accent: #00d4aa;
-  --accent-dark: #00b894;
-  --accent-light: #4ade80;
-  --background: #fafafa;
+  /* Colors - Deep Blue & Orange Theme */
+  --primary: #1e3a8a;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
+  --accent: #f97316;
+  --accent-dark: #ea580c;
+  --accent-light: #fb923c;
+  --secondary: #6366f1;
+  --secondary-light: #8b5cf6;
+  --background: #f8fafc;
   --surface: #ffffff;
-  --surface-elevated: #f8fafc;
-  --text-primary: #0f172a;
+  --surface-elevated: #f1f5f9;
+  --surface-hover: #e2e8f0;
+  --text-primary: #1e293b;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
   --border: #e2e8f0;
   --border-light: #f1f5f9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
   --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -25,6 +34,7 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-colored: 0 10px 25px -5px rgba(249, 115, 22, 0.3);
   
   /* Spacing */
   --space-1: 0.25rem;
@@ -47,6 +57,12 @@
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
   --radius-full: 9999px;
+  
+  /* Animations */
+  --animation-fast: 0.15s ease;
+  --animation-normal: 0.3s ease;
+  --animation-slow: 0.5s ease;
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* Reset & Base */
@@ -63,11 +79,100 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Global Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Utility Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
 img, picture, video, canvas, svg {
@@ -81,10 +186,12 @@ input, button, textarea, select {
 
 /* Utility Classes */
 .gradient-text {
-  background: var(--gradient-primary);
+  background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: shimmer 2s linear infinite;
+  background-size: 200% auto;
 }
 
 .full-width {
@@ -93,13 +200,18 @@ input, button, textarea, select {
 
 /* Navigation */
 .navbar {
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  animation: slideIn 0.5s ease-out;
+  transition: all var(--animation-normal);
+}
+
+.navbar:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .nav-container {
@@ -118,6 +230,7 @@ input, button, textarea, select {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--text-primary);
+  animation: fadeInLeft 0.6s ease-out;
 }
 
 .logo-icon {
@@ -129,6 +242,13 @@ input, button, textarea, select {
   align-items: center;
   justify-content: center;
   color: white;
+  transition: all var(--animation-normal);
+  animation: pulse 2s infinite;
+}
+
+.nav-logo:hover .logo-icon {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: var(--shadow-colored);
 }
 
 .nav-links {
@@ -136,6 +256,8 @@ input, button, textarea, select {
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: var(--space-4);
+  animation: fadeInRight 0.6s ease-out;
 }
 
 .nav-link {
@@ -145,28 +267,59 @@ input, button, textarea, select {
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: 500;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius);
-  transition: all 0.2s ease;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--animation-normal);
   position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+  transition: left var(--animation-normal);
+}
+
+.nav-link:hover::before {
+  left: 100%;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--accent);
+  color: var(--primary);
   background: var(--surface-elevated);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: -17px;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  background: var(--accent);
+  width: 60%;
+  height: 3px;
+  background: var(--gradient-accent);
   border-radius: var(--radius-full);
+}
+
+.nav-link svg {
+  transition: all var(--animation-normal);
+}
+
+.nav-link:hover svg {
+  transform: scale(1.2) rotate(5deg);
 }
 
 /* Main Content */
@@ -201,13 +354,20 @@ main {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(30, 58, 138, 0.1));
+  border: 1px solid rgba(249, 115, 22, 0.3);
   border-radius: var(--radius-full);
   padding: var(--space-2) var(--space-4);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--accent);
+  animation: pulse 2s infinite;
+  transition: all var(--animation-normal);
+}
+
+.hero-badge:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-colored);
 }
 
 .hero-title {
@@ -244,33 +404,76 @@ main {
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow);
+  transition: all var(--animation-normal);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--animation-slow);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-colored);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background: var(--surface);
+  background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-lg);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--animation-normal);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: left var(--animation-normal);
+  z-index: -1;
+}
+
+.btn-secondary:hover::before {
+  left: 0;
 }
 
 .btn-secondary:hover {
-  background: var(--surface-elevated);
-  border-color: var(--accent);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
