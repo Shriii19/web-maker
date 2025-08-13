@@ -3,202 +3,737 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Templates - ETS2 VTC Studio</title>
+  <title>Templates - TruckCraft Studio</title>
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" href="assets/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Monaco Editor for Code Editing -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs/loader.js"></script>
 </head>
 <body>
-  <div class="app-layout">
-    <!-- Left Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
         <div class="logo-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm5-18v4h3V3h-3z"/>
           </svg>
         </div>
-        <span class="sidebar-title">ETS2 VTC Studio</span>
+        <span class="nav-title">TruckCraft Studio</span>
       </div>
-      
-      <nav class="sidebar-nav">
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-            </svg>
-            <span>Home</span>
-          </a></li>
-          <li><a href="about.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-            </svg>
-            <span>About</span>
-          </a></li>
-          <li><a href="features.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span>Features</span>
-          </a></li>
-          <li><a href="templates.html" class="nav-item active">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8s0-6-6-6zm4 18H6V4h7v5h5v11z"/>
-            </svg>
-            <span>Templates</span>
-          </a></li>
-          <li><a href="pricing.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
-            </svg>
-            <span>Pricing</span>
-          </a></li>
-          <li class="nav-divider"></li>
-          <li><a href="create.html" class="nav-item cta">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-            </svg>
-            <span>Create Website</span>
-          </a></li>
-        </ul>
-      </nav>
-    </aside>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+          Home
+        </a></li>
+        <li><a href="about.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          About
+        </a></li>
+        <li><a href="features.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Features
+        </a></li>
+        <li><a href="templates.html" class="nav-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8s0-6-6-6zm4 18H6V4h7v5h5v11z"/>
+          </svg>
+          Templates
+        </a></li>
+        <li><a href="pricing.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+          </svg>
+          Pricing
+        </a></li>
+        <li><a href="contact.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Contact
+        </a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-      <div class="content-container">
-        <!-- Templates Page Content -->
-        <section class="page-section">
-          <div class="page-header">
-            <h1>Choose Your Perfect Template</h1>
-            <p class="page-subtitle">Professional designs crafted specifically for VTC communities</p>
+  <main>
+    <!-- Template Selection Mode (Default View) -->
+    <div id="templateSelectionMode">
+      <!-- Templates Hero Section -->
+      <section class="section">
+        <div class="container">
+          <div class="templates-hero animate-fade-in-up">
+            <div class="hero-badge animate-pulse">
+              <span>🎨 Templates</span>
+            </div>
+            <h1 class="hero-title">
+              Choose Your Perfect
+              <span class="gradient-text">Template</span>
+            </h1>
+            <p class="hero-description">
+              Professional designs crafted specifically for Virtual Trucking Company communities
+            </p>
           </div>
+        </div>
+      </section>
 
-          <div class="content-grid">
-            <div class="content-block full-width">
-              <div class="templates-gallery">
-                <div class="template-card featured">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/00b894/ffffff?text=Professional+VTC" alt="Professional Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <div class="template-badge">Most Popular</div>
-                    <h3>Professional VTC</h3>
-                    <p>Clean, modern design perfect for established VTCs looking for a professional online presence.</p>
-                    <div class="template-features">
-                      <span>✓ Team Showcase</span>
-                      <span>✓ Convoy Calendar</span>
-                      <span>✓ Application Form</span>
-                    </div>
-                  </div>
+      <!-- Templates Gallery Section -->
+      <section class="section">
+        <div class="container">
+          <div class="templates-gallery">
+            <div class="template-card featured animate-fade-in-up" data-template="professional">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/6b46c1/ffffff?text=Professional+VTC" alt="Professional Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
                 </div>
-
-                <div class="template-card">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/3b82f6/ffffff?text=Modern+Fleet" alt="Modern Fleet Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <h3>Modern Fleet</h3>
-                    <p>Sleek and contemporary design with bold visuals and smooth animations.</p>
-                    <div class="template-features">
-                      <span>✓ Image Gallery</span>
-                      <span>✓ Event Timeline</span>
-                      <span>✓ Social Integration</span>
-                    </div>
-                  </div>
+              </div>
+              <div class="template-info">
+                <div class="template-badge">Most Popular</div>
+                <h3>Professional VTC</h3>
+                <p>Clean, modern design perfect for established VTCs looking for a professional online presence.</p>
+                <div class="template-features">
+                  <span>✓ Team Showcase</span>
+                  <span>✓ Convoy Calendar</span>
+                  <span>✓ Application Form</span>
                 </div>
+              </div>
+            </div>
 
-                <div class="template-card">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/f59e0b/ffffff?text=Classic+Trucking" alt="Classic Trucking Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <h3>Classic Trucking</h3>
-                    <p>Traditional design with warm colors, perfect for established trucking communities.</p>
-                    <div class="template-features">
-                      <span>✓ News Section</span>
-                      <span>✓ Driver Profiles</span>
-                      <span>✓ Route Planner</span>
-                    </div>
-                  </div>
+            <div class="template-card animate-fade-in-left" data-template="modern">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/3b82f6/ffffff?text=Modern+Fleet" alt="Modern Fleet Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
                 </div>
-
-                <div class="template-card">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/ef4444/ffffff?text=Racing+Style" alt="Racing Style Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <h3>Racing Style</h3>
-                    <p>Dynamic and energetic design for VTCs focused on competitive events and racing.</p>
-                    <div class="template-features">
-                      <span>✓ Leaderboards</span>
-                      <span>✓ Event Results</span>
-                      <span>✓ Statistics</span>
-                    </div>
-                  </div>
+              </div>
+              <div class="template-info">
+                <h3>Modern Fleet</h3>
+                <p>Sleek and contemporary design with bold visuals and smooth animations.</p>
+                <div class="template-features">
+                  <span>✓ Image Gallery</span>
+                  <span>✓ Event Timeline</span>
+                  <span>✓ Social Integration</span>
                 </div>
+              </div>
+            </div>
 
-                <div class="template-card">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/10b981/ffffff?text=Community+Hub" alt="Community Hub Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <h3>Community Hub</h3>
-                    <p>Focused on community interaction with forums, events, and member highlights.</p>
-                    <div class="template-features">
-                      <span>✓ Member Directory</span>
-                      <span>✓ Discussion Forums</span>
-                      <span>✓ Event Calendar</span>
-                    </div>
-                  </div>
+            <div class="template-card animate-fade-in-right" data-template="classic">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/f59e0b/ffffff?text=Classic+Trucking" alt="Classic Trucking Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
                 </div>
+              </div>
+              <div class="template-info">
+                <h3>Classic Trucking</h3>
+                <p>Traditional design with warm colors, perfect for established trucking communities.</p>
+                <div class="template-features">
+                  <span>✓ News Section</span>
+                  <span>✓ Driver Profiles</span>
+                  <span>✓ Route Planner</span>
+                </div>
+              </div>
+            </div>
 
-                <div class="template-card">
-                  <div class="template-preview">
-                    <img src="https://placehold.co/400x300/8b5cf6/ffffff?text=Minimal+Clean" alt="Minimal Clean Template">
-                    <div class="template-overlay">
-                      <button class="btn-secondary">Preview</button>
-                      <button class="btn-primary">Use Template</button>
-                    </div>
-                  </div>
-                  <div class="template-info">
-                    <h3>Minimal Clean</h3>
-                    <p>Simple, clean design that focuses on content and ease of navigation.</p>
-                    <div class="template-features">
-                      <span>✓ Fast Loading</span>
-                      <span>✓ Mobile Optimized</span>
-                      <span>✓ Easy Customization</span>
-                    </div>
-                  </div>
+            <div class="template-card animate-fade-in-left" data-template="racing">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/ef4444/ffffff?text=Racing+Style" alt="Racing Style Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
+                </div>
+              </div>
+              <div class="template-info">
+                <h3>Racing Style</h3>
+                <p>Dynamic and energetic design for VTCs focused on competitive events and racing.</p>
+                <div class="template-features">
+                  <span>✓ Leaderboards</span>
+                  <span>✓ Event Results</span>
+                  <span>✓ Statistics</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="template-card animate-fade-in-up" data-template="community">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/10b981/ffffff?text=Community+Hub" alt="Community Hub Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
+                </div>
+              </div>
+              <div class="template-info">
+                <h3>Community Hub</h3>
+                <p>Focused on community interaction with forums, events, and member highlights.</p>
+                <div class="template-features">
+                  <span>✓ Member Directory</span>
+                  <span>✓ Discussion Forums</span>
+                  <span>✓ Event Calendar</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="template-card animate-fade-in-right" data-template="minimal">
+              <div class="template-preview">
+                <img src="https://placehold.co/400x300/8b5cf6/ffffff?text=Minimal+Clean" alt="Minimal Clean Template">
+                <div class="template-overlay">
+                  <button class="btn-secondary template-preview-btn">Preview</button>
+                  <button class="btn-primary template-edit-btn">Edit Template</button>
+                </div>
+              </div>
+              <div class="template-info">
+                <h3>Minimal Clean</h3>
+                <p>Simple, clean design that focuses on content and ease of navigation.</p>
+                <div class="template-features">
+                  <span>✓ Fast Loading</span>
+                  <span>✓ Mobile Optimized</span>
+                  <span>✓ Easy Customization</span>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+    </div>
+
+    <!-- Template Editor Mode (Hidden by default) -->
+    <div id="templateEditorMode" style="display: none;">
+      <!-- Editor Header -->
+      <div class="editor-header">
+        <div class="container">
+          <div class="editor-nav">
+            <button id="backToTemplatesBtn" class="btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+              </svg>
+              Back to Templates
+            </button>
+            <div class="editor-title">
+              <h2 id="currentTemplateName">Template Editor</h2>
+              <p>Customize your VTC website template</p>
+            </div>
+            <div class="editor-actions">
+              <button id="saveTemplateBtn" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                </svg>
+                Save & Export
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
-  </div>
+
+      <!-- Editor Content -->
+      <div class="editor-container">
+        <!-- Editor Sidebar -->
+        <div class="editor-sidebar">
+          <div class="editor-tabs">
+            <button class="editor-tab active" data-tab="settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+              </svg>
+              Settings
+            </button>
+            <button class="editor-tab" data-tab="html">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z"/>
+              </svg>
+              HTML
+            </button>
+            <button class="editor-tab" data-tab="css">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5,3L4.35,6.34H17.94L17.5,8.5H3.92L3.26,11.83H16.85L16.09,15.64L10.61,17.45L5.86,15.64L6.19,14H2.85L2.06,18L9.91,21L18.96,18L20.16,11.97L20.4,10.76L21.94,3H5Z"/>
+              </svg>
+              CSS
+            </button>
+            <button class="editor-tab" data-tab="components">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4Z"/>
+              </svg>
+              Components
+            </button>
+          </div>
+
+          <!-- Settings Panel -->
+          <div class="editor-panel" id="settingsPanel">
+            <h3>Template Settings</h3>
+            <div class="setting-group">
+              <label>VTC Name</label>
+              <input type="text" id="vtcName" placeholder="Your VTC Name" value="Elite Trucking Company">
+            </div>
+            <div class="setting-group">
+              <label>Theme Color</label>
+              <input type="color" id="themeColor" value="#6b46c1">
+            </div>
+            <div class="setting-group">
+              <label>Logo URL</label>
+              <input type="url" id="logoUrl" placeholder="https://example.com/logo.png">
+            </div>
+            <div class="setting-group">
+              <label>Background Style</label>
+              <select id="backgroundStyle">
+                <option value="gradient">Gradient</option>
+                <option value="solid">Solid Color</option>
+                <option value="image">Background Image</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- HTML Panel -->
+          <div class="editor-panel" id="htmlPanel" style="display: none;">
+            <h3>HTML Structure</h3>
+            <div class="code-editor-container">
+              <div id="htmlEditor" class="code-editor"></div>
+            </div>
+          </div>
+
+          <!-- CSS Panel -->
+          <div class="editor-panel" id="cssPanel" style="display: none;">
+            <h3>CSS Styles</h3>
+            <div class="code-editor-container">
+              <div id="cssEditor" class="code-editor"></div>
+            </div>
+          </div>
+
+          <!-- Components Panel -->
+          <div class="editor-panel" id="componentsPanel" style="display: none;">
+            <h3>Add Components</h3>
+            <div class="component-list">
+              <button class="component-btn" data-component="hero">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V5H19V19Z"/>
+                </svg>
+                Hero Section
+              </button>
+              <button class="component-btn" data-component="team">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"/>
+                </svg>
+                Team Section
+              </button>
+              <button class="component-btn" data-component="services">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2L13.09,6.26L22,9.27L17,14.14L18.18,21.02L12,17.77L5.82,21.02L7,14.14L2,9.27L10.91,6.26L12,2Z"/>
+                </svg>
+                Services
+              </button>
+              <button class="component-btn" data-component="contact">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                </svg>
+                Contact Form
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor Main Area -->
+        <div class="editor-main">
+          <!-- Device Preview Controls -->
+          <div class="preview-controls">
+            <div class="device-selector">
+              <button class="device-btn active" data-device="desktop">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z"/>
+                </svg>
+                Desktop
+              </button>
+              <button class="device-btn" data-device="tablet">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19,18H5V6H19M21,4H3C1.89,4 1,4.89 1,6V18A2,2 0 0,0 3,20H21A2,2 0 0,0 23,18V6C23,4.89 22.1,4 21,4Z"/>
+                </svg>
+                Tablet
+              </button>
+              <button class="device-btn" data-device="mobile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z"/>
+                </svg>
+                Mobile
+              </button>
+            </div>
+            <div class="preview-actions">
+              <button id="refreshPreview" class="btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"/>
+                </svg>
+                Refresh
+              </button>
+              <button id="fullscreenPreview" class="btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z"/>
+                </svg>
+                Fullscreen
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Preview -->
+          <div class="preview-container">
+            <iframe id="previewFrame" src="about:blank" class="preview-frame desktop"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="assets/main.js"></script>
+  <script>
+    // Template Editor JavaScript
+    class TemplateEditor {
+      constructor() {
+        this.currentTemplate = null;
+        this.editors = {};
+        this.templates = {
+          professional: {
+            name: 'Professional VTC',
+            html: this.getProfessionalHTML(),
+            css: this.getProfessionalCSS()
+          },
+          modern: {
+            name: 'Modern Fleet',
+            html: this.getModernHTML(),
+            css: this.getModernCSS()
+          },
+          classic: {
+            name: 'Classic Trucking',
+            html: this.getClassicHTML(),
+            css: this.getClassicCSS()
+          },
+          racing: {
+            name: 'Racing Style',
+            html: this.getRacingHTML(),
+            css: this.getRacingCSS()
+          },
+          community: {
+            name: 'Community Hub',
+            html: this.getCommunityHTML(),
+            css: this.getCommunityCSS()
+          },
+          minimal: {
+            name: 'Minimal Clean',
+            html: this.getMinimalHTML(),
+            css: this.getMinimalCSS()
+          }
+        };
+        this.init();
+      }
+
+      init() {
+        this.setupEventListeners();
+        this.loadMonacoEditor();
+      }
+
+      setupEventListeners() {
+        // Template selection
+        document.querySelectorAll('.template-edit-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const templateCard = e.target.closest('.template-card');
+            const templateType = templateCard.dataset.template;
+            this.openEditor(templateType);
+          });
+        });
+
+        // Template preview
+        document.querySelectorAll('.template-preview-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const templateCard = e.target.closest('.template-card');
+            const templateType = templateCard.dataset.template;
+            this.previewTemplate(templateType);
+          });
+        });
+
+        // Editor controls
+        document.getElementById('backToTemplatesBtn').addEventListener('click', () => {
+          this.closeEditor();
+        });
+
+        document.getElementById('saveTemplateBtn').addEventListener('click', () => {
+          this.saveAndExport();
+        });
+
+        // Tab switching
+        document.querySelectorAll('.editor-tab').forEach(tab => {
+          tab.addEventListener('click', (e) => {
+            this.switchTab(e.target.dataset.tab);
+          });
+        });
+
+        // Device preview
+        document.querySelectorAll('.device-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            this.switchDevice(e.target.dataset.device);
+          });
+        });
+
+        // Settings changes
+        document.getElementById('vtcName').addEventListener('input', (e) => {
+          this.updateSetting('vtcName', e.target.value);
+        });
+
+        document.getElementById('themeColor').addEventListener('change', (e) => {
+          this.updateSetting('themeColor', e.target.value);
+        });
+
+        // Component buttons
+        document.querySelectorAll('.component-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            this.addComponent(e.target.dataset.component);
+          });
+        });
+
+        // Preview controls
+        document.getElementById('refreshPreview').addEventListener('click', () => {
+          this.refreshPreview();
+        });
+
+        document.getElementById('fullscreenPreview').addEventListener('click', () => {
+          this.openFullscreenPreview();
+        });
+      }
+
+      loadMonacoEditor() {
+        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs' }});
+        require(['vs/editor/editor.main'], () => {
+          // HTML Editor
+          this.editors.html = monaco.editor.create(document.getElementById('htmlEditor'), {
+            value: '',
+            language: 'html',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false
+          });
+
+          // CSS Editor
+          this.editors.css = monaco.editor.create(document.getElementById('cssEditor'), {
+            value: '',
+            language: 'css',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false
+          });
+
+          // Listen for changes
+          this.editors.html.onDidChangeModelContent(() => {
+            this.updatePreview();
+          });
+
+          this.editors.css.onDidChangeModelContent(() => {
+            this.updatePreview();
+          });
+        });
+      }
+
+      openEditor(templateType) {
+        this.currentTemplate = templateType;
+        const template = this.templates[templateType];
+        
+        // Update editor title
+        document.getElementById('currentTemplateName').textContent = template.name + ' - Editor';
+        
+        // Show editor mode
+        document.getElementById('templateSelectionMode').style.display = 'none';
+        document.getElementById('templateEditorMode').style.display = 'block';
+        
+        // Load template content into editors
+        setTimeout(() => {
+          if (this.editors.html) {
+            this.editors.html.setValue(template.html);
+          }
+          if (this.editors.css) {
+            this.editors.css.setValue(template.css);
+          }
+          this.updatePreview();
+        }, 100);
+      }
+
+      closeEditor() {
+        document.getElementById('templateSelectionMode').style.display = 'block';
+        document.getElementById('templateEditorMode').style.display = 'none';
+        this.currentTemplate = null;
+      }
+
+      previewTemplate(templateType) {
+        const template = this.templates[templateType];
+        const previewWindow = window.open('', '_blank', 'width=1200,height=800');
+        previewWindow.document.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>${template.name} - Preview</title>
+            <style>${template.css}</style>
+          </head>
+          <body>
+            ${template.html}
+          </body>
+          </html>
+        `);
+        previewWindow.document.close();
+      }
+
+      switchTab(tabName) {
+        // Update active tab
+        document.querySelectorAll('.editor-tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
+
+        // Show corresponding panel
+        document.querySelectorAll('.editor-panel').forEach(panel => {
+          panel.style.display = 'none';
+        });
+        document.getElementById(tabName + 'Panel').style.display = 'block';
+      }
+
+      switchDevice(device) {
+        // Update active device button
+        document.querySelectorAll('.device-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.querySelector('[data-device="' + device + '"]').classList.add('active');
+
+        // Update preview frame class
+        const previewFrame = document.getElementById('previewFrame');
+        previewFrame.className = 'preview-frame ' + device;
+      }
+
+      updateSetting(setting, value) {
+        if (!this.currentTemplate) return;
+
+        const template = this.templates[this.currentTemplate];
+        
+        if (setting === 'vtcName') {
+          // Update HTML content with new VTC name
+          let html = template.html;
+          html = html.replace(/Elite Trucking Company/g, value);
+          html = html.replace(/Your VTC Name/g, value);
+          this.editors.html.setValue(html);
+          template.html = html;
+        } else if (setting === 'themeColor') {
+          // Update CSS with new theme color
+          let css = template.css;
+          css = css.replace(/#6b46c1/g, value);
+          css = css.replace(/--accent: #6b46c1/g, '--accent: ' + value);
+          this.editors.css.setValue(css);
+          template.css = css;
+        }
+
+        this.updatePreview();
+      }
+
+      addComponent(componentType) {
+        if (!this.currentTemplate) return;
+
+        const components = {
+          hero: '<section class="hero-section"><div class="container"><h1>Welcome to Our VTC</h1><p>Professional trucking services across Europe</p><button class="cta-button">Join Now</button></div></section>',
+          team: '<section class="team-section"><div class="container"><h2>Our Team</h2><div class="team-grid"><div class="team-member"><h3>John Doe</h3><p>CEO & Founder</p></div></div></div></section>',
+          services: '<section class="services-section"><div class="container"><h2>Our Services</h2><div class="services-grid"><div class="service-item"><h3>Convoy Organization</h3><p>Professional convoy management</p></div></div></div></section>',
+          contact: '<section class="contact-section"><div class="container"><h2>Contact Us</h2><form class="contact-form"><input type="text" placeholder="Your Name" required><input type="email" placeholder="Your Email" required><textarea placeholder="Your Message" required></textarea><button type="submit">Send Message</button></form></div></section>'
+        };
+
+        if (components[componentType]) {
+          const currentHTML = this.editors.html.getValue();
+          const newHTML = currentHTML + components[componentType];
+          this.editors.html.setValue(newHTML);
+          this.updatePreview();
+        }
+      }
+
+      updatePreview() {
+        if (!this.editors.html || !this.editors.css) return;
+
+        const html = this.editors.html.getValue();
+        const css = this.editors.css.getValue();
+        
+        const previewFrame = document.getElementById('previewFrame');
+        const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+        
+        const htmlContent = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body { margin: 0; padding: 0; font-family: Inter, sans-serif; }' + css + '</style></head><body>' + html + '</body></html>';
+        
+        previewDoc.open();
+        previewDoc.write(htmlContent);
+        previewDoc.close();
+      }
+
+      refreshPreview() {
+        this.updatePreview();
+      }
+
+      openFullscreenPreview() {
+        if (!this.editors.html || !this.editors.css) return;
+
+        const html = this.editors.html.getValue();
+        const css = this.editors.css.getValue();
+        
+        const previewWindow = window.open('', '_blank', 'width=1400,height=900');
+        const htmlContent = '<!DOCTYPE html><html><head><title>' + this.templates[this.currentTemplate].name + ' - Full Preview</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body { margin: 0; padding: 0; font-family: Inter, sans-serif; }' + css + '</style></head><body>' + html + '</body></html>';
+        
+        previewWindow.document.write(htmlContent);
+        previewWindow.document.close();
+      }
+
+      saveAndExport() {
+        if (!this.currentTemplate) return;
+
+        const html = this.editors.html.getValue();
+        const css = this.editors.css.getValue();
+        const templateName = this.templates[this.currentTemplate].name;
+
+        // Create downloadable files
+        this.downloadFile(templateName.toLowerCase().replace(/\s+/g, '-') + '.html', html);
+        this.downloadFile(templateName.toLowerCase().replace(/\s+/g, '-') + '.css', css);
+
+        // Show success message
+        alert('Template "' + templateName + '" exported successfully!\nFiles downloaded: HTML and CSS');
+      }
+
+      downloadFile(filename, content) {
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+      }
+
+      // Template HTML Content
+      getProfessionalHTML() {
+        return '<header class="header"><nav class="navbar"><div class="nav-brand">Elite Trucking Company</div><ul class="nav-menu"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li></ul></nav></header><main><section class="hero"><div class="container"><h1>Professional Virtual Trucking</h1><p>Join our elite team of professional drivers</p><button class="cta-btn">Join Now</button></div></section><section class="about"><div class="container"><h2>About Us</h2><p>We are a professional Virtual Trucking Company focused on delivering excellence in every convoy.</p></div></section></main>';
+      }
+
+      getProfessionalCSS() {
+        return ':root { --primary: #6b46c1; --secondary: #f3f4f6; --text: #1f2937; --white: #ffffff; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: Inter, sans-serif; line-height: 1.6; color: var(--text); } .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; } .header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; } .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; } .nav-brand { font-size: 1.5rem; font-weight: 700; color: var(--primary); } .nav-menu { display: flex; list-style: none; gap: 2rem; } .nav-menu a { text-decoration: none; color: var(--text); font-weight: 500; transition: color 0.3s ease; } .nav-menu a:hover { color: var(--primary); } .hero { background: linear-gradient(135deg, var(--primary), #8b5cf6); color: var(--white); padding: 8rem 0 4rem; text-align: center; margin-top: 80px; } .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; } .hero p { font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9; } .cta-btn { background: var(--white); color: var(--primary); padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease; } .cta-btn:hover { transform: translateY(-2px); } .about { padding: 4rem 0; background: var(--secondary); } .about h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: var(--primary); } .about p { font-size: 1.1rem; text-align: center; max-width: 600px; margin: 0 auto; }';
+      }
+
+      getModernHTML() { return '<div class="modern-container"><header class="modern-header"><h1>Modern Fleet VTC</h1><nav><a href="#fleet">Fleet</a><a href="#events">Events</a><a href="#join">Join</a></nav></header><section class="modern-hero"><h2>Next-Generation Trucking</h2><p>Experience the future of virtual trucking</p></section></div>'; }
+      getModernCSS() { return '.modern-container { background: linear-gradient(45deg, #3b82f6, #1e40af); color: white; min-height: 100vh; } .modern-header { display: flex; justify-content: space-between; padding: 2rem; } .modern-hero { text-align: center; padding: 4rem 2rem; } .modern-hero h2 { font-size: 3rem; margin-bottom: 1rem; }'; }
+      getClassicHTML() { return '<div class="classic-layout"><h1>Classic Trucking VTC</h1><p>Traditional values, modern service</p></div>'; }
+      getClassicCSS() { return '.classic-layout { background: #f59e0b; padding: 2rem; text-align: center; }'; }
+      getRacingHTML() { return '<div class="racing-theme"><h1>Racing Style VTC</h1><p>Speed, precision, excellence</p></div>'; }
+      getRacingCSS() { return '.racing-theme { background: #ef4444; color: white; padding: 2rem; }'; }
+      getCommunityHTML() { return '<div class="community-hub"><h1>Community Hub</h1><p>Where truckers unite</p></div>'; }
+      getCommunityCSS() { return '.community-hub { background: #10b981; color: white; padding: 2rem; }'; }
+      getMinimalHTML() { return '<div class="minimal-design"><h1>Minimal Clean</h1><p>Less is more</p></div>'; }
+      getMinimalCSS() { return '.minimal-design { background: #8b5cf6; color: white; padding: 2rem; text-align: center; }'; }
+    }
+
+    // Initialize the template editor when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new TemplateEditor();
+    });
+  </script>
 </body>
 </html>
