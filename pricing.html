@@ -3,186 +3,225 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing - ETS2 VTC Studio</title>
+  <title>Pricing - TruckCraft Studio</title>
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" href="assets/logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app-layout">
-    <!-- Left Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
         <div class="logo-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm5-18v4h3V3h-3z"/>
           </svg>
         </div>
-        <span class="sidebar-title">ETS2 VTC Studio</span>
+        <span class="nav-title">TruckCraft Studio</span>
       </div>
-      
-      <nav class="sidebar-nav">
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-            </svg>
-            <span>Home</span>
-          </a></li>
-          <li><a href="about.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-            </svg>
-            <span>About</span>
-          </a></li>
-          <li><a href="features.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span>Features</span>
-          </a></li>
-          <li><a href="templates.html" class="nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8s0-6-6-6zm4 18H6V4h7v5h5v11z"/>
-            </svg>
-            <span>Templates</span>
-          </a></li>
-          <li><a href="pricing.html" class="nav-item active">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
-            </svg>
-            <span>Pricing</span>
-          </a></li>
-          <li class="nav-divider"></li>
-          <li><a href="create.html" class="nav-item cta">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-            </svg>
-            <span>Create Website</span>
-          </a></li>
-        </ul>
-      </nav>
-    </aside>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+          Home
+        </a></li>
+        <li><a href="about.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          About
+        </a></li>
+        <li><a href="features.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Features
+        </a></li>
+        <li><a href="templates.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8s0-6-6-6zm4 18H6V4h7v5h5v11z"/>
+          </svg>
+          Templates
+        </a></li>
+        <li><a href="pricing.html" class="nav-link active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+          </svg>
+          Pricing
+        </a></li>
+        <li><a href="contact.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Contact
+        </a></li>
+        <li><a href="create.html" class="nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+          Create
+        </a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-      <div class="content-container">
-        <!-- Pricing Page Content -->
-        <section class="page-section">
-          <div class="page-header">
-            <h1>Simple, Transparent Pricing</h1>
-            <p class="page-subtitle">Choose the plan that fits your VTC's needs</p>
+  <main>
+    <div class="container">
+      <!-- Pricing Hero Section -->
+      <div class="hero-section animate-fadeInUp">
+        <div class="hero-badge animate-pulse">
+          <span>💰 Transparent Pricing</span>
+        </div>
+        <h1>Simple, Transparent Pricing</h1>
+        <p class="hero-subtitle">Choose the perfect plan for your VTC's needs. Start free, upgrade when you're ready.</p>
+      </div>
+
+      <!-- Pricing Plans -->
+      <section class="section">
+        <div class="pricing-grid animate-fadeInUp">
+          <div class="pricing-card animate-fadeInLeft">
+            <div class="pricing-header">
+              <h3>Free</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">0</span>
+                <span class="period">/month</span>
+              </div>
+              <p>Perfect for new VTCs getting started</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><span class="check">✓</span> 1 Website</li>
+                <li><span class="check">✓</span> Basic Templates</li>
+                <li><span class="check">✓</span> Live Preview</li>
+                <li><span class="check">✓</span> Download Website Code</li>
+                <li><span class="check">✓</span> Community Support</li>
+                <li><span class="cross">✗</span> Custom Domain</li>
+                <li><span class="cross">✗</span> Premium Templates</li>
+                <li><span class="cross">✗</span> Advanced Features</li>
+              </ul>
+            </div>
+            <button class="btn-outline full-width">Get Started Free</button>
           </div>
 
-          <div class="content-grid">
-            <!-- Pricing Plans -->
-            <div class="content-block full-width">
-              <div class="pricing-grid">
-                <div class="pricing-card">
-                  <div class="pricing-header-card">
-                    <h3>Free</h3>
-                    <div class="price">
-                      <span class="currency">$</span>
-                      <span class="amount">0</span>
-                      <span class="period">/month</span>
-                    </div>
-                    <p>Perfect for new VTCs getting started</p>
-                  </div>
-                  <div class="pricing-features">
-                    <ul>
-                      <li>✓ 1 Website</li>
-                      <li>✓ Basic Templates</li>
-                      <li>✓ Live Preview</li>
-                      <li>✓ Download Website Code</li>
-                      <li>✓ Community Support</li>
-                      <li>✗ Custom Domain</li>
-                      <li>✗ Premium Templates</li>
-                      <li>✗ Advanced Features</li>
-                    </ul>
-                  </div>
-                  <button class="btn-outline full-width">Get Started Free</button>
-                </div>
-
-                <div class="pricing-card featured">
-                  <div class="pricing-badge">Most Popular</div>
-                  <div class="pricing-header-card">
-                    <h3>Pro</h3>
-                    <div class="price">
-                      <span class="currency">$</span>
-                      <span class="amount">9</span>
-                      <span class="period">/month</span>
-                    </div>
-                    <p>For growing VTCs with serious ambitions</p>
-                  </div>
-                  <div class="pricing-features">
-                    <ul>
-                      <li>✓ 5 Websites</li>
-                      <li>✓ All Templates</li>
-                      <li>✓ Custom Domain Support</li>
-                      <li>✓ Priority Hosting</li>
-                      <li>✓ Email Support</li>
-                      <li>✓ Advanced Customization</li>
-                      <li>✓ Analytics Dashboard</li>
-                      <li>✓ SEO Tools</li>
-                    </ul>
-                  </div>
-                  <button class="btn-primary full-width">Start Pro Trial</button>
-                </div>
-
-                <div class="pricing-card">
-                  <div class="pricing-header-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">
-                      <span class="currency">$</span>
-                      <span class="amount">29</span>
-                      <span class="period">/month</span>
-                    </div>
-                    <p>For large VTCs and organizations</p>
-                  </div>
-                  <div class="pricing-features">
-                    <ul>
-                      <li>✓ Unlimited Websites</li>
-                      <li>✓ White-label Solution</li>
-                      <li>✓ Custom Templates</li>
-                      <li>✓ Dedicated Support</li>
-                      <li>✓ API Access</li>
-                      <li>✓ Team Collaboration</li>
-                      <li>✓ Advanced Analytics</li>
-                      <li>✓ Custom Integrations</li>
-                    </ul>
-                  </div>
-                  <button class="btn-outline full-width">Contact Sales</button>
-                </div>
+          <div class="pricing-card featured animate-fadeInUp">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Pro</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">9</span>
+                <span class="period">/month</span>
               </div>
+              <p>For growing VTCs with serious ambitions</p>
             </div>
+            <div class="pricing-features">
+              <ul>
+                <li><span class="check">✓</span> 5 Websites</li>
+                <li><span class="check">✓</span> All Templates</li>
+                <li><span class="check">✓</span> Custom Domain Support</li>
+                <li><span class="check">✓</span> Priority Hosting</li>
+                <li><span class="check">✓</span> Email Support</li>
+                <li><span class="check">✓</span> Advanced Customization</li>
+                <li><span class="check">✓</span> Analytics Dashboard</li>
+                <li><span class="check">✓</span> SEO Tools</li>
+              </ul>
+            </div>
+            <button class="btn-primary full-width">Start Pro Trial</button>
+          </div>
 
-            <!-- FAQ Section -->
-            <div class="content-block full-width">
-              <h3 class="block-title">Frequently Asked Questions</h3>
-              <div class="faq-grid">
-                <div class="faq-item">
-                  <h4>Can I switch plans anytime?</h4>
-                  <p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
-                </div>
-                <div class="faq-item">
-                  <h4>Do you offer refunds?</h4>
-                  <p>We offer a 30-day money-back guarantee on all paid plans, no questions asked.</p>
-                </div>
-                <div class="faq-item">
-                  <h4>Is there a setup fee?</h4>
-                  <p>No setup fees, ever. You only pay the monthly subscription fee.</p>
-                </div>
-                <div class="faq-item">
-                  <h4>Can I use my own domain?</h4>
-                  <p>Yes, Pro and Enterprise plans include custom domain support with easy setup.</p>
-                </div>
+          <div class="pricing-card animate-fadeInRight">
+            <div class="pricing-header">
+              <h3>Enterprise</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">29</span>
+                <span class="period">/month</span>
               </div>
+              <p>For large VTCs and organizations</p>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><span class="check">✓</span> Unlimited Websites</li>
+                <li><span class="check">✓</span> White-label Solution</li>
+                <li><span class="check">✓</span> Custom Templates</li>
+                <li><span class="check">✓</span> Dedicated Support</li>
+                <li><span class="check">✓</span> API Access</li>
+                <li><span class="check">✓</span> Team Collaboration</li>
+                <li><span class="check">✓</span> Advanced Analytics</li>
+                <li><span class="check">✓</span> Custom Integrations</li>
+              </ul>
+            </div>
+            <button class="btn-outline full-width">Contact Sales</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="section">
+        <div class="section-header animate-fadeInUp">
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know about our pricing plans</p>
+        </div>
+        
+        <div class="faq-grid animate-fadeInUp">
+          <div class="faq-item">
+            <h4>💳 Can I switch plans anytime?</h4>
+            <p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any charges.</p>
+          </div>
+          <div class="faq-item">
+            <h4>💰 Do you offer refunds?</h4>
+            <p>We offer a 30-day money-back guarantee on all paid plans, no questions asked. You can cancel anytime.</p>
+          </div>
+          <div class="faq-item">
+            <h4>🚀 Is there a setup fee?</h4>
+            <p>No setup fees, ever. You only pay the monthly subscription fee. Get started immediately with any plan.</p>
+          </div>
+          <div class="faq-item">
+            <h4>🌐 Can I use my own domain?</h4>
+            <p>Yes, Pro and Enterprise plans include custom domain support with easy one-click setup and SSL certificates.</p>
+          </div>
+          <div class="faq-item">
+            <h4>📊 What's included in analytics?</h4>
+            <p>Track visitor statistics, page views, traffic sources, and user engagement with our comprehensive analytics dashboard.</p>
+          </div>
+          <div class="faq-item">
+            <h4>🛠️ Do I need technical skills?</h4>
+            <p>Not at all! Our drag-and-drop builder is designed for everyone. No coding knowledge required, but code editing is available for advanced users.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section">
+        <div class="cta-section animate-fadeInUp">
+          <div class="cta-content">
+            <h2>Ready to Build Your VTC Website?</h2>
+            <p>Join thousands of Virtual Trucking Companies using TruckCraft Studio to create professional websites.</p>
+            <div class="cta-buttons">
+              <a href="create.html" class="btn-primary">Start Building Free</a>
+              <a href="contact.html" class="btn-outline">Contact Sales</a>
             </div>
           </div>
-        </section>
-      </div>
-    </main>
-  </div>
+          <div class="cta-stats">
+            <div class="stat">
+              <div class="stat-number">10,000+</div>
+              <div class="stat-label">Websites Created</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">VTCs Served</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
   <script src="assets/main.js"></script>
 </body>
