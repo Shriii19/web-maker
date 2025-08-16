@@ -48,6 +48,7 @@
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
+  --space-24: 6rem;
   
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -72,6 +73,12 @@
 
 * {
   margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -80,6 +87,8 @@ body {
   color: var(--text-primary);
   background: var(--background);
   overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* Global Animations */
@@ -325,10 +334,21 @@ input, button, textarea, select {
 /* Main Content */
 main {
   flex: 1;
-  max-width: 1200px;
+  width: 100%;
+}
+
+.container {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--space-6);
   width: 100%;
+}
+
+/* Full width sections for some layouts */
+.full-width {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .section {
@@ -342,13 +362,30 @@ main {
   min-height: 90vh;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  gap: var(--space-20);
   align-items: center;
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .hero-content {
@@ -509,6 +546,20 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .preview-mockup {
@@ -519,6 +570,27 @@ main {
   box-shadow: var(--shadow-xl);
   overflow: hidden;
   border: 1px solid var(--border);
+}
+
+.hero-mockup {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  z-index: 1;
+  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  transition: transform 0.3s ease;
+}
+
+.hero-mockup:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+}
+
+.mockup-screen {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xl);
 }
 
 .mockup-header {
@@ -550,6 +622,34 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+.mockup-navbar {
+  height: 12px;
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+  width: 80%;
+  opacity: 0.8;
+}
+
+.mockup-hero {
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--radius-lg);
+  opacity: 0.9;
+}
+
+.mockup-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.mockup-card {
+  height: 40px;
+  background: var(--surface-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
 }
 
 .mockup-nav {
@@ -586,9 +686,12 @@ main {
 
 .quick-links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
   margin-top: var(--space-12);
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quick-link-card {
@@ -969,6 +1072,11 @@ main {
     text-align: center;
   }
   
+  .quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-10);
+  }
+  
   .hero-title {
     font-size: 3rem;
   }
@@ -1010,8 +1118,8 @@ main {
   }
   
   .quick-links-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
   }
   
   .quick-link-card {
@@ -1021,6 +1129,28 @@ main {
   .quick-link-icon {
     width: 50px;
     height: 50px;
+  }
+  
+  .hero-mockup {
+    max-width: 300px;
+    margin-top: var(--space-8);
+  }
+  
+  .mockup-content {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+  
+  .mockup-hero {
+    height: 40px;
+  }
+  
+  .mockup-cards {
+    gap: var(--space-1);
+  }
+  
+  .mockup-card {
+    height: 30px;
   }
   
   .btn-primary,
@@ -1053,8 +1183,13 @@ main {
 }
 
 @media (max-width: 640px) {
-  main {
+  .container {
     padding: 0 var(--space-4);
+  }
+  
+  .quick-links-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
   
   .section {
@@ -1790,12 +1925,10 @@ main {
 
 /* CTA Section */
 .cta-section {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  border-radius: var(--radius-xl);
-  padding: var(--space-16);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: var(--space-20) 0;
   text-align: center;
   color: white;
-  margin-top: var(--space-20);
   position: relative;
   overflow: hidden;
 }
