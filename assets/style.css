@@ -1,23 +1,23 @@
 /* TruckCraft Studio - Modern Design System */
 :root {
-  /* Colors - Royal Purple Theme */
-  --primary: #6b46c1;
-  --primary-light: #8b5cf6;
-  --primary-dark: #553c9a;
-  --accent: #f59e0b;
-  --accent-dark: #d97706;
-  --accent-light: #fbbf24;
-  --secondary: #a855f7;
-  --secondary-light: #c084fc;
-  --background: #f8fafc;
+  /* Colors - Modern Teal Theme */
+  --primary: #0d9488;
+  --primary-light: #14b8a6;
+  --primary-dark: #0f766e;
+  --accent: #f97316;
+  --accent-dark: #ea580c;
+  --accent-light: #fb923c;
+  --secondary: #06b6d4;
+  --secondary-light: #22d3ee;
+  --background: #f0fdfa;
   --surface: #ffffff;
-  --surface-elevated: #f1f5f9;
-  --surface-hover: #e2e8f0;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
+  --surface-elevated: #ecfdf5;
+  --surface-hover: #d1fae5;
+  --text-primary: #134e4a;
+  --text-secondary: #047857;
+  --text-muted: #6b7280;
+  --border: #d1fae5;
+  --border-light: #ecfdf5;
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
@@ -25,7 +25,7 @@
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
   --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   
   /* Shadows */
@@ -336,12 +336,19 @@ main {
 }
 
 /* Hero Section */
+.hero-section {
+  padding: var(--space-24) 0;
+  background: var(--gradient-surface);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-16);
   align-items: center;
-  min-height: 70vh;
 }
 
 .hero-content {
@@ -569,6 +576,84 @@ main {
   height: 40px;
   background: var(--surface-elevated);
   border-radius: var(--radius-sm);
+}
+
+/* Quick Links Section */
+.quick-links-section {
+  padding: var(--space-20) 0;
+  background: var(--surface);
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.quick-link-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-link-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0.05;
+  transition: left 0.3s ease;
+}
+
+.quick-link-card:hover::before {
+  left: 0;
+}
+
+.quick-link-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.quick-link-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.quick-link-card:hover .quick-link-icon {
+  transform: scale(1.1);
+}
+
+.quick-link-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.quick-link-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* Features Grid */
@@ -922,6 +1007,20 @@ main {
   .hero-actions {
     flex-direction: column;
     width: 100%;
+  }
+  
+  .quick-links-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+  
+  .quick-link-card {
+    padding: var(--space-6);
+  }
+  
+  .quick-link-icon {
+    width: 50px;
+    height: 50px;
   }
   
   .btn-primary,
@@ -1378,6 +1477,18 @@ main {
 }
 
 /* Templates Section Styles */
+.templates-preview {
+  padding: var(--space-24) 0;
+  background: var(--surface);
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
 .templates-header {
   text-align: center;
   margin-bottom: var(--space-16);
@@ -1485,6 +1596,17 @@ main {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: var(--space-4);
+}
+
+.template-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.template-cta {
+  text-align: center;
+  margin-top: var(--space-8);
 }
 
 .template-features {
