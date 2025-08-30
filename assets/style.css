@@ -381,6 +381,7 @@ main {
   min-height: 90vh;
   display: flex;
   align-items: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
