@@ -1531,7 +1531,7 @@ main {
 }
 
 .demo-browser {
-  width: 100%;
+  width: 500px;
   max-width: 400px;
   background: var(--surface);
   border-radius: var(--radius-lg);
