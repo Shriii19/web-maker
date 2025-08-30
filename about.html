@@ -4,28 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - TruckCraft Studio</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta name="description" content="Learn about TruckCraft Studio - empowering Virtual Trucking Communities worldwide with professional web solutions.">
+  <meta name="keywords" content="TruckCraft Studio, VTC, Virtual Trucking Company, About Us, ETS2">
   <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/animations.css">
 </head>
 <body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navigation will be inserted by JavaScript -->
 
   <!-- Main Content -->
-
-  <main>
+  <main id="main-content" role="main">
     <!-- About Hero Section -->
-    <section class="section">
+    <section class="hero-section">
       <div class="container">
-        <div class="about-hero animate-fade-in-up">
-          <div class="hero-badge animate-pulse">
+        <div class="about-header fade-in-up">
+          <div class="hero-badge">
             <span>🚛 Our Story</span>
           </div>
           <h1 class="hero-title">
             About 
             <span class="gradient-text">TruckCraft Studio</span>
           </h1>
-          <p class="hero-description">
+          <p class="about-subtitle">
             Empowering Virtual Trucking Communities Worldwide with professional web solutions
           </p>
         </div>
@@ -35,40 +42,42 @@
     <!-- Mission, Vision, Values Section -->
     <section class="section">
       <div class="container">
-        <div class="story-cards">
-          <div class="story-card animate-fade-in-left">
-            <div class="story-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
+        <div class="about-content">
+          <div class="story-cards">
+            <div class="story-card fade-in-up delay-1">
+              <div class="story-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div class="story-content">
+                <h3>Our Mission</h3>
+                <p>To democratize web development for the ETS2 Virtual Trucking community by providing powerful, yet easy-to-use tools that enable any VTC to create professional websites without technical expertise.</p>
+              </div>
             </div>
-            <div class="story-content">
-              <h3>Our Mission</h3>
-              <p>To democratize web development for the ETS2 Virtual Trucking community by providing powerful, yet easy-to-use tools that enable any VTC to create professional websites without technical expertise.</p>
-            </div>
-          </div>
 
-          <div class="story-card animate-fade-in-up">
-            <div class="story-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+            <div class="story-card fade-in-up delay-2">
+              <div class="story-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <div class="story-content">
+                <h3>Our Vision</h3>
+                <p>We envision a thriving ETS2 ecosystem where every Virtual Trucking Company, regardless of size, can establish a strong online presence and grow their community effectively.</p>
+              </div>
             </div>
-            <div class="story-content">
-              <h3>Our Vision</h3>
-              <p>We envision a thriving ETS2 ecosystem where every Virtual Trucking Company, regardless of size, can establish a strong online presence and grow their community effectively.</p>
-            </div>
-          </div>
 
-          <div class="story-card animate-fade-in-right">
-            <div class="story-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-              </svg>
-            </div>
-            <div class="story-content">
-              <h3>Our Community</h3>
-              <p>Built by truckers, for truckers. We understand the unique needs of VTC communities and have designed our platform specifically to address these requirements.</p>
+            <div class="story-card fade-in-up delay-3">
+              <div class="story-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+              </div>
+              <div class="story-content">
+                <h3>Our Community</h3>
+                <p>Built by truckers, for truckers. We understand the unique needs of VTC communities and have designed our platform specifically to address these requirements.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -76,9 +85,9 @@
     </section>
 
     <!-- Statistics Section -->
-    <section class="section stats-section">
+    <section class="section">
       <div class="container">
-        <div class="stats-grid animate-fade-in-up">
+        <div class="about-stats fade-in-up">
           <div class="stat-item">
             <div class="stat-number">10,000+</div>
             <div class="stat-label">VTC Websites Created</div>
@@ -102,47 +111,38 @@
     <!-- Team Section -->
     <section class="section">
       <div class="container">
-        <div class="section-header animate-fade-in-up">
-          <h2>Meet Our Team</h2>
+        <div class="team-section">
+          <h3>Meet Our Team</h3>
           <p>The passionate individuals behind TruckCraft Studio</p>
-        </div>
-        <div class="team-grid">
-          <div class="team-member animate-fade-in-left">
-            <div class="member-photo">
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
+          <div class="team-grid">
+            <div class="team-member fade-in-up delay-1">
+              <div class="member-photo">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <h4>Shrinivas Mudabe</h4>
+              <p>Lead Developer</p>
+              <div class="member-bio">10+ years in web development, passionate ETS2 player</div>
             </div>
-            <h4>Alex Rodriguez</h4>
-            <p>Founder & Lead Developer</p>
-            <div class="member-bio">10+ years in web development, passionate ETS2 player</div>
-          </div>
-          
-          <div class="team-member animate-fade-in-up">
-            <div class="member-photo">
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
+            
+            <div class="team-member fade-in-up delay-2">
+              <div class="member-photo">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <h4>Sainath</h4>
+              <p>Founder & UI/UX Designer</p>
+              <div class="member-bio">Creating beautiful, user-friendly experiences</div>
             </div>
-            <h4>Sarah Chen</h4>
-            <p>UI/UX Designer</p>
-            <div class="member-bio">Creating beautiful, user-friendly experiences</div>
-          </div>
-          
-          <div class="team-member animate-fade-in-right">
-            <div class="member-photo">
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
-            </div>
-            <h4>Mike Thompson</h4>
-            <p>Community Manager</p>
-            <div class="member-bio">Supporting VTC communities worldwide</div>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Footer will be inserted by JavaScript -->
 
   <script src="assets/main.js"></script>
 </body>
