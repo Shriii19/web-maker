@@ -488,8 +488,8 @@
       showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Redirecting to editor...`, 'success');
       
       setTimeout(() => {
-        // Redirect to create page or editor
-        window.location.href = 'create.html';
+        // Redirect to create page with selected template id
+        window.location.href = 'create.html?t=' + encodeURIComponent(templateId);
       }, 2000);
     }
 
