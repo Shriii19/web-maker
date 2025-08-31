@@ -12,7 +12,7 @@ class SiteComponents {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
     const navigationHTML = `
-      <nav class="navbar">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-container">
           <div class="nav-logo">
             <div class="logo-icon">
@@ -69,7 +69,12 @@ class SiteComponents {
     if (existingNav) {
       existingNav.outerHTML = navigationHTML;
     } else {
-      document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+      const skipLink = document.querySelector('.skip-link');
+      if (skipLink) {
+        skipLink.insertAdjacentHTML('afterend', navigationHTML);
+      } else {
+        document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+      }
     }
   }
 
@@ -110,17 +115,14 @@ class SiteComponents {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(link => {
       link.classList.remove('active');
+      link.removeAttribute('aria-current');
       if (link.getAttribute('href') === currentPage) {
         link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
       }
     });
   }
 }
-
-// Initialize components when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  SiteComponents.init();
-});
 
 // ETS2 VTC Studio - Enhanced Platform JavaScript
 
@@ -130,6 +132,7 @@ class VTCStudio {
     this.currentDevice = 'desktop';
     this.isCodeSyncing = false;
     this.vtcTemplate = this.getVTCTemplate();
+  this.selectedTemplateId = new URLSearchParams(window.location.search).get('t');
     
     this.init();
   }
@@ -140,6 +143,9 @@ class VTCStudio {
     this.setupPreview();
     this.setupEventListeners();
     this.loadTemplate();
+    if (this.selectedTemplateId) {
+      this.showNotification(`Loaded selected template: ${this.selectedTemplateId}`, 'info');
+    }
   }
 
   setupNavigation() {
@@ -377,34 +383,40 @@ class VTCStudio {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tab = btn.dataset.tab;
-        this.switchTab(tab);
+    if (tabBtns && tabBtns.length) {
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+          this.switchTab(tab);
+        });
       });
-    });
+    }
 
     // Device switching
     const deviceBtns = document.querySelectorAll('.device-btn');
-    deviceBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const device = btn.dataset.device;
-        this.switchDevice(device);
+    if (deviceBtns && deviceBtns.length) {
+      deviceBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const device = btn.dataset.device;
+          this.switchDevice(device);
+        });
       });
-    });
+    }
 
     // Code editor
     const codeEditor = document.getElementById('code-editor');
     let debounceTimer;
     
-    codeEditor.addEventListener('input', () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        if (!this.isCodeSyncing) {
-          this.updatePreview();
-        }
-      }, 500);
-    });
+    if (codeEditor) {
+      codeEditor.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          if (!this.isCodeSyncing) {
+            this.updatePreview();
+          }
+        }, 500);
+      });
+    }
 
     // Visual editor controls
     this.setupVisualControls();
@@ -443,15 +455,19 @@ class VTCStudio {
   setupEventListeners() {
     // Download functionality
     const downloadBtn = document.getElementById('download-btn');
-    downloadBtn.addEventListener('click', () => {
-      this.downloadWebsite();
-    });
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        this.downloadWebsite();
+      });
+    }
 
     // Host functionality
     const hostBtn = document.getElementById('host-btn');
-    hostBtn.addEventListener('click', () => {
-      this.showHostingOptions();
-    });
+    if (hostBtn) {
+      hostBtn.addEventListener('click', () => {
+        this.showHostingOptions();
+      });
+    }
 
     // Reset functionality
     const resetBtn = document.getElementById('reset-btn');
@@ -504,14 +520,16 @@ class VTCStudio {
 
   loadTemplate() {
     const codeEditor = document.getElementById('code-editor');
-    codeEditor.value = this.vtcTemplate;
-    this.updatePreview();
+    if (codeEditor) {
+      codeEditor.value = this.vtcTemplate;
+      this.updatePreview();
+    }
   }
 
   updatePreview() {
     const codeEditor = document.getElementById('code-editor');
+    if (!codeEditor) return;
     const code = codeEditor.value;
-    
     if (this.preview) {
       this.preview.srcdoc = code;
     }
@@ -1352,6 +1370,10 @@ class VTCStudio {
 document.addEventListener('DOMContentLoaded', () => {
   SiteComponents.init();
   AnimationController.init();
+  // Start the editor only on pages that have its elements
+  if (document.getElementById('code-editor') && document.getElementById('live-preview')) {
+    try { new VTCStudio(); } catch (e) { console.error('Editor init failed:', e); }
+  }
 });
 
 // Animation Controller for scroll-triggered animations
@@ -1377,7 +1399,7 @@ class AnimationController {
     }, observerOptions);
 
     // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right, .scale-in');
+  const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right, .slide-up, .scale-in');
     animatedElements.forEach(el => {
       el.style.animationPlayState = 'paused';
       observer.observe(el);
