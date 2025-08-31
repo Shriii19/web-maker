@@ -428,8 +428,6 @@
     </section>
   </main>
 
-  <!-- Footer will be inserted by JavaScript -->
-
   <script src="assets/main.js"></script>
   <script>
     // Template filtering functionality
@@ -449,9 +447,12 @@
           templateCards.forEach(card => {
             if (category === 'all' || card.dataset.category === category) {
               card.style.display = 'block';
-              card.classList.add('fade-in-up');
+              setTimeout(() => {
+                card.classList.add('fade-in-up');
+              }, 10);
             } else {
               card.style.display = 'none';
+              card.classList.remove('fade-in-up');
             }
           });
         });
@@ -484,7 +485,7 @@
       }
       
       // Show success notification
-      showNotification(`Template "${templateId}" selected! Redirecting to editor...`, 'success');
+      showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Redirecting to editor...`, 'success');
       
       setTimeout(() => {
         // Redirect to create page or editor
@@ -495,7 +496,7 @@
     function previewTemplate(templateId) {
       // Create and show preview modal
       showTemplatePreview(templateId);
-      showNotification(`Opening preview for "${templateId}"...`, 'info');
+      showNotification(`Opening preview for "${getTemplateDisplayName(templateId)}"...`, 'info');
     }
     
     function showTemplateInfo(templateId) {
@@ -503,7 +504,7 @@
       showTemplateInfoModal(templateId);
     }
     
-    function showTemplatePreview(templateId) {
+  function showTemplatePreview(templateId) {
       // Create preview modal
       const modal = document.createElement('div');
       modal.className = 'template-modal';
@@ -520,23 +521,33 @@
           </div>
           <div class="modal-body">
             <div class="preview-container">
-              <iframe src="about:blank" class="template-preview-frame"></iframe>
+              <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f8fafc; color: #64748b;">
+                <div style="text-align: center;">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="margin-bottom: 1rem;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-8 8z"/>
+                  </svg>
+                  <p>Template preview would be displayed here</p>
+                </div>
+              </div>
             </div>
             <div class="preview-actions">
-              <button class="btn btn-primary" onclick="selectTemplate('${templateId}')">Use This Template</button>
+              <button class="btn btn-primary" onclick="selectTemplate('${templateId}'); closeModal();">Use This Template</button>
               <button class="btn btn-outline" onclick="closeModal()">Close Preview</button>
             </div>
           </div>
         </div>
       `;
       
-      document.body.appendChild(modal);
+  document.body.appendChild(modal);
+  // Close on Escape
+  const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+  document.addEventListener('keydown', onKey, { once: true });
       
       // Animate modal in
       setTimeout(() => modal.classList.add('active'), 10);
     }
     
-    function showTemplateInfoModal(templateId) {
+  function showTemplateInfoModal(templateId) {
       const templateData = getTemplateData(templateId);
       
       const modal = document.createElement('div');
@@ -583,15 +594,18 @@
               </div>
             </div>
             <div class="modal-actions">
-              <button class="btn btn-primary" onclick="selectTemplate('${templateId}')">Use This Template</button>
-              <button class="btn btn-outline" onclick="previewTemplate('${templateId}'); closeModal();">Preview Template</button>
+              <button class="btn btn-primary" onclick="selectTemplate('${templateId}'); closeModal();">Use This Template</button>
+              <button class="btn btn-outline" onclick="closeModal(); previewTemplate('${templateId}');">Preview Template</button>
               <button class="btn btn-outline" onclick="closeModal()">Close</button>
             </div>
           </div>
         </div>
       `;
       
-      document.body.appendChild(modal);
+  document.body.appendChild(modal);
+  // Close on Escape
+  const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+  document.addEventListener('keydown', onKey, { once: true });
       setTimeout(() => modal.classList.add('active'), 10);
     }
     
@@ -696,8 +710,10 @@
       };
 
       // Create notification
-      const notification = document.createElement('div');
-      notification.className = `notification notification-${type}`;
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.setAttribute('role', 'status');
+  notification.setAttribute('aria-live', 'polite');
       notification.innerHTML = `
         <div class="notification-content">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: ${colors[type]}">
@@ -710,10 +726,16 @@
       // Add to page
       document.body.appendChild(notification);
 
+      // Animate in
+      setTimeout(() => {
+        notification.classList.add('active');
+      }, 10);
+
       // Remove after 4 seconds
       setTimeout(() => {
         if (notification.parentNode) {
-          notification.remove();
+          notification.classList.remove('active');
+          setTimeout(() => notification.remove(), 300);
         }
       }, 4000);
     }
