@@ -1374,7 +1374,317 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('code-editor') && document.getElementById('live-preview')) {
     try { new VTCStudio(); } catch (e) { console.error('Editor init failed:', e); }
   }
+  // Initialize Templates page behaviors when on templates.html
+  try {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPage === 'templates.html') {
+      initTemplateFilters();
+      // Expose actions globally for inline handlers in generated modals/buttons
+      window.selectTemplate = selectTemplate;
+      window.previewTemplate = previewTemplate;
+      window.showTemplateInfo = showTemplateInfo;
+      window.closeModal = closeModal;
+      window.showNotification = showNotification;
+    }
+  } catch (e) {
+    console.error('Templates page init failed:', e);
+  }
 });
+
+// =============================
+// Templates Page Helpers
+// =============================
+function initTemplateFilters() {
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const templateCards = document.querySelectorAll('.template-card');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const category = tab.dataset.category;
+      templateCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          setTimeout(() => card.classList.add('fade-in-up'), 10);
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('fade-in-up');
+        }
+      });
+    });
+  });
+}
+
+function selectTemplate(templateId) {
+  const button = document.querySelector(`[data-template="${templateId}"]`);
+  if (button) {
+    const originalContent = button.innerHTML;
+    button.innerHTML = `
+      <div class="btn-content">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="loading-spinner">
+          <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+        </svg>
+        <span class="btn-text">Loading...</span>
+        <span class="btn-subtext">Preparing template</span>
+      </div>
+    `;
+    button.disabled = true;
+    setTimeout(() => {
+      button.innerHTML = originalContent;
+      button.disabled = false;
+    }, 2000);
+  }
+  showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Redirecting to editor...`, 'success');
+  setTimeout(() => {
+    window.location.href = 'create.html?t=' + encodeURIComponent(templateId);
+  }, 2000);
+}
+
+function previewTemplate(templateId) {
+  showTemplatePreview(templateId);
+  showNotification(`Opening preview for "${getTemplateDisplayName(templateId)}"...`, 'info');
+}
+
+function showTemplateInfo(templateId) {
+  showTemplateInfoModal(templateId);
+}
+
+function showTemplatePreview(templateId) {
+  const modal = document.createElement('div');
+  modal.className = 'template-modal';
+  modal.innerHTML = `
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Template Preview: ${getTemplateDisplayName(templateId)}</h3>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="preview-container">
+          <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#f8fafc;color:#64748b;">
+            <div style="text-align:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="margin-bottom:1rem;">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-8 8z"/>
+              </svg>
+              <p>Template preview would be displayed here</p>
+            </div>
+          </div>
+        </div>
+        <div class="preview-actions">
+          <button class="btn btn-primary" onclick="selectTemplate('${templateId}'); closeModal();">Use This Template</button>
+          <button class="btn btn-outline" onclick="closeModal()">Close Preview</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+  document.addEventListener('keydown', onKey, { once: true });
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function showTemplateInfoModal(templateId) {
+  const templateData = getTemplateData(templateId);
+  const modal = document.createElement('div');
+  modal.className = 'template-modal';
+  modal.innerHTML = `
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Template Details: ${templateData.name}</h3>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="template-details">
+          <div class="detail-section">
+            <h4>Description</h4>
+            <p>${templateData.description}</p>
+          </div>
+          <div class="detail-section">
+            <h4>Features</h4>
+            <ul class="feature-list">
+              ${templateData.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="detail-section">
+            <h4>Technical Details</h4>
+            <div class="tech-specs">
+              <div class="spec-item">
+                <span class="spec-label">Category:</span>
+                <span class="spec-value">${templateData.category}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Responsive:</span>
+                <span class="spec-value">✓ Mobile & Desktop</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Browser Support:</span>
+                <span class="spec-value">Chrome, Firefox, Safari, Edge</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" onclick="selectTemplate('${templateId}'); closeModal();">Use This Template</button>
+          <button class="btn btn-outline" onclick="closeModal(); previewTemplate('${templateId}');">Preview Template</button>
+          <button class="btn btn-outline" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  const onKey = (e) => { if (e.key === 'Escape') closeModal(); };
+  document.addEventListener('keydown', onKey, { once: true });
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function closeModal() {
+  const modal = document.querySelector('.template-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => modal.remove(), 300);
+  }
+}
+
+function getTemplateDisplayName(templateId) {
+  const names = {
+    'dashboard-pro': 'VTC Dashboard Pro',
+    'landing-modern': 'VTC Landing Page',
+    'profile-dashboard': 'Driver Profile Dashboard',
+  'fleet-tracker': 'Fleet Tracking System',
+  'convoy-planner': 'Convoy Planner Suite',
+  'recruitment-classic': 'Recruitment Classic'
+  };
+  return names[templateId] || templateId;
+}
+
+function getTemplateData(templateId) {
+  const templates = {
+    'dashboard-pro': {
+      name: 'VTC Dashboard Pro',
+      category: 'Dashboard',
+      description: 'Complete VTC management dashboard with driver stats, job tracking, fleet management, and analytics. Perfect for managing your virtual trucking company operations.',
+      features: [
+        'Driver Management System',
+        'Job Tracking & Analytics',
+        'Fleet Management Tools',
+        'Performance Analytics',
+        'Real-time Statistics',
+        'Custom Reporting'
+      ]
+    },
+    'landing-modern': {
+      name: 'VTC Landing Page',
+      category: 'Landing Page',
+      description: 'Modern landing page perfect for VTC recruitment and showcasing your company\'s services and achievements. Designed to convert visitors into drivers.',
+      features: [
+        'Recruitment Focus',
+        'Service Showcase',
+        'Mobile Ready Design',
+        'Contact Forms',
+        'Achievement Display',
+        'SEO Optimized'
+      ]
+    },
+    'profile-dashboard': {
+      name: 'Driver Profile Dashboard',
+      category: 'Profile',
+      description: 'Comprehensive driver profile with performance metrics, achievements, and detailed analytics for VTC members. Motivate your drivers with detailed insights.',
+      features: [
+        'Performance Tracking',
+        'Achievement System',
+        'Detailed Analytics',
+        'Progress Visualization',
+        'Ranking System',
+        'Personal Statistics'
+      ]
+    },
+    'fleet-tracker': {
+      name: 'Fleet Tracking System',
+      category: 'Dashboard',
+      description: 'Real-time fleet tracking interface with live maps, vehicle status monitoring, and route management. Keep track of your entire fleet in real-time.',
+      features: [
+        'Live GPS Tracking',
+        'Route Management',
+        'Vehicle Status Monitoring',
+        'Real-time Updates',
+        'Map Integration',
+        'Alert System'
+      ]
+    },
+    'convoy-planner': {
+      name: 'Convoy Planner Suite',
+      category: 'Dashboard',
+      description: 'Plan, schedule, and coordinate convoys with integrated routes, waypoints, and role assignments for smooth weekly events.',
+      features: [
+        'Event Scheduling',
+        'Route & Waypoints',
+        'Role Assignments',
+        'Registration Forms',
+        'Exports & Sharing',
+        'Organizer Tools'
+      ]
+    },
+    'recruitment-classic': {
+      name: 'Recruitment Classic',
+      category: 'Landing Page',
+      description: 'Clean recruitment-focused landing page designed to convert visitors into applicants. Great for fast setup and clarity.',
+      features: [
+        'Hero + CTA',
+        'Benefits Sections',
+        'Requirements List',
+        'FAQ & Contact',
+        'SEO Basics',
+        'Mobile Ready'
+      ]
+    }
+  };
+  return templates[templateId] || {};
+}
+
+function showNotification(message, type = 'success') {
+  // Remove any existing notifications
+  const existingNotification = document.querySelector('.notification');
+  if (existingNotification) existingNotification.remove();
+
+  const icons = {
+    success: '<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+    info: '<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+    warning: '<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>',
+    error: '<path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>'
+  };
+  const colors = { success: '#059669', info: '#0ea5e9', warning: '#d97706', error: '#dc2626' };
+
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.setAttribute('role', 'status');
+  notification.setAttribute('aria-live', 'polite');
+  notification.innerHTML = `
+    <div class="notification-content">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: ${colors[type]}">
+        ${icons[type]}
+      </svg>
+      <span>${message}</span>
+    </div>
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.classList.add('active'), 10);
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.classList.remove('active');
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 4000);
+}
 
 // Animation Controller for scroll-triggered animations
 class AnimationController {
