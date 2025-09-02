@@ -22,6 +22,14 @@ class SiteComponents {
             </div>
             <span class="nav-title">TruckCraft Studio</span>
           </div>
+          
+          <!-- Mobile hamburger menu button -->
+          <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+          
           <ul class="nav-links">
             <li><a href="index.html" class="nav-link ${currentPage === 'index.html' ? 'active' : ''}">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -69,12 +77,78 @@ class SiteComponents {
     if (existingNav) {
       existingNav.outerHTML = navigationHTML;
     } else {
-      const skipLink = document.querySelector('.skip-link');
-      if (skipLink) {
-        skipLink.insertAdjacentHTML('afterend', navigationHTML);
-      } else {
-        document.body.insertAdjacentHTML('afterbegin', navigationHTML);
-      }
+      document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+    }
+
+    // Add mobile menu functionality after navigation is created
+    this.initMobileMenu();
+  }
+
+  static initMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileToggle && navLinks) {
+      mobileToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = navLinks.classList.contains('mobile-open');
+        
+        if (isOpen) {
+          // Close menu
+          navLinks.classList.remove('mobile-open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+          
+          // Add closing animation
+          navLinks.style.animation = 'slideOutRight 0.3s ease-in';
+        } else {
+          // Open menu
+          navLinks.classList.add('mobile-open');
+          mobileToggle.classList.add('active');
+          mobileToggle.setAttribute('aria-expanded', 'true');
+          document.body.classList.add('menu-open');
+          
+          // Add opening animation
+          navLinks.style.animation = 'slideInRight 0.3s ease-out';
+        }
+      });
+
+      // Close menu when clicking on a link
+      const navLinksArray = navLinks.querySelectorAll('.nav-link');
+      navLinksArray.forEach((link, index) => {
+        link.addEventListener('click', () => {
+          // Add stagger effect
+          setTimeout(() => {
+            navLinks.classList.remove('mobile-open');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+          }, index * 50); // Stagger each link
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('mobile-open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+          navLinks.classList.remove('mobile-open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+        }
+      });
     }
   }
 
