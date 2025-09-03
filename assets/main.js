@@ -217,7 +217,7 @@ class SiteComponents {
         <div class="footer-bottom">
           <div class="footer-container">
             <p class="footer-copyright">© 2025 Shrinivas Mudabe. All rights reserved.</p>
-            <p class="footer-credit"><a href="">Made with ❤️ by Shrinivas Mudabe</a></p>
+            <p class="footer-credit"><a href="" target="_blank" style="color: white; text-decoration: none;">Made with ❤️ by Shrinivas Mudabe</a></p>
           </div>
         </div>
       </footer>
