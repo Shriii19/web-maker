@@ -20,7 +20,7 @@ class SiteComponents {
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm5-18v4h3V3h-3z"/>
               </svg>
             </div>
-            <span class="nav-title">TruckCraft Studio</span>
+            <span class="nav-title"> <a href="index.html" style="color: inherit; text-decoration: none;">TruckCraft Studio</a></span>
           </div>
           
           <!-- Mobile hamburger menu button -->
@@ -154,82 +154,58 @@ class SiteComponents {
 
   static createFooter() {
     const footerHTML = `
-      <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-section footer-nav-section">
-            <h3 class="footer-title">Quick Links</h3>
-            <div class="footer-links">
-              <a href="index.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Home
-              </a>
-              <a href="about.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                About
-              </a>
-              <a href="templates.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8s0-6-6-6zm4 18H6V4h7v5h5v11z"/>
-                </svg>
-                Projects
-              </a>
-              <a href="features.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <footer class="simple-footer">
+        <div class="simple-footer-container">
+          <div class="simple-footer-content">
+            <!-- Logo & Brand -->
+            <div class="simple-footer-brand">
+              <div class="simple-footer-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
-                Features
-              </a>
-              <a href="pricing.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
-                </svg>
-                Pricing
-              </a>
-              <a href="contact.html" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                Contact
-              </a>
+                <span>Web Maker</span>
+              </div>
+              <p class="simple-footer-tagline">Create beautiful websites with ease</p>
+            </div>
+
+            <!-- Right Section: Navigation & Social -->
+            <div class="simple-footer-right">
+              <!-- Navigation Links -->
+              <div class="simple-footer-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="features.html">Features</a>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+              </div>
+
+              <!-- Social Links -->
+              <div class="simple-footer-social">
+                <a href="https://discord.gg/webmaker" target="_blank" title="Join our Discord">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                  </svg>
+                </a>
+                <a href="mailto:contact@webmaker.com" title="Send us an email">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="footer-section footer-discord-section">
-            <h3 class="footer-title">Join Community</h3>
-            <div class="footer-discord">
-              <a href="https://discord.com" target="_blank" class="discord-link" aria-label="Join our Discord">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0003 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/>
-                </svg>
-                <div class="discord-text">
-                  <span class="discord-title">Discord Server</span>
-                  <span class="discord-subtitle">Connect with us</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="footer-container">
-            <p class="footer-copyright">© 2025 Shrinivas Mudabe. All rights reserved.</p>
-            <p class="footer-credit"><a href="" target="_blank" style="color: white; text-decoration: none;">Made with ❤️ by Shrinivas Mudabe</a></p>
+          <!-- Copyright -->
+          <div class="simple-footer-bottom">
+            <p>&copy; 2025 Web Maker. All rights reserved.</p>
+            <p>Built with ❤️ for creators</p>
           </div>
         </div>
       </footer>
     `;
 
-    // Remove existing footer and add new one
-    const existingFooter = document.querySelector('.footer');
-    if (existingFooter) {
-      existingFooter.outerHTML = footerHTML;
-    } else {
-      document.body.insertAdjacentHTML('beforeend', footerHTML);
-    }
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
   }
 
   static setActivePage() {
