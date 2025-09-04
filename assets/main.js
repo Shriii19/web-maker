@@ -157,7 +157,7 @@ class SiteComponents {
       <footer class="footer">
         <div class="footer-content">
           <div class="footer-section footer-nav-section">
-            <h3 class="footer-title">Navigation</h3>
+            <h3 class="footer-title">Quick Links</h3>
             <div class="footer-links">
               <a href="index.html" class="footer-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
