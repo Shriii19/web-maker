@@ -61,6 +61,12 @@ class SiteComponents {
               </svg>
               Pricing
             </a></li>
+            <li><a href="pro-trial.html" class="nav-link ${currentPage === 'pro-trial.html' ? 'active' : ''}" style="color: var(--accent); font-weight: 600;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              Pro Trial
+            </a></li>
             <li><a href="contact.html" class="nav-link ${currentPage === 'contact.html' ? 'active' : ''}">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -1514,8 +1520,8 @@ class PaymentMaintenance {
   static interceptPaymentLinks() {
     // Wait for page to load and then attach listeners
     setTimeout(() => {
-      // Target payment buttons (pro-trial.html links)
-      const paymentButtons = document.querySelectorAll('a[href="pro-trial.html"], a[href*="payment"], a[href*="checkout"], a[href*="billing"]');
+      // Target payment buttons (but allow pro-trial.html to load since it has its own maintenance notice)
+      const paymentButtons = document.querySelectorAll('a[href*="payment"], a[href*="checkout"], a[href*="billing"]');
       
       paymentButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -1524,11 +1530,18 @@ class PaymentMaintenance {
         });
       });
 
-      // Also intercept any button with payment-related text
+      // Also intercept any button with payment-related text (except pro-trial links)
       const allButtons = document.querySelectorAll('a.btn-primary, button.btn-primary');
       allButtons.forEach(button => {
         const text = button.textContent.toLowerCase();
-        if (text.includes('pro') || text.includes('trial') || text.includes('upgrade') || text.includes('subscribe') || text.includes('buy') || text.includes('purchase')) {
+        const href = button.getAttribute('href');
+        
+        // Skip pro-trial.html links since that page handles maintenance properly
+        if (href === 'pro-trial.html') {
+          return;
+        }
+        
+        if (text.includes('upgrade') || text.includes('subscribe') || text.includes('buy') || text.includes('purchase')) {
           button.addEventListener('click', (e) => {
             e.preventDefault();
             this.showMaintenanceModal();
