@@ -937,11 +937,13 @@ main {
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-primary);
+margin-left: 100px;
 }
 
 .editor-controls {
   display: flex;
   gap: var(--space-3);
+  margin-right: 100px;
 }
 
 .editor-layout {
@@ -1960,6 +1962,13 @@ main {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: var(--space-8);
+}
+.team-section p
+{
+text-align: center;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-12);
 }
 
 .team-grid {
