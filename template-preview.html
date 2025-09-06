@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Preview - TruckCraft Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .company-name {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.8;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-outline:hover {
+      background: white;
+      color: #1a1a2e;
+    }
+    
+    .section {
+      padding: 5rem 2rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #1a1a2e;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1a1a2e;
+    }
+    
+    .feature-description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .footer {
+      background: #1a1a2e;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .company-name {
+        font-size: 2.5rem;
+      }
+      
+      .tagline {
+        font-size: 1.2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Edit Mode Styles */
+    .editable-element {
+      outline: 2px dashed transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .editable-element:hover {
+      outline: 2px dashed #7c3aed;
+      background: rgba(124, 58, 237, 0.1);
+    }
+    
+    .editable-element.editing {
+      outline: 2px solid #7c3aed;
+      background: rgba(124, 58, 237, 0.1);
+    }
+    
+    .edit-tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #7c3aed;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+    
+    .editable-element:hover .edit-tooltip {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="logo">ET</div>
+      <h1 class="company-name editable-element" contenteditable="true">
+        Elite Transport
+        <div class="edit-tooltip">Click to edit company name</div>
+      </h1>
+      <p class="tagline editable-element" contenteditable="true">
+        Professional VTC Solutions
+        <div class="edit-tooltip">Click to edit tagline</div>
+      </p>
+      <p class="hero-description editable-element" contenteditable="true">
+        Experience premium transportation services with our professional VTC company. We deliver excellence, reliability, and outstanding customer service across Europe.
+        <div class="edit-tooltip">Click to edit description</div>
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary editable-element" contenteditable="true">
+          Join Our Team
+          <div class="edit-tooltip">Click to edit button text</div>
+        </a>
+        <a href="#" class="btn btn-outline editable-element" contenteditable="true">
+          Learn More
+          <div class="edit-tooltip">Click to edit button text</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title editable-element" contenteditable="true">
+        Why Choose Elite Transport?
+        <div class="edit-tooltip">Click to edit section title</div>
+      </h2>
+      <p class="section-description editable-element" contenteditable="true">
+        We provide professional transportation services with a focus on quality, reliability, and customer satisfaction.
+        <div class="edit-tooltip">Click to edit section description</div>
+      </p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚛</div>
+          <h3 class="feature-title editable-element" contenteditable="true">
+            Professional Drivers
+            <div class="edit-tooltip">Click to edit feature title</div>
+          </h3>
+          <p class="feature-description editable-element" contenteditable="true">
+            Our experienced drivers are trained professionals who prioritize safety and deliver exceptional service on every route.
+            <div class="edit-tooltip">Click to edit feature description</div>
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title editable-element" contenteditable="true">
+            Fast Delivery
+            <div class="edit-tooltip">Click to edit feature title</div>
+          </h3>
+          <p class="feature-description editable-element" contenteditable="true">
+            We understand the importance of timely deliveries and work hard to meet all deadlines with efficiency and precision.
+            <div class="edit-tooltip">Click to edit feature description</div>
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 class="feature-title editable-element" contenteditable="true">
+            Reliable Service
+            <div class="edit-tooltip">Click to edit feature title</div>
+          </h3>
+          <p class="feature-description editable-element" contenteditable="true">
+            Count on us for consistent, dependable transportation services that you can trust for your most important deliveries.
+            <div class="edit-tooltip">Click to edit feature description</div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="logo">ET</div>
+      <p class="editable-element" contenteditable="true">
+        © 2025 Elite Transport. Professional VTC Services.
+        <div class="edit-tooltip">Click to edit footer text</div>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Get template type from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const templateType = urlParams.get('template');
+    
+    // Template configurations
+    const templates = {
+      'elite-transport': {
+        name: 'Elite Transport',
+        tagline: 'Professional VTC Solutions',
+        gradient: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+        primaryColor: '#7c3aed'
+      },
+      'cargo-masters': {
+        name: 'Cargo Masters',
+        tagline: 'Reliable Transport Services',
+        gradient: 'linear-gradient(135deg, #f8fafc, #e2e8f0)',
+        primaryColor: '#3b82f6'
+      },
+      'highway-heroes': {
+        name: 'Highway Heroes',
+        tagline: 'Adventure Transport Co.',
+        gradient: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+        primaryColor: '#d97706'
+      },
+      'classic-freight': {
+        name: 'Classic Freight',
+        tagline: 'Traditional Transport',
+        gradient: 'linear-gradient(135deg, #374151, #4b5563)',
+        primaryColor: '#dc2626'
+      },
+      'swift-logistics': {
+        name: 'Swift Logistics',
+        tagline: 'Fast & Efficient Transport',
+        gradient: 'linear-gradient(135deg, #10b981, #059669)',
+        primaryColor: '#059669'
+      },
+      'prime-haulers': {
+        name: 'Prime Haulers',
+        tagline: 'Premium Transport Solutions',
+        gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
+        primaryColor: '#7c3aed'
+      }
+    };
+    
+    // Apply template configuration
+    if (templateType && templates[templateType]) {
+      const template = templates[templateType];
+      
+      // Update content
+      document.querySelector('.company-name').textContent = template.name;
+      document.querySelector('.tagline').textContent = template.tagline;
+      
+      // Update colors
+      document.querySelector('.hero-section').style.background = template.gradient;
+      
+      // Update logo
+      const logoText = template.name.split(' ').map(word => word[0]).join('');
+      document.querySelectorAll('.logo').forEach(logo => {
+        logo.textContent = logoText;
+      });
+      
+      // Update primary color elements
+      const style = document.createElement('style');
+      style.textContent = `
+        .btn-primary, .company-name, .feature-icon {
+          background: linear-gradient(135deg, ${template.primaryColor}, #3b82f6) !important;
+        }
+        .editable-element:hover {
+          outline-color: ${template.primaryColor} !important;
+          background-color: ${template.primaryColor}1a !important;
+        }
+        .edit-tooltip {
+          background: ${template.primaryColor} !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // Initialize editing functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const editableElements = document.querySelectorAll('.editable-element');
+      
+      editableElements.forEach(element => {
+        element.addEventListener('focus', function() {
+          this.classList.add('editing');
+        });
+        
+        element.addEventListener('blur', function() {
+          this.classList.remove('editing');
+        });
+        
+        element.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            this.blur();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
