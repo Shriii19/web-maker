@@ -75,7 +75,8 @@ class ProTemplateEditor {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         z-index: 1000;
         display: flex;
         align-items: center;
@@ -92,43 +93,50 @@ class ProTemplateEditor {
       
       .edit-container {
         background: white;
-        border-radius: 16px;
-        width: 90%;
-        max-width: 1200px;
+        border-radius: 20px;
+        width: 95%;
+        max-width: 1400px;
         height: 90%;
         display: flex;
         overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 25px 80px rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.1);
       }
       
       .edit-sidebar {
-        width: 300px;
-        background: #f8fafc;
-        border-right: 1px solid #e2e8f0;
+        width: 320px;
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        border-right: 1px solid rgba(124, 58, 237, 0.1);
         padding: 2rem;
         overflow-y: auto;
+        box-shadow: inset -1px 0 0 rgba(124, 58, 237, 0.05);
       }
       
       .edit-preview {
         flex: 1;
         position: relative;
-        background: white;
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
       }
       
       .edit-toolbar {
-        background: #1e293b;
+        background: linear-gradient(135deg, #7c3aed, #8b5cf6);
         color: white;
         padding: 1rem 2rem;
         display: flex;
-        justify-content: between;
+        justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #334155;
+        border-bottom: none;
+        box-shadow: 0 2px 20px rgba(124, 58, 237, 0.2);
       }
       
       .edit-iframe {
         width: 100%;
-        height: calc(100% - 60px);
+        height: 100%;
         border: none;
+        background: white;
+        border-radius: 0 0 20px 0;
       }
       
       .editable-element {
@@ -172,97 +180,12 @@ class ProTemplateEditor {
 
 // Template editing functions
 function editTemplate(templateId) {
-  // Check if user has pro access (simulate check)
-  const hasProAccess = checkProAccess();
-  
-  if (!hasProAccess) {
-    showProTrialModal();
-    return;
-  }
-  
+  // Allow direct access to editing mode
   showEditMode(templateId);
 }
 
 function previewTemplate(templateId) {
   showPreview(templateId);
-}
-
-function checkProAccess() {
-  // In real implementation, this would check user's subscription status
-  // For now, we'll simulate that user needs pro access
-  return false; // Change to true to test editing mode
-}
-
-function showProTrialModal() {
-  const modal = document.createElement('div');
-  modal.className = 'edit-overlay';
-  modal.style.zIndex = '2000';
-  modal.innerHTML = `
-    <div style="background: white; border-radius: 20px; max-width: 600px; width: 90%; padding: 3rem; text-align: center; position: relative;">
-      <button onclick="closeProModal()" style="position: absolute; top: 1rem; right: 1rem; background: #f3f4f6; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #6b7280;">×</button>
-      
-      <div style="width: 100px; height: 100px; margin: 0 auto 2rem; background: linear-gradient(135deg, #7c3aed, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="white">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
-      </div>
-      
-      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a2e;">🔒 Pro Feature</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #6b7280; line-height: 1.6;">
-        Template editing with click-to-edit functionality is available for Pro users only. 
-        <br><strong>Upgrade now to unlock this amazing feature!</strong>
-      </p>
-      
-      <div style="background: rgba(124, 58, 237, 0.1); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
-        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: #7c3aed;">✨ With Pro Access You Get:</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; text-align: left;">
-          <div>
-            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">✏️ Click-to-Edit Templates</div>
-            <div style="font-size: 0.9rem; color: #6b7280;">Edit any text, image, or color instantly</div>
-          </div>
-          <div>
-            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">🎨 Custom Themes</div>
-            <div style="font-size: 0.9rem; color: #6b7280;">Match your VTC's branding perfectly</div>
-          </div>
-          <div>
-            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">📱 Mobile Preview</div>
-            <div style="font-size: 0.9rem; color: #6b7280;">Test on desktop, tablet, and mobile</div>
-          </div>
-          <div>
-            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">💾 Download Code</div>
-            <div style="font-size: 0.9rem; color: #6b7280;">Get complete HTML/CSS files</div>
-          </div>
-        </div>
-      </div>
-      
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="https://discord.gg/webmaker" target="_blank" style="background: linear-gradient(135deg, #7c3aed, #3b82f6); color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s;" 
-           onmouseover="this.style.transform='translateY(-2px)'" 
-           onmouseout="this.style.transform='translateY(0)'">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-          </svg>
-          Get Pro Access Now
-        </a>
-        <button onclick="closeProModal()" style="background: transparent; color: #6b7280; border: 2px solid #e5e7eb; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Maybe Later</button>
-      </div>
-      
-      <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 1.5rem;">
-        💬 Join our Discord for instant Pro access and connect with 500+ VTC owners!
-      </p>
-    </div>
-  `;
-  
-  document.body.appendChild(modal);
-  setTimeout(() => modal.classList.add('active'), 10);
-}
-
-function closeProModal() {
-  const modal = document.querySelector('.edit-overlay');
-  if (modal) {
-    modal.classList.remove('active');
-    setTimeout(() => modal.remove(), 300);
-  }
 }
 
 function showEditMode(templateId) {
@@ -272,54 +195,69 @@ function showEditMode(templateId) {
   overlay.innerHTML = `
     <div class="edit-container">
       <div class="edit-sidebar">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">Edit Template</h3>
-          <button onclick="closeEditMode()" style="background: #ef4444; color: white; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center;">×</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(124, 58, 237, 0.1);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #7c3aed, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <span style="color: white; font-size: 16px;">✨</span>
+            </div>
+            <h3 style="font-size: 1.125rem; font-weight: 600; color: #1e293b; margin: 0;">Edit Template</h3>
+          </div>
+          <button onclick="closeEditMode()" style="background: #f1f5f9; color: #64748b; border: none; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'; this.style.color='#475569'" onmouseout="this.style.background='#f1f5f9'; this.style.color='#64748b'">×</button>
         </div>
         
         <div class="edit-controls">
-          <div style="margin-bottom: 2rem;">
-            <h4 style="font-weight: 600; margin-bottom: 1rem; color: #374151;">🎨 Customize Design</h4>
-            <div style="margin-bottom: 1rem;">
-              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Primary Color</label>
-              <input type="color" id="primary-color" value="#7c3aed" style="width: 100%; height: 40px; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer;" onchange="updateTemplateColor(this.value)">
+          <div style="margin-bottom: 2rem; background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(124, 58, 237, 0.1);">
+            <h4 style="font-weight: 600; margin-bottom: 1.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">🎨 Customize Design</h4>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.75rem; color: #475569;">Primary Color</label>
+              <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <button onclick="setThemeColor('#7c3aed')" style="width: 36px; height: 36px; background: #7c3aed; border: 3px solid #fff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+                <button onclick="setThemeColor('#3b82f6')" style="width: 36px; height: 36px; background: #3b82f6; border: 3px solid #fff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+                <button onclick="setThemeColor('#10b981')" style="width: 36px; height: 36px; background: #10b981; border: 3px solid #fff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+                <button onclick="setThemeColor('#f59e0b')" style="width: 36px; height: 36px; background: #f59e0b; border: 3px solid #fff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+                <button onclick="setThemeColor('#ef4444')" style="width: 36px; height: 36px; background: #ef4444; border: 3px solid #fff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></button>
+              </div>
+              <input type="color" id="primary-color" value="#7c3aed" style="width: 100%; height: 48px; border: 1px solid #d1d5db; border-radius: 8px; cursor: pointer; background: white;" onchange="updateTemplateColor(this.value)">
             </div>
-            <div style="margin-bottom: 1rem;">
-              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Font Family</label>
-              <select id="font-family" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px;" onchange="updateTemplateFont(this.value)">
+            <div style="margin-bottom: 0;">
+              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.75rem; color: #475569;">Font Family</label>
+              <select id="font-family" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; background: white; font-size: 0.875rem;" onchange="updateTemplateFont(this.value)">
                 <option value="Inter">Inter (Modern)</option>
                 <option value="Roboto">Roboto (Clean)</option>
                 <option value="Open Sans">Open Sans (Friendly)</option>
                 <option value="Montserrat">Montserrat (Bold)</option>
                 <option value="Lato">Lato (Professional)</option>
+                <option value="Poppins">Poppins (Trendy)</option>
               </select>
             </div>
           </div>
           
-          <div style="margin-bottom: 2rem;">
-            <h4 style="font-weight: 600; margin-bottom: 1rem; color: #374151;">📝 Content</h4>
-            <div style="margin-bottom: 1rem;">
-              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Company Name</label>
-              <input type="text" id="company-name" placeholder="Your VTC Name" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px;" onkeyup="updateCompanyName(this.value)">
+          <div style="margin-bottom: 2rem; background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(124, 58, 237, 0.1);">
+            <h4 style="font-weight: 600; margin-bottom: 1.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">📝 Content</h4>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.75rem; color: #475569;">Company Name</label>
+              <input type="text" id="company-name" placeholder="Your VTC Name" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.875rem; background: white;" onkeyup="updateCompanyName(this.value)">
             </div>
-            <div style="margin-bottom: 1rem;">
-              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Tagline</label>
-              <input type="text" id="tagline" placeholder="Your company tagline" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px;" onkeyup="updateTagline(this.value)">
-            </div>
-          </div>
-          
-          <div style="margin-bottom: 2rem;">
-            <h4 style="font-weight: 600; margin-bottom: 1rem; color: #374151;">🖼️ Images</h4>
-            <div style="margin-bottom: 1rem;">
-              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Logo Upload</label>
-              <input type="file" accept="image/*" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px;" onchange="updateLogo(this)">
+            <div style="margin-bottom: 0;">
+              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.75rem; color: #475569;">Tagline</label>
+              <input type="text" id="tagline" placeholder="Your company tagline" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.875rem; background: white;" onkeyup="updateTagline(this.value)">
             </div>
           </div>
           
-          <div>
-            <h4 style="font-weight: 600; margin-bottom: 1rem; color: #374151;">💾 Export</h4>
-            <button onclick="downloadTemplate()" style="width: 100%; background: #10b981; color: white; border: none; padding: 0.75rem; border-radius: 6px; font-weight: 600; cursor: pointer; margin-bottom: 0.5rem;">Download HTML</button>
-            <button onclick="saveTemplate()" style="width: 100%; background: #7c3aed; color: white; border: none; padding: 0.75rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Save to Account</button>
+          <div style="margin-bottom: 2rem; background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(124, 58, 237, 0.1);">
+            <h4 style="font-weight: 600; margin-bottom: 1.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">🖼️ Images</h4>
+            <div style="margin-bottom: 0;">
+              <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.75rem; color: #475569;">Logo Upload</label>
+              <input type="file" accept="image/*" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.875rem; background: white;" onchange="updateLogo(this)">
+            </div>
+          </div>
+          
+          <div style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(124, 58, 237, 0.1);">
+            <h4 style="font-weight: 600; margin-bottom: 1.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">💾 Export</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <button onclick="downloadTemplate()" style="width: 100%; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 0.875rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.875rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">📥 Download HTML</button>
+              <button onclick="saveTemplate()" style="width: 100%; background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: white; border: none; padding: 0.875rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.875rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(124, 58, 237, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">💾 Save Template</button>
+            </div>
           </div>
         </div>
       </div>
@@ -329,14 +267,14 @@ function showEditMode(templateId) {
           <div style="display: flex; align-items: center; gap: 1rem;">
             <span style="font-weight: 600;">Editing: ${getTemplateName(templateId)}</span>
             <div style="display: flex; gap: 0.5rem;">
-              <button onclick="switchDevice('desktop')" class="device-btn active" style="padding: 0.25rem 0.75rem; background: #3b82f6; color: white; border: none; border-radius: 4px; font-size: 0.75rem;">Desktop</button>
-              <button onclick="switchDevice('tablet')" class="device-btn" style="padding: 0.25rem 0.75rem; background: transparent; color: #94a3b8; border: 1px solid #475569; border-radius: 4px; font-size: 0.75rem;">Tablet</button>
-              <button onclick="switchDevice('mobile')" class="device-btn" style="padding: 0.25rem 0.75rem; background: transparent; color: #94a3b8; border: 1px solid #475569; border-radius: 4px; font-size: 0.75rem;">Mobile</button>
+              <button onclick="switchDevice('desktop')" class="device-btn active" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">🖥️ Desktop</button>
+              <button onclick="switchDevice('tablet')" class="device-btn" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">📱 Tablet</button>
+              <button onclick="switchDevice('mobile')" class="device-btn" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">📱 Mobile</button>
             </div>
           </div>
-          <div style="display: flex; gap: 1rem;">
-            <button onclick="previewMode()" style="background: #f59e0b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;">Live Preview</button>
-            <button onclick="closeEditMode()" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.875rem;">Close</button>
+          <div style="display: flex; gap: 0.75rem;">
+            <button onclick="previewMode()" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">👁️ Live Preview</button>
+            <button onclick="closeEditMode()" style="background: rgba(239, 68, 68, 0.9); color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 1)'" onmouseout="this.style.background='rgba(239, 68, 68, 0.9)'">✕ Close</button>
           </div>
         </div>
         <iframe class="edit-iframe" src="${getTemplatePreviewUrl(templateId)}"></iframe>
@@ -406,6 +344,11 @@ function getTemplatePreviewUrl(templateId) {
 }
 
 // Edit functionality with improved theme matching
+function setThemeColor(color) {
+  document.getElementById('primary-color').value = color;
+  updateTemplateColor(color);
+}
+
 function updateTemplateColor(color) {
   const iframe = document.querySelector('.edit-iframe');
   if (iframe && iframe.contentDocument) {
@@ -415,70 +358,117 @@ function updateTemplateColor(color) {
     const existingStyle = doc.querySelector('#dynamic-color-style');
     if (existingStyle) existingStyle.remove();
     
-    // Create comprehensive color update
+    // Calculate theme colors based on your site's patterns
+    const lightColor = adjustColor(color, 20);
+    const darkColor = adjustColor(color, -20);
+    const ultraLight = adjustColor(color, 40);
+    
+    // Create comprehensive color update matching your site's theme
     const style = doc.createElement('style');
     style.id = 'dynamic-color-style';
     style.textContent = `
-      /* Primary color updates */
+      /* Update CSS custom properties first */
+      :root {
+        --primary-color: ${color} !important;
+        --primary-light: ${lightColor} !important;
+        --primary-dark: ${darkColor} !important;
+      }
+      
+      /* Primary elements - matching your site's gradient style */
       .company-name, 
-      .btn-primary, 
-      .hero-badge,
-      .feature-icon,
-      .logo { 
-        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -20)}) !important; 
-        color: white !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-      }
-      
-      .btn-primary {
-        -webkit-text-fill-color: white !important;
-        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -20)}) !important;
-      }
-      
-      /* Accent colors */
       .gradient-text {
-        background: linear-gradient(135deg, ${color}, ${adjustColor(color, 30)}) !important;
+        background: linear-gradient(135deg, ${color}, ${lightColor}) !important;
         -webkit-background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
       }
       
-      /* Interactive elements */
-      .editable-element:hover {
-        outline-color: ${color} !important;
-        background-color: ${color}1a !important;
+      /* Buttons and interactive elements */
+      .btn-primary {
+        background: linear-gradient(135deg, ${color}, ${lightColor}) !important;
+        -webkit-text-fill-color: white !important;
+        color: white !important;
+        border: none !important;
       }
       
-      .edit-tooltip {
-        background: ${color} !important;
-      }
-      
-      /* Hover effects */
       .btn-primary:hover {
+        transform: translateY(-2px) !important;
         box-shadow: 0 8px 25px ${color}66 !important;
       }
       
       /* Icons and decorative elements */
+      .feature-icon, 
+      .logo,
       .icon-gradient {
-        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -15)}) !important;
+        background: linear-gradient(135deg, ${color}, ${lightColor}) !important;
+        color: white !important;
       }
       
-      /* Links and accents */
-      a, .accent-color {
+      /* Editing interface theme */
+      .editable-element:hover {
+        outline: 2px dashed ${color} !important;
+        background: ${color}1a !important;
+      }
+      
+      .editable-element.editing {
+        outline: 2px solid ${color} !important;
+        background: ${color}2a !important;
+      }
+      
+      .edit-tooltip {
+        background: ${color} !important;
+        color: white !important;
+      }
+      
+      /* Links and accent colors */
+      a:not(.btn), 
+      .accent-color {
         color: ${color} !important;
       }
       
-      /* Borders and dividers */
+      /* Borders and highlights */
       .border-accent {
         border-color: ${color} !important;
+      }
+      
+      /* Hero badge and special elements */
+      .hero-badge,
+      .pricing-badge {
+        background: linear-gradient(135deg, ${color}, ${darkColor}) !important;
+        color: white !important;
+      }
+      
+      /* Section backgrounds with theme integration */
+      .bg-accent {
+        background: ${color} !important;
+      }
+      
+      .bg-accent-light {
+        background: ${ultraLight} !important;
+      }
+      
+      /* Form elements theme */
+      input:focus, 
+      textarea:focus,
+      select:focus {
+        border-color: ${color} !important;
+        box-shadow: 0 0 0 3px ${color}20 !important;
+      }
+      
+      /* Progress and loading elements */
+      .progress-bar,
+      .loading-spinner {
+        background: ${color} !important;
       }
     `;
     doc.head.appendChild(style);
     
-    // Update CSS custom properties for better theme integration
-    doc.documentElement.style.setProperty('--primary-color', color);
-    doc.documentElement.style.setProperty('--primary-light', adjustColor(color, 20));
-    doc.documentElement.style.setProperty('--primary-dark', adjustColor(color, -20));
+    // Update the template's theme configuration if it exists
+    if (doc.documentElement) {
+      doc.documentElement.style.setProperty('--primary-color', color);
+      doc.documentElement.style.setProperty('--primary-light', lightColor);
+      doc.documentElement.style.setProperty('--primary-dark', darkColor);
+    }
   }
 }
 
@@ -491,35 +481,87 @@ function updateTemplateFont(font) {
     const existingStyle = doc.querySelector('#dynamic-font-style');
     if (existingStyle) existingStyle.remove();
     
-    // Create comprehensive font update
+    // Create comprehensive font update matching your site's typography
     const style = doc.createElement('style');
     style.id = 'dynamic-font-style';
     style.textContent = `
-      /* Import font if needed */
-      @import url('https://fonts.googleapis.com/css2?family=${font.replace(' ', '+')}:wght@300;400;500;600;700&display=swap');
+      /* Import font from Google Fonts */
+      @import url('https://fonts.googleapis.com/css2?family=${font.replace(' ', '+')}:wght@300;400;500;600;700;800;900&display=swap');
       
-      /* Apply font to all elements */
-      body, * { 
-        font-family: '${font}', sans-serif !important; 
+      /* Apply font to all elements following your site's hierarchy */
+      * { 
+        font-family: '${font}', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important; 
       }
       
-      /* Maintain font weights */
-      .company-name, .section-title, .feature-title {
+      /* Maintain your site's font weight hierarchy */
+      .company-name, 
+      .hero-title,
+      .section-title,
+      h1, h2 {
+        font-family: '${font}', 'Inter', sans-serif !important;
         font-weight: 700 !important;
+        letter-spacing: -0.025em !important;
       }
       
-      .tagline, .section-description {
+      .tagline, 
+      .hero-subtitle,
+      .section-description,
+      h3, h4 {
+        font-family: '${font}', 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.015em !important;
+      }
+      
+      .feature-title,
+      h5, h6 {
+        font-family: '${font}', 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+      }
+      
+      /* Button typography matching your site */
+      .btn, 
+      .template-select-btn,
+      .btn-primary,
+      .btn-outline {
+        font-family: '${font}', 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.025em !important;
+      }
+      
+      /* Body text and descriptions */
+      p, 
+      .hero-description,
+      .feature-description,
+      .template-description {
+        font-family: '${font}', 'Inter', sans-serif !important;
+        font-weight: 400 !important;
+        line-height: 1.6 !important;
+      }
+      
+      /* Navigation and UI elements */
+      nav, 
+      .nav-link,
+      .template-category,
+      .feature-tag {
+        font-family: '${font}', 'Inter', sans-serif !important;
         font-weight: 500 !important;
       }
       
-      .btn {
-        font-weight: 600 !important;
-      }
+      /* Ensure proper line heights for readability */
+      h1, .company-name { line-height: 1.1 !important; }
+      h2, .section-title { line-height: 1.2 !important; }
+      h3, h4, .feature-title { line-height: 1.3 !important; }
+      p, .description { line-height: 1.6 !important; }
     `;
     doc.head.appendChild(style);
     
-    // Update CSS custom property
-    doc.documentElement.style.setProperty('--font-family', `'${font}', sans-serif`);
+    // Update CSS custom property for font
+    doc.documentElement.style.setProperty('--font-family', `'${font}', 'Inter', sans-serif`);
+    
+    // Force font refresh by triggering a reflow
+    if (doc.body) {
+      doc.body.style.fontFamily = `'${font}', 'Inter', sans-serif`;
+    }
   }
 }
 
@@ -626,28 +668,45 @@ function switchDevice(device) {
   const iframe = document.querySelector('.edit-iframe');
   const buttons = document.querySelectorAll('.device-btn');
   
-  // Update button styles
+  // Update button styles with clean theme
   buttons.forEach(btn => {
-    btn.style.background = 'transparent';
-    btn.style.color = '#94a3b8';
+    btn.style.background = 'rgba(255,255,255,0.1)';
+    btn.style.color = 'rgba(255,255,255,0.7)';
+    btn.style.border = '1px solid rgba(255,255,255,0.2)';
   });
-  event.target.style.background = '#3b82f6';
-  event.target.style.color = 'white';
   
-  // Update iframe size
+  // Highlight active button
+  event.target.style.background = 'rgba(255,255,255,0.2)';
+  event.target.style.color = 'white';
+  event.target.style.border = '1px solid rgba(255,255,255,0.3)';
+  
+  // Update iframe size with smooth transition
   if (iframe) {
+    iframe.style.transition = 'all 0.3s ease';
     switch(device) {
       case 'mobile':
         iframe.style.width = '375px';
-        iframe.style.margin = '0 auto';
+        iframe.style.height = '100%';
+        iframe.style.margin = '10px auto';
+        iframe.style.borderRadius = '16px';
+        iframe.style.border = '1px solid #e2e8f0';
+        iframe.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
         break;
       case 'tablet':
         iframe.style.width = '768px';
-        iframe.style.margin = '0 auto';
+        iframe.style.height = '100%';
+        iframe.style.margin = '10px auto';
+        iframe.style.borderRadius = '12px';
+        iframe.style.border = '1px solid #e2e8f0';
+        iframe.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
         break;
       default:
         iframe.style.width = '100%';
+        iframe.style.height = '100%';
         iframe.style.margin = '0';
+        iframe.style.borderRadius = '0 0 20px 0';
+        iframe.style.border = 'none';
+        iframe.style.boxShadow = 'none';
     }
   }
 }
