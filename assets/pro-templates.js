@@ -172,11 +172,97 @@ class ProTemplateEditor {
 
 // Template editing functions
 function editTemplate(templateId) {
+  // Check if user has pro access (simulate check)
+  const hasProAccess = checkProAccess();
+  
+  if (!hasProAccess) {
+    showProTrialModal();
+    return;
+  }
+  
   showEditMode(templateId);
 }
 
 function previewTemplate(templateId) {
   showPreview(templateId);
+}
+
+function checkProAccess() {
+  // In real implementation, this would check user's subscription status
+  // For now, we'll simulate that user needs pro access
+  return false; // Change to true to test editing mode
+}
+
+function showProTrialModal() {
+  const modal = document.createElement('div');
+  modal.className = 'edit-overlay';
+  modal.style.zIndex = '2000';
+  modal.innerHTML = `
+    <div style="background: white; border-radius: 20px; max-width: 600px; width: 90%; padding: 3rem; text-align: center; position: relative;">
+      <button onclick="closeProModal()" style="position: absolute; top: 1rem; right: 1rem; background: #f3f4f6; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #6b7280;">×</button>
+      
+      <div style="width: 100px; height: 100px; margin: 0 auto 2rem; background: linear-gradient(135deg, #7c3aed, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="white">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a2e;">🔒 Pro Feature</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #6b7280; line-height: 1.6;">
+        Template editing with click-to-edit functionality is available for Pro users only. 
+        <br><strong>Upgrade now to unlock this amazing feature!</strong>
+      </p>
+      
+      <div style="background: rgba(124, 58, 237, 0.1); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: #7c3aed;">✨ With Pro Access You Get:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; text-align: left;">
+          <div>
+            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">✏️ Click-to-Edit Templates</div>
+            <div style="font-size: 0.9rem; color: #6b7280;">Edit any text, image, or color instantly</div>
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">🎨 Custom Themes</div>
+            <div style="font-size: 0.9rem; color: #6b7280;">Match your VTC's branding perfectly</div>
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">📱 Mobile Preview</div>
+            <div style="font-size: 0.9rem; color: #6b7280;">Test on desktop, tablet, and mobile</div>
+          </div>
+          <div>
+            <div style="font-weight: 600; color: #374151; margin-bottom: 0.5rem;">💾 Download Code</div>
+            <div style="font-size: 0.9rem; color: #6b7280;">Get complete HTML/CSS files</div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://discord.gg/webmaker" target="_blank" style="background: linear-gradient(135deg, #7c3aed, #3b82f6); color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; transition: transform 0.2s;" 
+           onmouseover="this.style.transform='translateY(-2px)'" 
+           onmouseout="this.style.transform='translateY(0)'">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          Get Pro Access Now
+        </a>
+        <button onclick="closeProModal()" style="background: transparent; color: #6b7280; border: 2px solid #e5e7eb; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Maybe Later</button>
+      </div>
+      
+      <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 1.5rem;">
+        💬 Join our Discord for instant Pro access and connect with 500+ VTC owners!
+      </p>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function closeProModal() {
+  const modal = document.querySelector('.edit-overlay');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => modal.remove(), 300);
+  }
 }
 
 function showEditMode(templateId) {
@@ -319,22 +405,80 @@ function getTemplatePreviewUrl(templateId) {
   return `template-preview.html?template=${templateId}`;
 }
 
-// Edit functionality
+// Edit functionality with improved theme matching
 function updateTemplateColor(color) {
   const iframe = document.querySelector('.edit-iframe');
   if (iframe && iframe.contentDocument) {
     const doc = iframe.contentDocument;
+    
+    // Remove existing color styles
+    const existingStyle = doc.querySelector('#dynamic-color-style');
+    if (existingStyle) existingStyle.remove();
+    
+    // Create comprehensive color update
     const style = doc.createElement('style');
+    style.id = 'dynamic-color-style';
     style.textContent = `
-      .gradient-text, .btn-primary, .hero-badge { 
-        background: ${color} !important; 
+      /* Primary color updates */
+      .company-name, 
+      .btn-primary, 
+      .hero-badge,
+      .feature-icon,
+      .logo { 
+        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -20)}) !important; 
         color: white !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
       }
-      .icon-gradient { 
-        background: ${color} !important; 
+      
+      .btn-primary {
+        -webkit-text-fill-color: white !important;
+        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -20)}) !important;
+      }
+      
+      /* Accent colors */
+      .gradient-text {
+        background: linear-gradient(135deg, ${color}, ${adjustColor(color, 30)}) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+      
+      /* Interactive elements */
+      .editable-element:hover {
+        outline-color: ${color} !important;
+        background-color: ${color}1a !important;
+      }
+      
+      .edit-tooltip {
+        background: ${color} !important;
+      }
+      
+      /* Hover effects */
+      .btn-primary:hover {
+        box-shadow: 0 8px 25px ${color}66 !important;
+      }
+      
+      /* Icons and decorative elements */
+      .icon-gradient {
+        background: linear-gradient(135deg, ${color}, ${adjustColor(color, -15)}) !important;
+      }
+      
+      /* Links and accents */
+      a, .accent-color {
+        color: ${color} !important;
+      }
+      
+      /* Borders and dividers */
+      .border-accent {
+        border-color: ${color} !important;
       }
     `;
     doc.head.appendChild(style);
+    
+    // Update CSS custom properties for better theme integration
+    doc.documentElement.style.setProperty('--primary-color', color);
+    doc.documentElement.style.setProperty('--primary-light', adjustColor(color, 20));
+    doc.documentElement.style.setProperty('--primary-dark', adjustColor(color, -20));
   }
 }
 
@@ -342,26 +486,90 @@ function updateTemplateFont(font) {
   const iframe = document.querySelector('.edit-iframe');
   if (iframe && iframe.contentDocument) {
     const doc = iframe.contentDocument;
+    
+    // Remove existing font styles
+    const existingStyle = doc.querySelector('#dynamic-font-style');
+    if (existingStyle) existingStyle.remove();
+    
+    // Create comprehensive font update
     const style = doc.createElement('style');
+    style.id = 'dynamic-font-style';
     style.textContent = `
+      /* Import font if needed */
+      @import url('https://fonts.googleapis.com/css2?family=${font.replace(' ', '+')}:wght@300;400;500;600;700&display=swap');
+      
+      /* Apply font to all elements */
       body, * { 
         font-family: '${font}', sans-serif !important; 
       }
+      
+      /* Maintain font weights */
+      .company-name, .section-title, .feature-title {
+        font-weight: 700 !important;
+      }
+      
+      .tagline, .section-description {
+        font-weight: 500 !important;
+      }
+      
+      .btn {
+        font-weight: 600 !important;
+      }
     `;
     doc.head.appendChild(style);
+    
+    // Update CSS custom property
+    doc.documentElement.style.setProperty('--font-family', `'${font}', sans-serif`);
   }
+}
+
+// Helper function to adjust color brightness
+function adjustColor(color, amount) {
+  const usePound = color[0] === "#";
+  const col = usePound ? color.slice(1) : color;
+  const num = parseInt(col, 16);
+  let r = (num >> 16) + amount;
+  let g = (num >> 8 & 0x00FF) + amount;
+  let b = (num & 0x0000FF) + amount;
+  r = r > 255 ? 255 : r < 0 ? 0 : r;
+  g = g > 255 ? 255 : g < 0 ? 0 : g;
+  b = b > 255 ? 255 : b < 0 ? 0 : b;
+  return (usePound ? "#" : "") + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
 }
 
 function updateCompanyName(name) {
   const iframe = document.querySelector('.edit-iframe');
   if (iframe && iframe.contentDocument && name) {
     const doc = iframe.contentDocument;
-    const titleElements = doc.querySelectorAll('h1, .hero-title, .company-name');
-    titleElements.forEach(el => {
-      if (el.textContent.includes('Transport') || el.textContent.includes('Freight') || el.textContent.includes('Logistics')) {
+    
+    // Update all company name elements
+    const companyElements = doc.querySelectorAll('.company-name, h1, .hero-title');
+    companyElements.forEach(el => {
+      if (el.classList.contains('company-name') || 
+          el.textContent.includes('Transport') || 
+          el.textContent.includes('Freight') || 
+          el.textContent.includes('Logistics') ||
+          el.textContent.includes('Elite') ||
+          el.textContent.includes('Cargo') ||
+          el.textContent.includes('Highway') ||
+          el.textContent.includes('Classic') ||
+          el.textContent.includes('Swift') ||
+          el.textContent.includes('Prime')) {
         el.textContent = name;
       }
     });
+    
+    // Update logo abbreviation
+    const logoAbbr = name.split(' ').map(word => word[0]).join('').substring(0, 2).toUpperCase();
+    const logoElements = doc.querySelectorAll('.logo');
+    logoElements.forEach(logo => {
+      logo.textContent = logoAbbr;
+    });
+    
+    // Update page title
+    if (doc.title) {
+      doc.title = `${name} - Professional VTC Services`;
+    }
   }
 }
 
@@ -369,10 +577,14 @@ function updateTagline(tagline) {
   const iframe = document.querySelector('.edit-iframe');
   if (iframe && iframe.contentDocument && tagline) {
     const doc = iframe.contentDocument;
-    const taglineElements = doc.querySelectorAll('.hero-subtitle, .tagline, p');
-    if (taglineElements.length > 0) {
-      taglineElements[0].textContent = tagline;
-    }
+    
+    // Update all tagline elements
+    const taglineElements = doc.querySelectorAll('.tagline, .hero-subtitle, .hero-description');
+    taglineElements.forEach((el, index) => {
+      if (index === 0 || el.classList.contains('tagline')) {
+        el.textContent = tagline;
+      }
+    });
   }
 }
 
@@ -383,9 +595,26 @@ function updateLogo(input) {
       const iframe = document.querySelector('.edit-iframe');
       if (iframe && iframe.contentDocument) {
         const doc = iframe.contentDocument;
-        const logoElements = doc.querySelectorAll('.logo, img[alt*="logo"]');
+        
+        // Find logo elements and replace with image
+        const logoElements = doc.querySelectorAll('.logo');
         logoElements.forEach(logo => {
-          logo.src = e.target.result;
+          // Create image element
+          const img = doc.createElement('img');
+          img.src = e.target.result;
+          img.alt = 'Company Logo';
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'contain';
+          img.style.borderRadius = '50%';
+          
+          // Clear existing content and add image
+          logo.innerHTML = '';
+          logo.appendChild(img);
+          
+          // Adjust styling for image
+          logo.style.background = 'white';
+          logo.style.padding = '8px';
         });
       }
     };
