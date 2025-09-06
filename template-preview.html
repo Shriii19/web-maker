@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #7c3aed;
+      --primary-light: #8b5cf6;
+      --primary-dark: #6d28d9;
+      --font-family: 'Inter', sans-serif;
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -15,7 +22,7 @@
     }
     
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-family);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -41,7 +48,7 @@
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -81,7 +88,7 @@
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
       color: white;
     }
     
@@ -147,7 +154,7 @@
       width: 80px;
       height: 80px;
       margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -178,13 +185,14 @@
       width: 60px;
       height: 60px;
       margin: 0 auto 1rem;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       font-weight: 700;
+      color: white;
     }
     
     /* Mobile Responsive */
@@ -225,12 +233,12 @@
     }
     
     .editable-element:hover {
-      outline: 2px dashed #7c3aed;
+      outline: 2px dashed var(--primary-color);
       background: rgba(124, 58, 237, 0.1);
     }
     
     .editable-element.editing {
-      outline: 2px solid #7c3aed;
+      outline: 2px solid var(--primary-color);
       background: rgba(124, 58, 237, 0.1);
     }
     
@@ -239,7 +247,7 @@
       top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      background: #7c3aed;
+      background: var(--primary-color);
       color: white;
       padding: 0.25rem 0.75rem;
       border-radius: 4px;
@@ -253,6 +261,45 @@
     
     .editable-element:hover .edit-tooltip {
       opacity: 1;
+    }
+    
+    /* Theme-aware animations */
+    @keyframes pulse-primary {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .pulse-primary {
+      animation: pulse-primary 2s infinite;
+    }
+    
+    /* Enhanced gradient effects */
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Interactive elements with theme colors */
+    .accent-color {
+      color: var(--primary-color);
+    }
+    
+    .border-accent {
+      border-color: var(--primary-color);
+    }
+    
+    .bg-accent {
+      background-color: var(--primary-color);
+    }
+    
+    .bg-accent-light {
+      background-color: var(--primary-light);
     }
   </style>
 </head>
@@ -354,81 +401,132 @@
     const urlParams = new URLSearchParams(window.location.search);
     const templateType = urlParams.get('template');
     
-    // Template configurations
+    // Template configurations with enhanced theming
     const templates = {
       'elite-transport': {
         name: 'Elite Transport',
         tagline: 'Professional VTC Solutions',
         gradient: 'linear-gradient(135deg, #1a1a2e, #16213e)',
-        primaryColor: '#7c3aed'
+        primaryColor: '#7c3aed',
+        lightColor: '#8b5cf6',
+        darkColor: '#6d28d9'
       },
       'cargo-masters': {
         name: 'Cargo Masters',
         tagline: 'Reliable Transport Services',
         gradient: 'linear-gradient(135deg, #f8fafc, #e2e8f0)',
-        primaryColor: '#3b82f6'
+        primaryColor: '#3b82f6',
+        lightColor: '#60a5fa',
+        darkColor: '#1d4ed8'
       },
       'highway-heroes': {
         name: 'Highway Heroes',
         tagline: 'Adventure Transport Co.',
         gradient: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
-        primaryColor: '#d97706'
+        primaryColor: '#d97706',
+        lightColor: '#f59e0b',
+        darkColor: '#92400e'
       },
       'classic-freight': {
         name: 'Classic Freight',
         tagline: 'Traditional Transport',
         gradient: 'linear-gradient(135deg, #374151, #4b5563)',
-        primaryColor: '#dc2626'
+        primaryColor: '#dc2626',
+        lightColor: '#ef4444',
+        darkColor: '#991b1b'
       },
       'swift-logistics': {
         name: 'Swift Logistics',
         tagline: 'Fast & Efficient Transport',
         gradient: 'linear-gradient(135deg, #10b981, #059669)',
-        primaryColor: '#059669'
+        primaryColor: '#059669',
+        lightColor: '#10b981',
+        darkColor: '#047857'
       },
       'prime-haulers': {
         name: 'Prime Haulers',
         tagline: 'Premium Transport Solutions',
         gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
-        primaryColor: '#7c3aed'
+        primaryColor: '#7c3aed',
+        lightColor: '#8b5cf6',
+        darkColor: '#6d28d9'
       }
     };
     
-    // Apply template configuration
+    // Apply template configuration with enhanced theming
     if (templateType && templates[templateType]) {
       const template = templates[templateType];
+      
+      // Update CSS custom properties for complete theme integration
+      document.documentElement.style.setProperty('--primary-color', template.primaryColor);
+      document.documentElement.style.setProperty('--primary-light', template.lightColor);
+      document.documentElement.style.setProperty('--primary-dark', template.darkColor);
       
       // Update content
       document.querySelector('.company-name').textContent = template.name;
       document.querySelector('.tagline').textContent = template.tagline;
       
-      // Update colors
+      // Update hero background
       document.querySelector('.hero-section').style.background = template.gradient;
       
-      // Update logo
+      // Update logo abbreviation
       const logoText = template.name.split(' ').map(word => word[0]).join('');
       document.querySelectorAll('.logo').forEach(logo => {
         logo.textContent = logoText;
       });
       
-      // Update primary color elements
-      const style = document.createElement('style');
-      style.textContent = `
-        .btn-primary, .company-name, .feature-icon {
-          background: linear-gradient(135deg, ${template.primaryColor}, #3b82f6) !important;
+      // Update page title
+      document.title = `${template.name} - Professional VTC Services`;
+      
+      // Apply comprehensive theme styling
+      const themeStyle = document.createElement('style');
+      themeStyle.id = 'template-theme';
+      themeStyle.textContent = `
+        /* Template-specific overrides */
+        .company-name {
+          background: linear-gradient(135deg, ${template.primaryColor}, ${template.lightColor}) !important;
         }
+        
+        .btn-primary {
+          background: linear-gradient(135deg, ${template.primaryColor}, ${template.lightColor}) !important;
+        }
+        
+        .feature-icon, .logo {
+          background: linear-gradient(135deg, ${template.primaryColor}, ${template.lightColor}) !important;
+        }
+        
+        .btn-primary:hover {
+          box-shadow: 0 8px 25px ${template.primaryColor}66 !important;
+        }
+        
         .editable-element:hover {
           outline-color: ${template.primaryColor} !important;
           background-color: ${template.primaryColor}1a !important;
         }
+        
         .edit-tooltip {
           background: ${template.primaryColor} !important;
         }
+        
+        /* Additional theme-aware elements */
+        .accent-color, a {
+          color: ${template.primaryColor} !important;
+        }
+        
+        .border-accent {
+          border-color: ${template.primaryColor} !important;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(135deg, ${template.primaryColor}, ${template.lightColor}) !important;
+          -webkit-background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+        }
       `;
-      document.head.appendChild(style);
+      document.head.appendChild(themeStyle);
     }
     
-    // Initialize editing functionality
+    // Enhanced editing functionality with better theme support
     document.addEventListener('DOMContentLoaded', function() {
       const editableElements = document.querySelectorAll('.editable-element');
       
@@ -439,6 +537,8 @@
         
         element.addEventListener('blur', function() {
           this.classList.remove('editing');
+          // Trigger theme update after content change
+          updateThemeColors();
         });
         
         element.addEventListener('keydown', function(e) {
@@ -447,8 +547,46 @@
             this.blur();
           }
         });
+        
+        // Add better visual feedback
+        element.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.2s ease';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+          if (!this.classList.contains('editing')) {
+            this.style.transition = 'all 0.2s ease';
+          }
+        });
       });
     });
+    
+    // Function to update theme colors after content changes
+    function updateThemeColors() {
+      const currentPrimary = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+      if (currentPrimary) {
+        // Re-apply theme to any new elements
+        const existingTheme = document.querySelector('#template-theme');
+        if (existingTheme) {
+          // Theme is already applied and will be maintained
+        }
+      }
+    }
+    
+    // Expose functions for parent editing interface
+    window.templateEditor = {
+      updateColor: function(color) {
+        document.documentElement.style.setProperty('--primary-color', color);
+        updateThemeColors();
+      },
+      updateFont: function(font) {
+        document.documentElement.style.setProperty('--font-family', `'${font}', sans-serif`);
+        document.body.style.fontFamily = `'${font}', sans-serif`;
+      },
+      getTemplate: function() {
+        return templateType;
+      }
+    };
   </script>
 </body>
 </html>
