@@ -211,7 +211,7 @@ class SiteComponents {
           <!-- Copyright -->
           <div class="simple-footer-bottom">
             <p>&copy; 2025 Web Maker. All rights reserved.</p>
-            <p>Built with ❤️ for creators</p>
+            <p>Built with ❤️ for creators with <a href="https://shrinivasmudabe.me" target="_blank" style="color: inherit; text-decoration: none; hover:underline;">Shrinivas Mudabe</a></p>
           </div>
         </div>
       </footer>
