@@ -194,7 +194,7 @@ class SiteComponents {
 
               <!-- Social Links -->
               <div class="simple-footer-social">
-                <a href="https://discord.gg/webmaker" target="_blank" title="Join our Discord">
+                <a href="https://discord.gg/D442vYePUR" target="_blank" title="Join our Discord">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
                   </svg>
@@ -535,7 +535,7 @@ class VTCStudio {
     const controls = {
       'company-name': 'My VTC',
       'company-tagline': 'Drive together. Deliver success.',
-      'discord-link': 'https://discord.gg/yourvtc',
+      'discord-link': 'https://discord.gg/D442vYePUR',
       'primary-color': '#00b894'
     };
 
@@ -739,7 +739,7 @@ class VTCStudio {
                 </div>
               </a>
               
-              <a href="https://discord.gg/webmaker" target="_blank" class="btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; text-decoration: none;">
+              <a href="https://discord.gg/D442vYePUR" target="_blank" class="btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; text-decoration: none;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0003 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/>
                 </svg>
@@ -768,7 +768,7 @@ class VTCStudio {
       // Reset visual controls
       document.getElementById('company-name').value = 'My VTC';
       document.getElementById('company-tagline').value = 'Drive together. Deliver success.';
-      document.getElementById('discord-link').value = 'https://discord.gg/yourvtc';
+      document.getElementById('discord-link').value = 'https://discord.gg/D442vYePUR';
       document.getElementById('primary-color').value = '#00b894';
 
       this.showNotification('Template reset successfully!', 'info');
@@ -1316,7 +1316,7 @@ class VTCStudio {
         <img src="https://placehold.co/100x100/ffffff/00b894?text=VTC" alt="VTC Logo" class="hero-logo">
         <h1>My VTC</h1>
         <p class="tagline">Drive together. Deliver success. Join our professional Virtual Trucking Company and experience the best of ETS2 multiplayer!</p>
-        <a href="https://discord.gg/yourvtc" target="_blank" class="cta-btn">
+        <a href="https://discord.gg/D442vYePUR" target="_blank" class="cta-btn">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.1a.074.074 0 0 0-.079.037c-.34.607-.719 1.396-.984 2.013a18.524 18.524 0 0 0-5.59 0 12.51 12.51 0 0 0-.997-2.013.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.369a.07.07 0 0 0-.032.027C.533 9.09-.32 13.579.099 18.021a.08.08 0 0 0 .031.056c2.104 1.548 4.13 2.488 6.102 3.104a.077.077 0 0 0 .084-.027c.47-.646.888-1.329 1.245-2.049a.076.076 0 0 0-.041-.104c-.662-.251-1.292-.549-1.899-.892a.077.077 0 0 1-.008-.128c.127-.096.254-.192.377-.291a.074.074 0 0 1 .077-.01c3.967 1.813 8.27 1.813 12.199 0a.073.073 0 0 1 .078.009c.123.099.25.195.378.291a.077.077 0 0 1-.006.128 12.298 12.298 0 0 1-1.9.892.076.076 0 0 0-.04.105c.36.72.778 1.403 1.246 2.049a.076.076 0 0 0 .084.028c1.978-.616 4.004-1.556 6.107-3.104a.077.077 0 0 0 .03-.055c.5-5.177-.838-9.637-3.61-13.625a.061.061 0 0 0-.03-.028zM8.02 15.331c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.175 1.094 2.156 2.418 0 1.334-.955 2.419-2.156 2.419zm7.974 0c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.175 1.094 2.156 2.418 0 1.334-.946 2.419-2.156 2.419z"/>
           </svg>
@@ -1420,7 +1420,7 @@ class VTCStudio {
           </div>
           <div>
             <h4>Discord Server</h4>
-            <a href="https://discord.gg/yourvtc" target="_blank">discord.gg/yourvtc</a>
+            <a href="https://discord.gg/D442vYePUR" target="_blank">discord.gg/D442vYePUR</a>
             <p style="font-size: 0.9rem; margin-top: 0.25rem; color: #64748b;">Join our community hub</p>
           </div>
         </div>
@@ -1584,7 +1584,7 @@ class PaymentMaintenance {
                 custom solutions, and provide updates on when payments will be available again.
               </p>
               
-              <a href="https://discord.gg/webmaker" target="_blank" style="
+              <a href="https://discord.gg/D442vYePUR" target="_blank" style="
                 display: inline-flex; 
                 align-items: center; 
                 gap: 0.75rem; 
