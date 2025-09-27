@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .error-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Maker Error Diagnostic Tool</h1>
+    
+    <div class="test-container">
+        <h2>Page Tests</h2>
+        <button onclick="testAllPages()">Test All Pages</button>
+        <button onclick="clearResults()">Clear Results</button>
+        <div id="test-results"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>Error Log</h2>
+        <button onclick="showErrorLog()">Show Error Log</button>
+        <button onclick="clearErrorLog()">Clear Error Log</button>
+        <div id="error-display" class="error-log"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>JavaScript Tests</h2>
+        <button onclick="testJavaScript()">Test JavaScript Functions</button>
+        <div id="js-test-results"></div>
+    </div>
+
+    <script src="assets/global-error-handler.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+        function testAllPages() {
+            const pages = [
+                'index.html',
+                'about.html',
+                'features.html',
+                'templates.html',
+                'pro-templates.html',
+                'pricing.html',
+                'pro-trial.html',
+                'contact.html',
+                'create.html',
+                'template-preview.html'
+            ];
+            
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<h3>Testing pages...</h3>';
+            
+            let results = '';
+            let testCount = 0;
+            
+            pages.forEach((page, index) => {
+                setTimeout(() => {
+                    fetch(page)
+                        .then(response => {
+                            testCount++;
+                            if (response.ok) {
+                                results += `<div class="status success">✅ ${page} - OK (${response.status})</div>`;
+                            } else {
+                                results += `<div class="status error">❌ ${page} - Error (${response.status})</div>`;
+                            }
+                            
+                            if (testCount === pages.length) {
+                                resultsDiv.innerHTML = `<h3>Page Test Results:</h3>${results}`;
+                            }
+                        })
+                        .catch(error => {
+                            testCount++;
+                            results += `<div class="status error">❌ ${page} - Failed to load: ${error.message}</div>`;
+                            
+                            if (testCount === pages.length) {
+                                resultsDiv.innerHTML = `<h3>Page Test Results:</h3>${results}`;
+                            }
+                        });
+                }, index * 100);
+            });
+        }
+        
+        function showErrorLog() {
+            const errorDisplay = document.getElementById('error-display');
+            
+            if (typeof getErrorLog === 'function') {
+                const errorLog = getErrorLog();
+                errorDisplay.textContent = JSON.stringify(errorLog, null, 2);
+            } else {
+                errorDisplay.textContent = 'Error log function not available. Global error handler may not be loaded.';
+            }
+        }
+        
+        function clearErrorLog() {
+            if (typeof clearErrorLog === 'function') {
+                clearErrorLog();
+                document.getElementById('error-display').textContent = 'Error log cleared.';
+            } else {
+                document.getElementById('error-display').textContent = 'Clear function not available.';
+            }
+        }
+        
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+            document.getElementById('error-display').innerHTML = '';
+            document.getElementById('js-test-results').innerHTML = '';
+        }
+        
+        function testJavaScript() {
+            const resultsDiv = document.getElementById('js-test-results');
+            let results = '<h3>JavaScript Test Results:</h3>';
+            
+            // Test SiteComponents
+            try {
+                if (typeof SiteComponents !== 'undefined') {
+                    results += '<div class="status success">✅ SiteComponents - Available</div>';
+                } else {
+                    results += '<div class="status error">❌ SiteComponents - Not found</div>';
+                }
+            } catch (e) {
+                results += `<div class="status error">❌ SiteComponents - Error: ${e.message}</div>`;
+            }
+            
+            // Test AnimationController
+            try {
+                if (typeof AnimationController !== 'undefined') {
+                    results += '<div class="status success">✅ AnimationController - Available</div>';
+                } else {
+                    results += '<div class="status error">❌ AnimationController - Not found</div>';
+                }
+            } catch (e) {
+                results += `<div class="status error">❌ AnimationController - Error: ${e.message}</div>`;
+            }
+            
+            // Test VTCStudio
+            try {
+                if (typeof VTCStudio !== 'undefined') {
+                    results += '<div class="status success">✅ VTCStudio - Available</div>';
+                } else {
+                    results += '<div class="status error">❌ VTCStudio - Not found</div>';
+                }
+            } catch (e) {
+                results += `<div class="status error">❌ VTCStudio - Error: ${e.message}</div>`;
+            }
+            
+            // Test DOM elements on current page
+            const testElements = [
+                'navbar',
+                'simple-footer'
+            ];
+            
+            testElements.forEach(className => {
+                const element = document.querySelector(`.${className}`);
+                if (element) {
+                    results += `<div class="status success">✅ .${className} - Found</div>`;
+                } else {
+                    results += `<div class="status error">❌ .${className} - Not found</div>`;
+                }
+            });
+            
+            resultsDiv.innerHTML = results;
+        }
+        
+        // Auto-run basic tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                testJavaScript();
+                console.log('Diagnostic page loaded successfully');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

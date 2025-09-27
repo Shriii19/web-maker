@@ -177,35 +177,58 @@
 
   <!-- Footer will be inserted by JavaScript -->
 
+  <script src="assets/global-error-handler.js"></script>
   <script src="assets/main.js"></script>
   <script>
-    // Contact form handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
-      
-      // Simple validation
-      if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
-        alert('Please fill in all required fields.');
-        return;
+    // Contact form handling with error handling
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        const contactForm = document.getElementById('contactForm');
+        if (!contactForm) {
+          console.warn('Contact form not found on this page');
+          return;
+        }
+        
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          try {
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
+              alert('Please fill in all required fields.');
+              return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (!submitBtn) {
+              console.error('Submit button not found');
+              return;
+            }
+            
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+              alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+              this.reset();
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }, 2000);
+          } catch (formError) {
+            console.error('Contact form submission error:', formError);
+            alert('There was an error submitting your message. Please try again.');
+          }
+        });
+      } catch (error) {
+        console.error('Contact form initialization error:', error);
       }
-      
-      // Simulate form submission
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>Sending...';
-      submitBtn.disabled = true;
-      
-      setTimeout(() => {
-        alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-        this.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }, 2000);
     });
   </script>
 </body>
