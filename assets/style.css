@@ -224,7 +224,7 @@ input, button, textarea, select {
 
 /* Enhanced Navigation - Mobile First */
 .navbar {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -6477,7 +6477,7 @@ text-align: center;
 @media (prefers-color-scheme: dark) {
   /* This can be expanded based on user requirements */
   .navbar {
-    background: rgba(30, 30, 30, 0.95);
+    background: rgba(255, 255, 255, 0);
   }
 }
 
