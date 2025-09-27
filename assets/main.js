@@ -3,9 +3,14 @@
 // Navigation and Footer Components
 class SiteComponents {
   static init() {
-    this.createNavigation();
-    this.createFooter();
-    this.setActivePage();
+    try {
+      this.createNavigation();
+      this.createFooter();
+      this.setActivePage();
+      console.log('SiteComponents initialized successfully');
+    } catch (error) {
+      console.error('SiteComponents initialization failed:', error);
+    }
   }
 
   static createNavigation() {
@@ -97,10 +102,15 @@ class SiteComponents {
   }
 
   static initMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileToggle && navLinks) {
+    try {
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (!mobileToggle || !navLinks) {
+        console.warn('Mobile menu elements not found, skipping mobile menu initialization');
+        return;
+      }
+      
       mobileToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -161,6 +171,8 @@ class SiteComponents {
           document.body.classList.remove('menu-open');
         }
       });
+    } catch (error) {
+      console.error('Mobile menu initialization failed:', error);
     }
   }
 
@@ -247,13 +259,19 @@ class VTCStudio {
   }
 
   init() {
-    this.setupNavigation();
-    this.setupEditor();
-    this.setupPreview();
-    this.setupEventListeners();
-    this.loadTemplate();
-    if (this.selectedTemplateId) {
-      this.showNotification(`Loaded selected template: ${this.selectedTemplateId}`, 'info');
+    try {
+      this.setupNavigation();
+      this.setupEditor();
+      this.setupPreview();
+      this.setupEventListeners();
+      this.loadTemplate();
+      if (this.selectedTemplateId) {
+        this.showNotification(`Loaded selected template: ${this.selectedTemplateId}`, 'info');
+      }
+      console.log('VTCStudio initialized successfully');
+    } catch (error) {
+      console.error('VTCStudio initialization failed:', error);
+      throw error;
     }
   }
 
@@ -488,77 +506,98 @@ class VTCStudio {
   }
 
   setupEditor() {
-    // Tab switching
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
+    try {
+      // Tab switching
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
 
-    if (tabBtns && tabBtns.length) {
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tab = btn.dataset.tab;
-          this.switchTab(tab);
+      if (tabBtns && tabBtns.length) {
+        tabBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const tab = btn.dataset.tab;
+            this.switchTab(tab);
+          });
         });
-      });
-    }
+      }
 
-    // Device switching
-    const deviceBtns = document.querySelectorAll('.device-btn');
-    if (deviceBtns && deviceBtns.length) {
-      deviceBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const device = btn.dataset.device;
-          this.switchDevice(device);
+      // Device switching
+      const deviceBtns = document.querySelectorAll('.device-btn');
+      if (deviceBtns && deviceBtns.length) {
+        deviceBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const device = btn.dataset.device;
+            this.switchDevice(device);
+          });
         });
-      });
-    }
+      }
 
-    // Code editor
-    const codeEditor = document.getElementById('code-editor');
-    let debounceTimer;
-    
-    if (codeEditor) {
-      codeEditor.addEventListener('input', () => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          if (!this.isCodeSyncing) {
-            this.updatePreview();
-          }
-        }, 500);
-      });
-    }
+      // Code editor
+      const codeEditor = document.getElementById('code-editor');
+      let debounceTimer;
+      
+      if (codeEditor) {
+        codeEditor.addEventListener('input', () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            if (!this.isCodeSyncing) {
+              this.updatePreview();
+            }
+          }, 500);
+        });
+      } else {
+        console.warn('Code editor element not found');
+      }
 
-    // Visual editor controls
-    this.setupVisualControls();
+      // Visual editor controls
+      this.setupVisualControls();
+    } catch (error) {
+      console.error('Setup editor failed:', error);
+    }
   }
 
   setupVisualControls() {
-    const controls = {
-      'company-name': 'My VTC',
-      'company-tagline': 'Drive together. Deliver success.',
-      'discord-link': 'https://discord.gg/D442vYePUR',
-      'primary-color': '#00b894'
-    };
+    try {
+      const controls = {
+        'company-name': 'My VTC',
+        'company-tagline': 'Drive together. Deliver success.',
+        'discord-link': 'https://discord.gg/D442vYePUR',
+        'primary-color': '#00b894'
+      };
 
-    Object.keys(controls).forEach(id => {
-      const input = document.getElementById(id);
-      if (input) {
-        input.addEventListener('input', () => {
-          this.syncVisualChanges();
-        });
-      }
-    });
-
-    // Apply changes button
-    const applyBtn = document.getElementById('apply-changes');
-    if (applyBtn) {
-      applyBtn.addEventListener('click', () => {
-        this.applyVisualChanges();
+      Object.keys(controls).forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+          input.addEventListener('input', () => {
+            this.syncVisualChanges();
+          });
+        } else {
+          console.warn(`Visual control element '${id}' not found`);
+        }
       });
+
+      // Apply changes button
+      const applyBtn = document.getElementById('apply-changes');
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+          this.applyVisualChanges();
+        });
+      } else {
+        console.warn('Apply changes button not found');
+      }
+    } catch (error) {
+      console.error('Setup visual controls failed:', error);
     }
   }
 
   setupPreview() {
-    this.preview = document.getElementById('live-preview');
+    try {
+      this.preview = document.getElementById('live-preview');
+      if (!this.preview) {
+        console.warn('Live preview element not found');
+      }
+    } catch (error) {
+      console.error('Setup preview failed:', error);
+    }
   }
 
   setupEventListeners() {
@@ -632,19 +671,34 @@ class VTCStudio {
   }
 
   loadTemplate() {
-    const codeEditor = document.getElementById('code-editor');
-    if (codeEditor) {
-      codeEditor.value = this.vtcTemplate;
-      this.updatePreview();
+    try {
+      const codeEditor = document.getElementById('code-editor');
+      if (codeEditor) {
+        codeEditor.value = this.vtcTemplate;
+        this.updatePreview();
+      } else {
+        console.warn('Code editor not found, template loading skipped');
+      }
+    } catch (error) {
+      console.error('Load template failed:', error);
     }
   }
 
   updatePreview() {
-    const codeEditor = document.getElementById('code-editor');
-    if (!codeEditor) return;
-    const code = codeEditor.value;
-    if (this.preview) {
-      this.preview.srcdoc = code;
+    try {
+      const codeEditor = document.getElementById('code-editor');
+      if (!codeEditor) {
+        console.warn('Code editor not found, preview update skipped');
+        return;
+      }
+      const code = codeEditor.value;
+      if (this.preview) {
+        this.preview.srcdoc = code;
+      } else {
+        console.warn('Preview iframe not found');
+      }
+    } catch (error) {
+      console.error('Update preview failed:', error);
     }
   }
 
@@ -1519,42 +1573,59 @@ class VTCStudio {
 // Payment Maintenance System
 class PaymentMaintenance {
   static init() {
-    // Intercept payment-related links on pricing page
-    this.interceptPaymentLinks();
+    try {
+      // Intercept payment-related links on pricing page
+      this.interceptPaymentLinks();
+      console.log('PaymentMaintenance initialized successfully');
+    } catch (error) {
+      console.error('PaymentMaintenance initialization failed:', error);
+    }
   }
 
   static interceptPaymentLinks() {
-    // Wait for page to load and then attach listeners
-    setTimeout(() => {
-      // Target payment buttons (but allow pro-trial.html to load since it has its own maintenance notice)
-      const paymentButtons = document.querySelectorAll('a[href*="payment"], a[href*="checkout"], a[href*="billing"]');
-      
-      paymentButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.showMaintenanceModal();
-        });
-      });
-
-      // Also intercept any button with payment-related text (except pro-trial links)
-      const allButtons = document.querySelectorAll('a.btn-primary, button.btn-primary');
-      allButtons.forEach(button => {
-        const text = button.textContent.toLowerCase();
-        const href = button.getAttribute('href');
-        
-        // Skip pro-trial.html links since that page handles maintenance properly
-        if (href === 'pro-trial.html') {
-          return;
-        }
-        
-        if (text.includes('upgrade') || text.includes('subscribe') || text.includes('buy') || text.includes('purchase')) {
-          button.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showMaintenanceModal();
+    try {
+      // Wait for page to load and then attach listeners
+      setTimeout(() => {
+        try {
+          // Target payment buttons (but allow pro-trial.html to load since it has its own maintenance notice)
+          const paymentButtons = document.querySelectorAll('a[href*="payment"], a[href*="checkout"], a[href*="billing"]');
+          
+          paymentButtons.forEach(button => {
+            if (button) {
+              button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showMaintenanceModal();
+              });
+            }
           });
+
+          // Also intercept any button with payment-related text (except pro-trial links)
+          const allButtons = document.querySelectorAll('a.btn-primary, button.btn-primary');
+          allButtons.forEach(button => {
+            if (button) {
+              const text = button.textContent.toLowerCase();
+              const href = button.getAttribute('href');
+              
+              // Skip pro-trial.html links since that page handles maintenance properly
+              if (href === 'pro-trial.html') {
+                return;
+              }
+              
+              if (text.includes('upgrade') || text.includes('subscribe') || text.includes('buy') || text.includes('purchase')) {
+                button.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  this.showMaintenanceModal();
+                });
+              }
+            }
+          });
+        } catch (innerError) {
+          console.error('Error setting up payment link interceptors:', innerError);
         }
-      });
-    }, 500);
+      }, 500);
+    } catch (error) {
+      console.error('Intercept payment links failed:', error);
+    }
   }
 
   static showMaintenanceModal() {
@@ -1687,30 +1758,44 @@ class PaymentMaintenance {
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
-  SiteComponents.init();
-  AnimationController.init();
-  
-  // Initialize payment maintenance system
-  PaymentMaintenance.init();
-  
-  // Start the editor only on pages that have its elements
-  if (document.getElementById('code-editor') && document.getElementById('live-preview')) {
-    try { new VTCStudio(); } catch (e) { console.error('Editor init failed:', e); }
-  }
-  // Initialize Templates page behaviors when on templates.html
   try {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    if (currentPage === 'templates.html') {
-      initTemplateFilters();
-      // Expose actions globally for inline handlers in generated modals/buttons
-      window.selectTemplate = selectTemplate;
-      window.previewTemplate = previewTemplate;
-      window.showTemplateInfo = showTemplateInfo;
-      window.closeModal = closeModal;
-      window.showNotification = showNotification;
+    // Core components initialization with error handling
+    SiteComponents.init();
+    AnimationController.init();
+    
+    // Initialize payment maintenance system
+    PaymentMaintenance.init();
+    
+    // Start the editor only on pages that have its elements
+    if (document.getElementById('code-editor') && document.getElementById('live-preview')) {
+      try { 
+        new VTCStudio(); 
+        console.log('VTC Studio initialized successfully');
+      } catch (e) { 
+        console.error('Editor init failed:', e); 
+      }
     }
-  } catch (e) {
-    console.error('Templates page init failed:', e);
+    
+    // Initialize Templates page behaviors when on templates.html
+    try {
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      if (currentPage === 'templates.html') {
+        initTemplateFilters();
+        // Expose actions globally for inline handlers in generated modals/buttons
+        window.selectTemplate = selectTemplate;
+        window.previewTemplate = previewTemplate;
+        window.showTemplateInfo = showTemplateInfo;
+        window.closeModal = closeModal;
+        window.showNotification = showNotification;
+        console.log('Templates page initialized successfully');
+      }
+    } catch (e) {
+      console.error('Templates page init failed:', e);
+    }
+    
+    console.log('Application initialization completed successfully');
+  } catch (error) {
+    console.error('Critical initialization error:', error);
   }
 });
 
@@ -1718,25 +1803,39 @@ document.addEventListener('DOMContentLoaded', () => {
 // Templates Page Helpers
 // =============================
 function initTemplateFilters() {
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const templateCards = document.querySelectorAll('.template-card');
+  try {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const templateCards = document.querySelectorAll('.template-card');
 
-  filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      filterTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const category = tab.dataset.category;
-      templateCards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-          setTimeout(() => card.classList.add('fade-in-up'), 10);
-        } else {
-          card.style.display = 'none';
-          card.classList.remove('fade-in-up');
-        }
+    if (filterTabs.length === 0) {
+      console.warn('No filter tabs found');
+      return;
+    }
+
+    if (templateCards.length === 0) {
+      console.warn('No template cards found');
+      return;
+    }
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const category = tab.dataset.category;
+        templateCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            setTimeout(() => card.classList.add('fade-in-up'), 10);
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('fade-in-up');
+          }
+        });
       });
     });
-  });
+  } catch (error) {
+    console.error('Init template filters failed:', error);
+  }
 }
 
 function selectTemplate(templateId) {
@@ -2012,75 +2111,100 @@ function showNotification(message, type = 'success') {
 // Animation Controller for scroll-triggered animations
 class AnimationController {
   static init() {
-    this.observeElements();
-    this.addInteractionAnimations();
+    try {
+      this.observeElements();
+      this.addInteractionAnimations();
+      console.log('AnimationController initialized successfully');
+    } catch (error) {
+      console.error('AnimationController initialization failed:', error);
+    }
   }
 
   static observeElements() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    try {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          entry.target.classList.add('animate');
-        }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            entry.target.classList.add('animate');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right, .slide-up, .scale-in');
+      
+      if (animatedElements.length === 0) {
+        console.warn('No animated elements found');
+        return;
+      }
+      
+      animatedElements.forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
       });
-    }, observerOptions);
-
-    // Observe all animated elements
-  const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right, .slide-up, .scale-in');
-    animatedElements.forEach(el => {
-      el.style.animationPlayState = 'paused';
-      observer.observe(el);
-    });
+    } catch (error) {
+      console.error('Observe elements failed:', error);
+    }
   }
 
   static addInteractionAnimations() {
-    // Add hover effects to cards
-    const cards = document.querySelectorAll('.quick-link-card, .feature-card, .template-card');
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
+    try {
+      // Add hover effects to cards
+      const cards = document.querySelectorAll('.quick-link-card, .feature-card, .template-card');
+      cards.forEach(card => {
+        if (card) {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+          });
+        }
       });
-      
-      card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-      });
-    });
 
-    // Add click effects to buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.position = 'absolute';
-        ripple.style.width = size + 'px';
-        ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.style.background = 'rgba(255, 255, 255, 0.3)';
-        ripple.style.borderRadius = '50%';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.animation = 'ripple 0.6s linear';
-        ripple.style.pointerEvents = 'none';
-        
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
+      // Add click effects to buttons
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(button => {
+        if (button) {
+          button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.position = 'absolute';
+            ripple.style.width = size + 'px';
+            ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.pointerEvents = 'none';
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+              if (ripple.parentNode) {
+                ripple.remove();
+              }
+            }, 600);
+          });
+        }
       });
-    });
+    } catch (error) {
+      console.error('Add interaction animations failed:', error);
+    }
   }
 }
