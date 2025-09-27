@@ -9,60 +9,84 @@ class ProTemplateEditor {
   }
 
   init() {
-    // Category filter functionality
-    this.initCategoryFilters();
-    
-    // Template hover effects
-    this.initTemplateHovers();
-    
-    // Initialize edit functionality
-    this.initEditMode();
+    try {
+      // Category filter functionality
+      this.initCategoryFilters();
+      
+      // Template hover effects
+      this.initTemplateHovers();
+      
+      // Initialize edit functionality
+      this.initEditMode();
+      
+      console.log('ProTemplateEditor initialized successfully');
+    } catch (error) {
+      console.error('ProTemplateEditor initialization failed:', error);
+    }
   }
 
   initCategoryFilters() {
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const templateCards = document.querySelectorAll('.template-card');
+    try {
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const templateCards = document.querySelectorAll('.template-card');
 
-    categoryButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Update active button
-        categoryButtons.forEach(b => {
-          b.classList.remove('active');
-          b.style.background = 'transparent';
-          b.style.color = '#7c3aed';
-        });
-        btn.classList.add('active');
-        btn.style.background = '#7c3aed';
-        btn.style.color = 'white';
+      if (categoryButtons.length === 0) {
+        console.warn('No category buttons found');
+        return;
+      }
 
-        // Filter templates
-        const category = btn.dataset.category;
-        templateCards.forEach(card => {
-          if (category === 'all' || card.classList.contains(category)) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeInUp 0.6s ease-out';
-          } else {
-            card.style.display = 'none';
-          }
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active button
+          categoryButtons.forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'transparent';
+            b.style.color = '#7c3aed';
+          });
+          btn.classList.add('active');
+          btn.style.background = '#7c3aed';
+          btn.style.color = 'white';
+
+          // Filter templates
+          const category = btn.dataset.category;
+          templateCards.forEach(card => {
+            if (category === 'all' || card.classList.contains(category)) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeInUp 0.6s ease-out';
+            } else {
+              card.style.display = 'none';
+            }
+          });
         });
       });
-    });
+    } catch (error) {
+      console.error('Init category filters failed:', error);
+    }
   }
 
   initTemplateHovers() {
-    const templateCards = document.querySelectorAll('.template-card');
-    
-    templateCards.forEach(card => {
-      const overlay = card.querySelector('.template-overlay');
+    try {
+      const templateCards = document.querySelectorAll('.template-card');
       
-      card.addEventListener('mouseenter', () => {
-        if (overlay) overlay.style.opacity = '1';
-      });
+      if (templateCards.length === 0) {
+        console.warn('No template cards found for hover effects');
+        return;
+      }
       
-      card.addEventListener('mouseleave', () => {
-        if (overlay) overlay.style.opacity = '0';
+      templateCards.forEach(card => {
+        const overlay = card.querySelector('.template-overlay');
+        
+        card.addEventListener('mouseenter', () => {
+          if (overlay) overlay.style.opacity = '1';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          if (overlay) overlay.style.opacity = '0';
+        });
       });
-    });
+    } catch (error) {
+      console.error('Init template hovers failed:', error);
+    }
   }
 
   initEditMode() {
@@ -729,37 +753,48 @@ function saveTemplate() {
 }
 
 function initIframeEditing() {
-  const iframe = document.querySelector('.edit-iframe');
-  if (iframe && iframe.contentDocument) {
-    const doc = iframe.contentDocument;
-    
-    // Add editing capabilities to text elements
-    const textElements = doc.querySelectorAll('h1, h2, h3, p, span, a');
-    textElements.forEach(el => {
-      if (!el.closest('script') && !el.closest('style')) {
-        el.classList.add('editable-element');
-        el.setAttribute('contenteditable', 'true');
-        
-        // Add tooltip
-        const tooltip = doc.createElement('div');
-        tooltip.className = 'edit-tooltip';
-        tooltip.textContent = 'Click to edit';
-        el.appendChild(tooltip);
-        
-        // Add edit events
-        el.addEventListener('focus', () => {
-          el.classList.add('editing');
-        });
-        
-        el.addEventListener('blur', () => {
-          el.classList.remove('editing');
-        });
-      }
-    });
+  try {
+    const iframe = document.querySelector('.edit-iframe');
+    if (iframe && iframe.contentDocument) {
+      const doc = iframe.contentDocument;
+      
+      // Add editing capabilities to text elements
+      const textElements = doc.querySelectorAll('h1, h2, h3, p, span, a');
+      textElements.forEach(el => {
+        if (!el.closest('script') && !el.closest('style')) {
+          el.classList.add('editable-element');
+          el.setAttribute('contenteditable', 'true');
+          
+          // Add tooltip
+          const tooltip = doc.createElement('div');
+          tooltip.className = 'edit-tooltip';
+          tooltip.textContent = 'Click to edit';
+          el.appendChild(tooltip);
+          
+          // Add edit events
+          el.addEventListener('focus', () => {
+            el.classList.add('editing');
+          });
+          
+          el.addEventListener('blur', () => {
+            el.classList.remove('editing');
+          });
+        }
+      });
+    } else {
+      console.warn('Edit iframe not found or not accessible');
+    }
+  } catch (error) {
+    console.error('Init iframe editing failed:', error);
   }
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  new ProTemplateEditor();
+  try {
+    new ProTemplateEditor();
+    console.log('Pro Template Editor application initialized successfully');
+  } catch (error) {
+    console.error('Pro Template Editor initialization failed:', error);
+  }
 });
