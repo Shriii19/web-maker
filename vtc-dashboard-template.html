@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Modern Dashboard - Template</title>
+    <style>
+        /* CSS Variables for easy customization */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            --primary-purple: #8b5cf6;
+            --primary-cyan: #06b6d4;
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --modal-backdrop: rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Layout Grid */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: auto 1fr;
+            grid-template-areas: 
+                "sidebar header"
+                "sidebar main";
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            width: 280px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-logo {
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-logo h2 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+            border-left-color: var(--primary-purple);
+        }
+
+        .sidebar-nav a::before {
+            content: "📊";
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-nav a[href="#drivers"]::before { content: "👥"; }
+        .sidebar-nav a[href="#fleet"]::before { content: "🚛"; }
+        .sidebar-nav a[href="#analytics"]::before { content: "📈"; }
+        .sidebar-nav a[href="#events"]::before { content: "📅"; }
+        .sidebar-nav a[href="#settings"]::before { content: "⚙️"; }
+
+        /* Header */
+        .header {
+            grid-area: header;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .notification-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            grid-area: main;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .stat-card-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card-icon.purple {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+        }
+
+        .stat-card-icon.cyan {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+
+        .stat-card-icon.green {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .stat-card-icon.orange {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .change {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-card .change.positive {
+            color: var(--success);
+        }
+
+        .stat-card .change.negative {
+            color: var(--danger);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--primary-purple);
+        }
+
+        /* Recent Activity */
+        .recent-activity {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .recent-activity h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-backdrop);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        .toast {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            min-width: 300px;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .toast.warning {
+            border-left: 4px solid var(--warning);
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-message {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "header"
+                    "main";
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-width: calc(100vw - 2rem);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h2>VTC Dashboard</h2>
+            </div>
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="#dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#drivers" data-modal="driver-modal">Drivers</a></li>
+                    <li><a href="#fleet" data-modal="fleet-modal">Fleet Status</a></li>
+                    <li><a href="#analytics" data-modal="analytics-modal">Analytics</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1>Dashboard Overview</h1>
+            </div>
+            <div class="header-actions">
+                <button class="notification-btn" onclick="showNotifications()">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="btn btn-secondary" onclick="openModal('settings-modal')">
+                    Settings
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card fade-in" onclick="openModal('driver-modal')">
+                    <div class="stat-card-icon purple">👥</div>
+                    <h3>Active Drivers</h3>
+                    <div class="value">247</div>
+                    <div class="change positive">↗ +12% this month</div>
+                </div>
+
+                <div class="stat-card fade-in" onclick="openModal('fleet-modal')">
+                    <div class="stat-card-icon cyan">🚛</div>
+                    <h3>Fleet Vehicles</h3>
+                    <div class="value">156</div>
+                    <div class="change positive">↗ +5% this month</div>
+                </div>
+
+                <div class="stat-card fade-in" onclick="openModal('analytics-modal')">
+                    <div class="stat-card-icon green">📈</div>
+                    <h3>Total Revenue</h3>
+                    <div class="value">€89,420</div>
+                    <div class="change positive">↗ +18% this month</div>
+                </div>
+
+                <div class="stat-card fade-in">
+                    <div class="stat-card-icon orange">📦</div>
+                    <h3>Deliveries</h3>
+                    <div class="value">1,247</div>
+                    <div class="change negative">↘ -3% this month</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="action-btn" onclick="openModal('driver-modal')">
+                    👥 Manage Drivers
+                </button>
+                <button class="action-btn" onclick="openModal('fleet-modal')">
+                    🚛 Fleet Status
+                </button>
+                <button class="action-btn" onclick="openModal('analytics-modal')">
+                    📊 View Analytics
+                </button>
+                <button class="action-btn" onclick="showToast('Feature coming soon!', 'info')">
+                    📅 Schedule Event
+                </button>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity fade-in">
+                <h3>Recent Activity</h3>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">New driver registered: John Smith</div>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">🚛</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Vehicle VTC-001 completed maintenance</div>
+                            <div class="activity-time">4 hours ago</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">📦</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Delivery #D-2024-0156 completed</div>
+                            <div class="activity-time">6 hours ago</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">⚠️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Vehicle VTC-042 requires inspection</div>
+                            <div class="activity-time">8 hours ago</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- Driver Management Modal -->
+    <div class="modal" id="driver-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Driver Management</h2>
+                <button class="modal-close" onclick="closeModal('driver-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Active Drivers</h3>
+                        <div class="value">247</div>
+                        <div class="change positive">↗ Online: 189</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>New Applications</h3>
+                        <div class="value">12</div>
+                        <div class="change">Pending Review</div>
+                    </div>
+                </div>
+                
+                <h4 style="margin: 1.5rem 0 1rem;">Recent Driver Activity</h4>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Mike Johnson - Currently on Route A-42</div>
+                            <div class="activity-time">Active • ETA: 2:30 PM</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Sarah Wilson - Completed delivery D-156</div>
+                            <div class="activity-time">30 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Alex Turner - Started break</div>
+                            <div class="activity-time">1 hour ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn" onclick="showToast('Driver management opened!', 'success')">
+                        Add New Driver
+                    </button>
+                    <button class="btn btn-secondary" onclick="showToast('Driver list exported!', 'success')">
+                        Export Driver List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fleet Status Modal -->
+    <div class="modal" id="fleet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Fleet Status Overview</h2>
+                <button class="modal-close" onclick="closeModal('fleet-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon green">🚛</div>
+                        <h3>Active Vehicles</h3>
+                        <div class="value">134</div>
+                        <div class="change positive">On Route</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon orange">⚠️</div>
+                        <h3>Maintenance Due</h3>
+                        <div class="value">8</div>
+                        <div class="change">This Week</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon cyan">⛽</div>
+                        <h3>Fuel Efficiency</h3>
+                        <div class="value">7.2L</div>
+                        <div class="change positive">↗ +2% improvement</div>
+                    </div>
+                </div>
+
+                <h4 style="margin: 1.5rem 0 1rem;">Vehicle Status</h4>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: var(--success);">🚛</div>
+                        <div class="activity-content">
+                            <div class="activity-title">VTC-001 - En route to Berlin</div>
+                            <div class="activity-time">Driver: Mike Johnson • ETA: 4:30 PM</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: var(--warning);">⚠️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">VTC-042 - Maintenance Required</div>
+                            <div class="activity-time">Service due: Oil change + inspection</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background: var(--success);">🚛</div>
+                        <div class="activity-content">
+                            <div class="activity-title">VTC-023 - Loading at depot</div>
+                            <div class="activity-time">Driver: Sarah Wilson • Ready in 15 min</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn" onclick="showToast('Vehicle tracking opened!', 'success')">
+                        Track Vehicles
+                    </button>
+                    <button class="btn btn-secondary" onclick="showToast('Maintenance scheduled!', 'success')">
+                        Schedule Maintenance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Modal -->
+    <div class="modal" id="analytics-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Analytics Dashboard</h2>
+                <button class="modal-close" onclick="closeModal('analytics-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon purple">💰</div>
+                        <h3>Monthly Revenue</h3>
+                        <div class="value">€89,420</div>
+                        <div class="change positive">↗ +18% vs last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon cyan">📊</div>
+                        <h3>Deliveries</h3>
+                        <div class="value">1,247</div>
+                        <div class="change positive">↗ +8% efficiency</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon green">⏱️</div>
+                        <h3>Avg. Delivery Time</h3>
+                        <div class="value">4.2h</div>
+                        <div class="change positive">↗ 15% faster</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon orange">⭐</div>
+                        <h3>Customer Rating</h3>
+                        <div class="value">4.8/5</div>
+                        <div class="change positive">↗ +0.2 points</div>
+                    </div>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <h4>Performance Metrics</h4>
+                    <div style="background: var(--bg-primary); border-radius: 8px; padding: 1.5rem; margin-top: 1rem;">
+                        <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                            📈 Chart visualization would be integrated here<br>
+                            (Revenue trends, delivery performance, driver efficiency, etc.)
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn" onclick="showToast('Full analytics report generated!', 'success')">
+                        Generate Report
+                    </button>
+                    <button class="btn btn-secondary" onclick="showToast('Data exported successfully!', 'success')">
+                        Export Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Dashboard Settings</h2>
+                <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form">
+                    <div class="form-group">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" class="form-input" value="VTC Dashboard" placeholder="Enter company name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Theme Preference</label>
+                        <select class="form-select">
+                            <option value="dark">Dark Theme</option>
+                            <option value="light">Light Theme</option>
+                            <option value="auto">Auto (System)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notification Preferences</label>
+                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" checked> Driver Updates
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" checked> Fleet Alerts
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox"> Maintenance Reminders
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dashboard Refresh Rate</label>
+                        <select class="form-select">
+                            <option value="30">30 seconds</option>
+                            <option value="60" selected>1 minute</option>
+                            <option value="300">5 minutes</option>
+                            <option value="manual">Manual only</option>
+                        </select>
+                    </div>
+                </form>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <button class="btn" onclick="saveSettings()">
+                        Save Settings
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeModal('settings-modal')">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // Modal Management
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Add keyboard event listener for ESC key
+                document.addEventListener('keydown', handleModalKeydown);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Remove keyboard event listener
+                document.removeEventListener('keydown', handleModalKeydown);
+            }
+        }
+
+        function handleModalKeydown(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        }
+
+        // Close modal when clicking outside content
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        });
+
+        // Toast Notification System
+        function showToast(message, type = 'info', title = '') {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const toastContent = `
+                <div class="toast-content">
+                    ${title ? `<div class="toast-title">${title}</div>` : ''}
+                    <div class="toast-message">${message}</div>
+                </div>
+            `;
+            
+            toast.innerHTML = toastContent;
+            toastContainer.appendChild(toast);
+            
+            // Show toast with animation
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        // Sidebar Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Check if link has modal data attribute
+                    const modalId = this.getAttribute('data-modal');
+                    if (modalId) {
+                        openModal(modalId);
+                    }
+                });
+            });
+        });
+
+        // Settings functionality
+        function saveSettings() {
+            showToast('Settings saved successfully!', 'success', 'Settings Updated');
+            closeModal('settings-modal');
+        }
+
+        // Notification functionality
+        function showNotifications() {
+            showToast('You have 3 new notifications', 'info', 'Notifications');
+        }
+
+        // Mobile sidebar toggle (for responsive design)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Add mobile menu button for small screens
+        if (window.innerWidth <= 768) {
+            const header = document.querySelector('.header');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '☰';
+            menuButton.style.cssText = `
+                background: none;
+                border: none;
+                color: var(--text-primary);
+                font-size: 1.5rem;
+                cursor: pointer;
+                margin-right: 1rem;
+            `;
+            menuButton.addEventListener('click', toggleSidebar);
+            header.insertBefore(menuButton, header.firstChild);
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const activeDrivers = document.querySelector('.stat-card .value');
+            if (activeDrivers) {
+                const currentValue = parseInt(activeDrivers.textContent);
+                const newValue = currentValue + Math.floor(Math.random() * 3) - 1;
+                if (newValue > 0) {
+                    activeDrivers.textContent = newValue;
+                }
+            }
+        }, 30000);
+
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Accessibility improvements
+        document.addEventListener('keydown', function(event) {
+            // Tab navigation for modals
+            if (event.key === 'Tab') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    const focusableElements = activeModal.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (event.shiftKey && document.activeElement === firstElement) {
+                        event.preventDefault();
+                        lastElement.focus();
+                    } else if (!event.shiftKey && document.activeElement === lastElement) {
+                        event.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+        });
+
+        // Welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                showToast('Welcome to your VTC Dashboard!', 'success', 'Dashboard Ready');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

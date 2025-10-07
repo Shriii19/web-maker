@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Community Hub - Connect & Grow Together</title>
+    <style>
+        /* CSS Variables for easy customization */
+        :root {
+            --primary-green: #059669;
+            --primary-red: #dc2626;
+            --secondary-green: #10b981;
+            --secondary-red: #ef4444;
+            --accent-green-light: #d1fae5;
+            --accent-red-light: #fee2e2;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #ffffff;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+            --gradient-green: linear-gradient(135deg, #059669, #10b981);
+            --gradient-red: linear-gradient(135deg, #dc2626, #ef4444);
+            --modal-backdrop: rgba(0, 0, 0, 0.75);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: var(--bg-primary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient-green);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .notification-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .notification-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary-red);
+            color: var(--text-light);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-green);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle fill="rgba(255,255,255,0.1)" cx="800" cy="200" r="300"/><circle fill="rgba(255,255,255,0.05)" cx="200" cy="800" r="200"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Member Directory */
+        .section {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-action {
+            background: var(--gradient-green);
+            color: var(--text-light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .section-action:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .member-card {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .member-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow);
+            border-color: var(--primary-green);
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .member-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-role {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .member-status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .member-status.online {
+            background: var(--accent-green-light);
+            color: var(--primary-green);
+        }
+
+        .member-status.offline {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .member-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .member-stat {
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--bg-primary);
+            border-radius: 6px;
+        }
+
+        .member-stat-value {
+            font-weight: bold;
+            color: var(--primary-green);
+            display: block;
+        }
+
+        .member-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Event Calendar */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .calendar-nav button {
+            background: var(--bg-tertiary);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-nav button:hover {
+            background: var(--border-color);
+        }
+
+        .calendar-month {
+            font-weight: 600;
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .event-item:hover {
+            background: var(--bg-tertiary);
+            transform: translateX(4px);
+        }
+
+        .event-date {
+            background: var(--primary-green);
+            color: var(--text-light);
+            padding: 0.5rem;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .event-date-day {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .event-date-month {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-details {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .event-participants {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .participant-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Quick Stats Widget */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .quick-stat {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .quick-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Online Members Widget */
+        .online-members-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .online-member {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .online-member:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .online-member-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+            position: relative;
+        }
+
+        .online-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            border: 2px solid var(--bg-primary);
+            border-radius: 50%;
+        }
+
+        .online-member-info {
+            flex: 1;
+        }
+
+        .online-member-name {
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .online-member-activity {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-backdrop);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Member Profile Modal */
+        .profile-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-role {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--gradient-green);
+            color: var(--text-light);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge.premium {
+            background: var(--gradient-red);
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .profile-stat {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .profile-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-achievements {
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement:hover {
+            transform: scale(1.05);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .achievement-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .contact-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            background: var(--gradient-green);
+            color: var(--text-light);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+        }
+
+        .contact-btn.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .contact-btn.secondary:hover {
+            background: var(--border-color);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        /* Event Detail Modal */
+        .event-banner {
+            background: var(--gradient-green);
+            color: var(--text-light);
+            padding: 2rem;
+            margin: -1.5rem -1.5rem 1.5rem;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .event-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .event-meta-item {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .event-meta-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .event-meta-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .participants-section {
+            margin: 1.5rem 0;
+        }
+
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .participant-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .participant-card-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .participant-card-info {
+            flex: 1;
+        }
+
+        .participant-card-name {
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .participant-card-status {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 5rem 1rem 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .community-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-options {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        button:focus,
+        .member-card:focus,
+        .event-item:focus,
+        .online-member:focus {
+            outline: 2px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">VTC Community</div>
+            <ul class="nav-menu">
+                <li><a href="#members" class="nav-link">Members</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="#forum" class="nav-link">Forum</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="notification-btn" aria-label="Notifications">
+                    🔔
+                    <span class="notification-badge">5</span>
+                </button>
+                <div class="user-avatar" onclick="openModal('profile-modal')" aria-label="My Profile">
+                    J
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Hero Section -->
+            <section class="hero fade-in">
+                <div class="hero-content">
+                    <h1>Welcome to Our VTC Community</h1>
+                    <p>Connect with fellow drivers, join exciting events, and grow together in our professional transportation network.</p>
+                    <div class="community-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">2,847</span>
+                            <span class="stat-label">Active Members</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">156</span>
+                            <span class="stat-label">Events This Month</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">89%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Member Directory -->
+            <section class="section fade-in" id="members">
+                <div class="section-header">
+                    <h2 class="section-title">Community Members</h2>
+                    <button class="section-action" onclick="showAllMembers()">View All</button>
+                </div>
+                <div class="members-grid">
+                    <div class="member-card" onclick="openMemberProfile('mike-johnson')" tabindex="0" role="button">
+                        <div class="member-header">
+                            <div class="member-avatar">M</div>
+                            <div class="member-info">
+                                <h3>Mike Johnson</h3>
+                                <div class="member-role">Senior Driver</div>
+                            </div>
+                            <span class="member-status online">Online</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="member-stat">
+                                <span class="member-stat-value">4.9</span>
+                                <span class="member-stat-label">Rating</span>
+                            </div>
+                            <div class="member-stat">
+                                <span class="member-stat-value">2.5k</span>
+                                <span class="member-stat-label">Trips</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card" onclick="openMemberProfile('sarah-wilson')" tabindex="0" role="button">
+                        <div class="member-header">
+                            <div class="member-avatar">S</div>
+                            <div class="member-info">
+                                <h3>Sarah Wilson</h3>
+                                <div class="member-role">Lead Coordinator</div>
+                            </div>
+                            <span class="member-status online">Online</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="member-stat">
+                                <span class="member-stat-value">5.0</span>
+                                <span class="member-stat-label">Rating</span>
+                            </div>
+                            <div class="member-stat">
+                                <span class="member-stat-value">3.2k</span>
+                                <span class="member-stat-label">Trips</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card" onclick="openMemberProfile('alex-turner')" tabindex="0" role="button">
+                        <div class="member-header">
+                            <div class="member-avatar">A</div>
+                            <div class="member-info">
+                                <h3>Alex Turner</h3>
+                                <div class="member-role">Professional Driver</div>
+                            </div>
+                            <span class="member-status offline">Offline</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="member-stat">
+                                <span class="member-stat-value">4.8</span>
+                                <span class="member-stat-label">Rating</span>
+                            </div>
+                            <div class="member-stat">
+                                <span class="member-stat-value">1.8k</span>
+                                <span class="member-stat-label">Trips</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card" onclick="openMemberProfile('emma-davis')" tabindex="0" role="button">
+                        <div class="member-header">
+                            <div class="member-avatar">E</div>
+                            <div class="member-info">
+                                <h3>Emma Davis</h3>
+                                <div class="member-role">Event Organizer</div>
+                            </div>
+                            <span class="member-status online">Online</span>
+                        </div>
+                        <div class="member-stats">
+                            <div class="member-stat">
+                                <span class="member-stat-value">4.9</span>
+                                <span class="member-stat-label">Rating</span>
+                            </div>
+                            <div class="member-stat">
+                                <span class="member-stat-value">2.1k</span>
+                                <span class="member-stat-label">Trips</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Calendar -->
+            <section class="section slide-in" id="events">
+                <div class="section-header">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <button class="section-action" onclick="openModal('event-modal')">Create Event</button>
+                </div>
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button onclick="previousMonth()" aria-label="Previous month">‹</button>
+                        <button onclick="nextMonth()" aria-label="Next month">›</button>
+                    </div>
+                    <div class="calendar-month">December 2024</div>
+                </div>
+                <div class="events-list">
+                    <div class="event-item" onclick="openEventDetail('convoy-berlin')" tabindex="0" role="button">
+                        <div class="event-date">
+                            <span class="event-date-day">15</span>
+                            <span class="event-date-month">DEC</span>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Christmas Convoy to Berlin</div>
+                            <div class="event-details">14:00 - 18:00 • Starting from Hamburg</div>
+                            <div class="event-participants">
+                                <div class="participant-avatar">M</div>
+                                <div class="participant-avatar">S</div>
+                                <div class="participant-avatar">A</div>
+                                <div class="participant-avatar">+12</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-item" onclick="openEventDetail('training-session')" tabindex="0" role="button">
+                        <div class="event-date">
+                            <span class="event-date-day">18</span>
+                            <span class="event-date-month">DEC</span>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Safety Training Session</div>
+                            <div class="event-details">10:00 - 12:00 • Online Workshop</div>
+                            <div class="event-participants">
+                                <div class="participant-avatar">E</div>
+                                <div class="participant-avatar">T</div>
+                                <div class="participant-avatar">+8</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-item" onclick="openEventDetail('year-end-party')" tabindex="0" role="button">
+                        <div class="event-date">
+                            <span class="event-date-day">22</span>
+                            <span class="event-date-month">DEC</span>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Year-End Celebration</div>
+                            <div class="event-details">19:00 - 23:00 • Community Center Munich</div>
+                            <div class="event-participants">
+                                <div class="participant-avatar">M</div>
+                                <div class="participant-avatar">S</div>
+                                <div class="participant-avatar">E</div>
+                                <div class="participant-avatar">+25</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Quick Stats -->
+            <section class="section fade-in">
+                <div class="section-header">
+                    <h3 class="section-title">Quick Stats</h3>
+                </div>
+                <div class="quick-stats">
+                    <div class="quick-stat">
+                        <div class="quick-stat-value">47</div>
+                        <div class="quick-stat-label">Online Now</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-value">156</div>
+                        <div class="quick-stat-label">Active Routes</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-value">12</div>
+                        <div class="quick-stat-label">New Events</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-value">89%</div>
+                        <div class="quick-stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Online Members -->
+            <section class="section slide-in">
+                <div class="section-header">
+                    <h3 class="section-title">Online Members</h3>
+                </div>
+                <div class="online-members-list">
+                    <div class="online-member" onclick="openMemberProfile('mike-johnson')" tabindex="0" role="button">
+                        <div class="online-member-avatar">
+                            M
+                            <div class="online-indicator"></div>
+                        </div>
+                        <div class="online-member-info">
+                            <div class="online-member-name">Mike Johnson</div>
+                            <div class="online-member-activity">On route to Berlin</div>
+                        </div>
+                    </div>
+
+                    <div class="online-member" onclick="openMemberProfile('sarah-wilson')" tabindex="0" role="button">
+                        <div class="online-member-avatar">
+                            S
+                            <div class="online-indicator"></div>
+                        </div>
+                        <div class="online-member-info">
+                            <div class="online-member-name">Sarah Wilson</div>
+                            <div class="online-member-activity">Planning events</div>
+                        </div>
+                    </div>
+
+                    <div class="online-member" onclick="openMemberProfile('emma-davis')" tabindex="0" role="button">
+                        <div class="online-member-avatar">
+                            E
+                            <div class="online-indicator"></div>
+                        </div>
+                        <div class="online-member-info">
+                            <div class="online-member-name">Emma Davis</div>
+                            <div class="online-member-activity">Available</div>
+                        </div>
+                    </div>
+
+                    <div class="online-member" onclick="openMemberProfile('tom-smith')" tabindex="0" role="button">
+                        <div class="online-member-avatar">
+                            T
+                            <div class="online-indicator"></div>
+                        </div>
+                        <div class="online-member-info">
+                            <div class="online-member-name">Tom Smith</div>
+                            <div class="online-member-activity">In training</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Member Profile Modal -->
+    <div class="modal" id="member-profile-modal" role="dialog" aria-labelledby="profile-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal('member-profile-modal')" aria-label="Close profile">&times;</button>
+                <h2 class="modal-title" id="profile-title">Member Profile</h2>
+                <p class="modal-subtitle">View driver statistics and achievements</p>
+            </div>
+            <div class="modal-body">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profile-avatar">M</div>
+                    <div class="profile-info">
+                        <h3 class="profile-name" id="profile-name">Mike Johnson</h3>
+                        <div class="profile-role" id="profile-role">Senior Driver • Member since 2021</div>
+                        <div class="profile-badges">
+                            <span class="badge">Top Performer</span>
+                            <span class="badge premium">Premium Member</span>
+                            <span class="badge">Safety Expert</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">4.9</div>
+                        <div class="profile-stat-label">Rating</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">2,547</div>
+                        <div class="profile-stat-label">Total Trips</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">98.5%</div>
+                        <div class="profile-stat-label">On-Time Rate</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">156k</div>
+                        <div class="profile-stat-label">KM Driven</div>
+                    </div>
+                </div>
+
+                <div class="profile-achievements">
+                    <h4 style="margin-bottom: 1rem;">Achievements</h4>
+                    <div class="achievements-grid">
+                        <div class="achievement">
+                            <span class="achievement-icon">🏆</span>
+                            <div class="achievement-name">Top Driver</div>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">🛡️</span>
+                            <div class="achievement-name">Safety Expert</div>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">⭐</span>
+                            <div class="achievement-name">5-Star Service</div>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">📍</span>
+                            <div class="achievement-name">Route Master</div>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">👥</span>
+                            <div class="achievement-name">Team Player</div>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">🎯</span>
+                            <div class="achievement-name">Goal Achiever</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-options">
+                    <button class="contact-btn" onclick="sendMessage()">Send Message</button>
+                    <button class="contact-btn secondary" onclick="viewFullProfile()">View Full Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div class="modal" id="event-detail-modal" role="dialog" aria-labelledby="event-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal('event-detail-modal')" aria-label="Close event details">&times;</button>
+                <h2 class="modal-title" id="event-title">Event Details</h2>
+                <p class="modal-subtitle">Join your fellow drivers in this exciting event</p>
+            </div>
+            <div class="modal-body">
+                <div class="event-banner">
+                    <h3 id="event-banner-title">Christmas Convoy to Berlin</h3>
+                    <p id="event-banner-description">Join our festive convoy as we deliver holiday joy across Germany. Experience the magic of the season while earning great rates!</p>
+                </div>
+
+                <div class="event-meta">
+                    <div class="event-meta-item">
+                        <div class="event-meta-label">Date & Time</div>
+                        <div class="event-meta-value">Dec 15, 2024<br>14:00 - 18:00</div>
+                    </div>
+                    <div class="event-meta-item">
+                        <div class="event-meta-label">Starting Point</div>
+                        <div class="event-meta-value">Hamburg<br>Central Depot</div>
+                    </div>
+                    <div class="event-meta-item">
+                        <div class="event-meta-label">Destination</div>
+                        <div class="event-meta-value">Berlin<br>Holiday Market</div>
+                    </div>
+                    <div class="event-meta-item">
+                        <div class="event-meta-label">Distance</div>
+                        <div class="event-meta-value">290 KM<br>~4 hours</div>
+                    </div>
+                </div>
+
+                <div class="participants-section">
+                    <h4>Registered Participants (15/20)</h4>
+                    <div class="participants-grid">
+                        <div class="participant-card">
+                            <div class="participant-card-avatar">M</div>
+                            <div class="participant-card-info">
+                                <div class="participant-card-name">Mike Johnson</div>
+                                <div class="participant-card-status">Convoy Leader</div>
+                            </div>
+                        </div>
+                        <div class="participant-card">
+                            <div class="participant-card-avatar">S</div>
+                            <div class="participant-card-info">
+                                <div class="participant-card-name">Sarah Wilson</div>
+                                <div class="participant-card-status">Co-organizer</div>
+                            </div>
+                        </div>
+                        <div class="participant-card">
+                            <div class="participant-card-avatar">A</div>
+                            <div class="participant-card-info">
+                                <div class="participant-card-name">Alex Turner</div>
+                                <div class="participant-card-status">Participant</div>
+                            </div>
+                        </div>
+                        <div class="participant-card">
+                            <div class="participant-card-avatar">E</div>
+                            <div class="participant-card-info">
+                                <div class="participant-card-name">Emma Davis</div>
+                                <div class="participant-card-status">Safety Officer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4>Event Rules & Guidelines</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                        <li>Maintain safe following distance (minimum 3 seconds)</li>
+                        <li>Use CB radio channel 19 for communication</li>
+                        <li>Follow convoy leader's instructions at all times</li>
+                        <li>Mandatory rest stop at kilometer 150</li>
+                        <li>Professional appearance and vehicle condition required</li>
+                    </ul>
+                </div>
+
+                <div class="contact-options" style="margin-top: 2rem;">
+                    <button class="contact-btn" onclick="registerForEvent()">Register for Event</button>
+                    <button class="contact-btn secondary" onclick="contactOrganizer()">Contact Organizer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div class="modal" id="profile-modal" role="dialog" aria-labelledby="my-profile-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal('profile-modal')" aria-label="Close my profile">&times;</button>
+                <h2 class="modal-title" id="my-profile-title">My Profile</h2>
+                <p class="modal-subtitle">Manage your community profile and settings</p>
+            </div>
+            <div class="modal-body">
+                <div class="profile-header">
+                    <div class="profile-avatar">J</div>
+                    <div class="profile-info">
+                        <h3 class="profile-name">John Doe</h3>
+                        <div class="profile-role">Professional Driver • Member since 2023</div>
+                        <div class="profile-badges">
+                            <span class="badge">Active Member</span>
+                            <span class="badge">Reliable Driver</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">4.7</div>
+                        <div class="profile-stat-label">Rating</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">847</div>
+                        <div class="profile-stat-label">Total Trips</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">96.2%</div>
+                        <div class="profile-stat-label">On-Time Rate</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">45k</div>
+                        <div class="profile-stat-label">KM Driven</div>
+                    </div>
+                </div>
+
+                <div class="contact-options" style="margin-top: 2rem;">
+                    <button class="contact-btn" onclick="editProfile()">Edit Profile</button>
+                    <button class="contact-btn secondary" onclick="viewSettings()">Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentMonth = 11; // December (0-based)
+        let currentYear = 2024;
+
+        // Modal management
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management for accessibility
+                const firstFocusable = modal.querySelector('button, input, select, textarea, [href], [tabindex]:not([tabindex="-1"])');
+                if (firstFocusable) {
+                    firstFocusable.focus();
+                }
+                
+                document.addEventListener('keydown', handleModalKeydown);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                document.removeEventListener('keydown', handleModalKeydown);
+            }
+        }
+
+        function handleModalKeydown(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        }
+
+        // Close modal when clicking outside content
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        });
+
+        // Member profile functionality
+        const memberProfiles = {
+            'mike-johnson': {
+                name: 'Mike Johnson',
+                role: 'Senior Driver • Member since 2021',
+                avatar: 'M',
+                badges: ['Top Performer', 'Premium Member', 'Safety Expert'],
+                stats: {
+                    rating: '4.9',
+                    trips: '2,547',
+                    onTime: '98.5%',
+                    distance: '156k'
+                }
+            },
+            'sarah-wilson': {
+                name: 'Sarah Wilson',
+                role: 'Lead Coordinator • Member since 2020',
+                avatar: 'S',
+                badges: ['Team Leader', 'Event Organizer', 'Premium Member'],
+                stats: {
+                    rating: '5.0',
+                    trips: '3,201',
+                    onTime: '99.2%',
+                    distance: '203k'
+                }
+            },
+            'alex-turner': {
+                name: 'Alex Turner',
+                role: 'Professional Driver • Member since 2022',
+                avatar: 'A',
+                badges: ['Reliable Driver', 'Route Expert'],
+                stats: {
+                    rating: '4.8',
+                    trips: '1,847',
+                    onTime: '97.1%',
+                    distance: '124k'
+                }
+            },
+            'emma-davis': {
+                name: 'Emma Davis',
+                role: 'Event Organizer • Member since 2021',
+                avatar: 'E',
+                badges: ['Event Master', 'Community Leader', 'Top Performer'],
+                stats: {
+                    rating: '4.9',
+                    trips: '2,156',
+                    onTime: '98.8%',
+                    distance: '167k'
+                }
+            }
+        };
+
+        function openMemberProfile(memberId) {
+            const profile = memberProfiles[memberId];
+            if (!profile) return;
+
+            // Update modal content
+            document.getElementById('profile-avatar').textContent = profile.avatar;
+            document.getElementById('profile-name').textContent = profile.name;
+            document.getElementById('profile-role').textContent = profile.role;
+
+            // Update badges
+            const badgesContainer = document.querySelector('#member-profile-modal .profile-badges');
+            badgesContainer.innerHTML = profile.badges.map(badge => 
+                `<span class="badge${badge.includes('Premium') ? ' premium' : ''}">${badge}</span>`
+            ).join('');
+
+            // Update stats
+            const stats = document.querySelectorAll('#member-profile-modal .profile-stat-value');
+            stats[0].textContent = profile.stats.rating;
+            stats[1].textContent = profile.stats.trips;
+            stats[2].textContent = profile.stats.onTime;
+            stats[3].textContent = profile.stats.distance;
+
+            openModal('member-profile-modal');
+        }
+
+        // Event detail functionality
+        const eventDetails = {
+            'convoy-berlin': {
+                title: 'Christmas Convoy to Berlin',
+                description: 'Join our festive convoy as we deliver holiday joy across Germany. Experience the magic of the season while earning great rates!'
+            },
+            'training-session': {
+                title: 'Safety Training Session',
+                description: 'Enhance your driving skills and safety knowledge in this comprehensive online workshop led by industry experts.'
+            },
+            'year-end-party': {
+                title: 'Year-End Celebration',
+                description: 'Celebrate another successful year with your fellow drivers. Food, drinks, awards ceremony, and networking opportunities.'
+            }
+        };
+
+        function openEventDetail(eventId) {
+            const event = eventDetails[eventId];
+            if (!event) return;
+
+            document.getElementById('event-banner-title').textContent = event.title;
+            document.getElementById('event-banner-description').textContent = event.description;
+
+            openModal('event-detail-modal');
+        }
+
+        // Calendar functionality
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        function updateCalendarDisplay() {
+            const monthDisplay = document.querySelector('.calendar-month');
+            monthDisplay.textContent = `${months[currentMonth]} ${currentYear}`;
+        }
+
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            updateCalendarDisplay();
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendarDisplay();
+        }
+
+        // Action functions
+        function showAllMembers() {
+            alert('All members view would be implemented here');
+        }
+
+        function sendMessage() {
+            alert('Message functionality would be implemented here');
+        }
+
+        function viewFullProfile() {
+            alert('Full profile view would be implemented here');
+        }
+
+        function registerForEvent() {
+            alert('Event registration would be implemented here');
+        }
+
+        function contactOrganizer() {
+            alert('Contact organizer functionality would be implemented here');
+        }
+
+        function editProfile() {
+            alert('Profile editing would be implemented here');
+        }
+
+        function viewSettings() {
+            alert('Settings view would be implemented here');
+        }
+
+        // Keyboard navigation for cards
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                const activeElement = document.activeElement;
+                if (activeElement.classList.contains('member-card')) {
+                    event.preventDefault();
+                    activeElement.click();
+                } else if (activeElement.classList.contains('event-item')) {
+                    event.preventDefault();
+                    activeElement.click();
+                } else if (activeElement.classList.contains('online-member')) {
+                    event.preventDefault();
+                    activeElement.click();
+                }
+            }
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add staggered animation delays
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            const slideElements = document.querySelectorAll('.slide-in');
+            slideElements.forEach((element, index) => {
+                element.style.animationDelay = `${(index + fadeElements.length) * 0.2}s`;
+            });
+
+            // Initialize calendar
+            updateCalendarDisplay();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const onlineMemberCount = document.querySelector('.quick-stat:first-child .quick-stat-value');
+            if (onlineMemberCount) {
+                const currentCount = parseInt(onlineMemberCount.textContent);
+                const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+                const newCount = Math.max(30, currentCount + change);
+                onlineMemberCount.textContent = newCount;
+            }
+        }, 30000); // Update every 30 seconds
+
+        // Notification system simulation
+        function showNotification(message, type = 'info') {
+            // This would integrate with a proper notification system
+            console.log(`${type.toUpperCase()}: ${message}`);
+        }
+
+        // Welcome message
+        setTimeout(() => {
+            showNotification('Welcome back! You have 3 new event invitations.', 'info');
+        }, 2000);
+    </script>
+</body>
+</html>
