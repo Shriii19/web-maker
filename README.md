@@ -5,32 +5,35 @@ Welcome to TruckCraft Studio! This project allows you to create stunning website
 ## Features
 - Drag-and-drop website builder
 - Professional VTC templates
+- Pro templates with advanced editing
 - Mobile-responsive design
 - Custom domain support
 - SEO optimization
 - AI-powered templates
+- Global error handling
+- Template preview system
+- Contact form functionality
 
 ## Project Structure
 ```
 about.html
 contact.html
 create.html
+error-test.html
 features.html
 index.html
 pricing.html
+pro-templates.html
+pro-trial.html
+template-preview.html
 templates.html
 assets/
   animations.css
+  global-error-handler.js
   logo.png
   main.js
+  pro-templates.js
   style.css
-  index.css
-  about.css
-  contact.css
-  create.css
-  features.css
-  pricing.css
-  templates.css
 ```
 
 ## Getting Started
@@ -42,9 +45,12 @@ assets/
 3. Open `index.html` in your browser to view the homepage.
 
 ## Customization
-- Edit the HTML files to update content for each page.
-- Add page-specific styles in the corresponding CSS files in the `assets` folder.
-- Use `main.js` for navigation and interactive features.
+- Edit the HTML files to update content for each page
+- Modify styles in `assets/style.css` for global styling changes
+- Use `assets/main.js` for navigation and core functionality
+- Pro template editing functionality in `assets/pro-templates.js`
+- Error handling managed by `assets/global-error-handler.js`
+- All pages include proper SEO meta tags and structured data
 
 ## License
 This project is licensed under the MIT License.
