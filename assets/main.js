@@ -1568,6 +1568,1128 @@ class VTCStudio {
 </body>
 </html>`;
   }
+
+  // Template 2: Dashboard Pro (Modern Dashboard Design with Sidebar, Stats Cards, and Charts)
+  getDashboardProTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VTC Dashboard Pro - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #2c3e50;
+      --vtc-accent: #3498db;
+      --vtc-bg: #ecf0f1;
+      --vtc-text: #333;
+      --vtc-card: #fff;
+      --vtc-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-accent) 0%, #2980b9 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+      line-height: 1.5;
+    }
+
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: var(--vtc-primary);
+      color: white;
+      padding: 2rem 1rem;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-nav a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s;
+    }
+
+    .sidebar-nav a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--vtc-card);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--vtc-shadow);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--vtc-accent);
+    }
+
+    .chart-container {
+      background: var(--vtc-card);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--vtc-shadow);
+      margin-bottom: 2rem;
+    }
+
+    /* Simple chart placeholder */
+    .chart {
+      height: 200px;
+      background: linear-gradient(to right, var(--vtc-accent), transparent);
+      border-radius: 0.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .dashboard {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <nav class="sidebar">
+      <div class="sidebar-logo">
+        <img src="https://placehold.co/30x30/ffffff/3498db?text=VTC" alt="Logo">
+        My VTC Dashboard
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="#dashboard"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg> Dashboard</a></li>
+        <li><a href="#drivers"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg> Drivers</a></li>
+        <li><a href="#fleet"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 5V3H6v2H5v14h14V5h-1zm-2 0H8V3h8v2zM7 17h10V7H7v10z"/></svg> Fleet</a></li>
+        <li><a href="#convoys"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2v-2H6v2H4v14h16V6zm-2 12H6V8h12v10z"/></svg> Convoys</a></li>
+        <li><a href="#settings"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg> Settings</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <header class="header">
+        <h1>VTC Dashboard</h1>
+        <button class="btn" style="background: var(--vtc-accent); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;">Logout</button>
+      </header>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Drivers</h3>
+          <p class="stat-value">150</p>
+        </div>
+        <div class="stat-card">
+          <h3>Active Convoys</h3>
+          <p class="stat-value">5</p>
+        </div>
+        <div class="stat-card">
+          <h3>Fleet Size</h3>
+          <p class="stat-value">320</p>
+        </div>
+        <div class="stat-card">
+          <h3>Monthly Deliveries</h3>
+          <p class="stat-value">2,450</p>
+        </div>
+      </section>
+
+      <section class="chart-container">
+        <h2>Delivery Analytics</h2>
+        <div class="chart"></div> <!-- Placeholder for chart -->
+      </section>
+
+      <section class="chart-container">
+        <h2>Driver Performance</h2>
+        <div class="chart"></div> <!-- Placeholder for chart -->
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Add any dashboard-specific scripts here
+    console.log('Dashboard loaded');
+  </script>
+</body>
+</html>`;
+  }
+
+  // Template 3: Recruitment Hub (Modern Design with Application Form and Modal Popups)
+  getRecruitmentHubTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Hub - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #34495e;
+      --vtc-accent: #e67e22;
+      --vtc-bg: #f4f6f8;
+      --vtc-text: #2c3e50;
+      --vtc-card: #ffffff;
+      --vtc-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-accent) 0%, #d35400 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    header {
+      background: var(--vtc-gradient);
+      color: white;
+      text-align: center;
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      background: var(--vtc-card);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--vtc-shadow);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--vtc-accent);
+    }
+
+    .form-container {
+      background: var(--vtc-card);
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: var(--vtc-shadow);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: var(--vtc-gradient);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-close {
+      float: right;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      .form-container { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Join My VTC Today!</h1>
+      <p>Become part of a thriving community of truckers. Experience organized convoys and professional hauling.</p>
+    </div>
+  </header>
+
+  <section class="section" id="benefits">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Why Join Us?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Regular Convoys</h3>
+          <p>Participate in weekly organized events across Europe.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🏆</div>
+          <h3>Achievements</h3>
+          <p>Earn badges and ranks for your performance.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <h3>Community</h3>
+          <p>Make friends with fellow trucking enthusiasts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem;">Apply Now</h2>
+      <div class="form-container">
+        <form onsubmit="submitApplication(); return false;">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="text" placeholder="Discord Username" required>
+          <textarea placeholder="Why do you want to join?" rows="4" required></textarea>
+          <button type="submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Submission Confirmation -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h3>Application Submitted!</h3>
+      <p>We'll review your application and get back to you soon via Discord.</p>
+    </div>
+  </div>
+
+  <script>
+    function submitApplication() {
+      // Simulate form submission
+      document.getElementById('successModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>`;
+  }
+
+  // Template 4: Driver Hub (Clean Profile Design with Stats and Modern Layout)
+  getDriverHubTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Hub - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #16a085;
+      --vtc-accent: #f39c12;
+      --vtc-bg: #ffffff;
+      --vtc-text: #333;
+      --vtc-card: #f9f9f9;
+      --vtc-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-primary) 0%, var(--vtc-accent) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+      line-height: 1.6;
+    }
+
+    .profile-header {
+      background: var(--vtc-gradient);
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .profile-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-bottom: 1rem;
+    }
+
+    .profile-name {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-role {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .stats-section {
+      padding: 3rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+
+    .stat-card {
+      background: var(--vtc-card);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--vtc-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      color: var(--vtc-accent);
+      margin-bottom: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--vtc-primary);
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #777;
+    }
+
+    /* Modern Progress Bar */
+    .progress-bar {
+      width: 100%;
+      background: #eee;
+      border-radius: 2rem;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .progress-fill {
+      height: 10px;
+      background: var(--vtc-gradient);
+      transition: width 0.5s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .profile-name { font-size: 2rem; }
+      .stats-grid { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="profile-header">
+    <img src="https://placehold.co/150x150/16a085/ffffff?text=Driver" alt="Driver Avatar" class="profile-avatar">
+    <h1 class="profile-name">John Doe</h1>
+    <p class="profile-role">Senior Driver | Since 2022</p>
+  </header>
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-number">1,250</div>
+        <div class="stat-label">Deliveries Completed</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🛣️</div>
+        <div class="stat-number">45,000</div>
+        <div class="stat-label">Kilometers Driven</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏅</div>
+        <div class="stat-number">15</div>
+        <div class="stat-label">Achievements Unlocked</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🚛</div>
+        <div class="stat-number">8</div>
+        <div class="stat-label">Trucks Owned</div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Add animation to progress bars on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        bar.style.width = '0%';
+        setTimeout(() => bar.style.width = bar.getAttribute('style').match(/width:\s*(\d+)%/)[1] + '%', 100);
+      });
+    });
+  </script>
+</body>
+</html>`;
+  }
+
+  // Template 5: Fleet Monitor (Grid-Based Design with Vehicle Cards and Modal Details)
+  getFleetMonitorTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet Monitor - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #27ae60;
+      --vtc-accent: #e74c3c;
+      --vtc-bg: #f0f3f4;
+      --vtc-text: #2c3e50;
+      --vtc-card: #fff;
+      --vtc-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-primary) 0%, var(--vtc-accent) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+    }
+
+    .fleet-header {
+      background: var(--vtc-gradient);
+      color: white;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .vehicle-card {
+      background: var(--vtc-card);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--vtc-shadow);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .vehicle-card:hover {
+      transform: scale(1.03);
+    }
+
+    .vehicle-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .vehicle-info {
+      padding: 1.5rem;
+    }
+
+    .vehicle-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .vehicle-status {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+
+    .vehicle-stats {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-weight: bold;
+      color: var(--vtc-primary);
+    }
+
+    /* Modal for Vehicle Details */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .fleet-grid { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="fleet-header">
+    <h1>My VTC Fleet Monitor</h1>
+    <p>Track and manage your fleet in real-time</p>
+  </header>
+
+  <section class="fleet-grid">
+    <div class="vehicle-card" onclick="showVehicleModal('Truck 1', 'Active', '15000 km', 'Volvo FH16', 'Excellent')">
+      <img src="https://placehold.co/300x200/27ae60/ffffff?text=Truck+1" alt="Truck 1" class="vehicle-image">
+      <div class="vehicle-info">
+        <h2 class="vehicle-title">Volvo FH16</h2>
+        <p class="vehicle-status">Status: Active</p>
+        <div class="vehicle-stats">
+          <div class="stat"><span class="stat-value">15,000</span><br>Mileage (km)</div>
+          <div class="stat"><span class="stat-value">Excellent</span><br>Condition</div>
+        </div>
+      </div>
+    </div>
+    <div class="vehicle-card" onclick="showVehicleModal('Truck 2', 'Maintenance', '32000 km', 'Scania R730', 'Good')">
+      <img src="https://placehold.co/300x200/e74c3c/ffffff?text=Truck+2" alt="Truck 2" class="vehicle-image">
+      <div class="vehicle-info">
+        <h2 class="vehicle-title">Scania R730</h2>
+        <p class="vehicle-status">Status: Maintenance</p>
+        <div class="vehicle-stats">
+          <div class="stat"><span class="stat-value">32,000</span><br>Mileage (km)</div>
+          <div class="stat"><span class="stat-value">Good</span><br>Condition</div>
+        </div>
+      </div>
+    </div>
+    <!-- Add more vehicle cards as needed -->
+  </section>
+
+  <!-- Modal for Vehicle Details -->
+  <div class="modal" id="vehicleModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeVehicleModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalStatus"></p>
+      <p id="modalMileage"></p>
+      <p id="modalModel"></p>
+      <p id="modalCondition"></p>
+    </div>
+  </div>
+
+  <script>
+    function showVehicleModal(title, status, mileage, model, condition) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalStatus').textContent = 'Status: ' + status;
+      document.getElementById('modalMileage').textContent = 'Mileage: ' + mileage;
+      document.getElementById('modalModel').textContent = 'Model: ' + model;
+      document.getElementById('modalCondition').textContent = 'Condition: ' + condition;
+      document.getElementById('vehicleModal').classList.add('active');
+    }
+
+    function closeVehicleModal() {
+      document.getElementById('vehicleModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>`;
+  }
+
+  // Template 6: Convoy Organizer (Calendar-Based Design with Event Modals)
+  getConvoyOrganizerTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convoy Organizer - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #8e44ad;
+      --vtc-accent: #2ecc71;
+      --vtc-bg: #f5f5f5;
+      --vtc-text: #333;
+      --vtc-card: #fff;
+      --vtc-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-primary) 0%, var(--vtc-accent) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+    }
+
+    .organizer-header {
+      background: var(--vtc-gradient);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .calendar {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1rem;
+    }
+
+    .day-header {
+      font-weight: bold;
+      text-align: center;
+      color: #777;
+    }
+
+    .day {
+      background: var(--vtc-card);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--vtc-shadow);
+      min-height: 120px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .day:hover {
+      background: #f0f0f0;
+    }
+
+    .day-number {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .event {
+      background: var(--vtc-accent);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    /* Modal for Event Details */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 400px;
+    }
+
+    .modal-close {
+      float: right;
+      cursor: pointer;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .calendar-grid { grid-template-columns: repeat(1, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="organizer-header">
+    <h1>Convoy Organizer</h1>
+    <p>Plan and join upcoming convoys</p>
+  </header>
+
+  <section class="calendar">
+    <div class="calendar-grid">
+      <div class="day-header">Sun</div>
+      <div class="day-header">Mon</div>
+      <div class="day-header">Tue</div>
+      <div class="day-header">Wed</div>
+      <div class="day-header">Thu</div>
+      <div class="day-header">Fri</div>
+      <div class="day-header">Sat</div>
+
+      <!-- Example Days -->
+      <div class="day" onclick="showEventModal('October 1', 'No Events')">
+        <div class="day-number">1</div>
+      </div>
+      <div class="day" onclick="showEventModal('October 2', 'Weekly Convoy - Paris to Berlin')">
+        <div class="day-number">2</div>
+        <div class="event">Weekly Convoy</div>
+      </div>
+      <!-- Add more days as needed for a full calendar -->
+    </div>
+  </section>
+
+  <!-- Modal for Event Details -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeEventModal()">&times;</span>
+      <h2 id="eventDate"></h2>
+      <p id="eventDescription"></p>
+      <button style="background: var(--vtc-accent); color: white; padding: 0.75rem; border: none; border-radius: 0.5rem; margin-top: 1rem;">Join Event</button>
+    </div>
+  </div>
+
+  <script>
+    function showEventModal(date, description) {
+      document.getElementById('eventDate').textContent = date;
+      document.getElementById('eventDescription').textContent = description;
+      document.getElementById('eventModal').classList.add('active');
+    }
+
+    function closeEventModal() {
+      document.getElementById('eventModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>`;
+  }
+
+  // Template 7: Premium Showcase (Elegant Gallery Design with Image Modals and Modern Hover Effects)
+  getPremiumShowcaseTemplate() {
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Showcase - My VTC</title>
+  <style>
+    :root {
+      --vtc-primary: #2980b9;
+      --vtc-accent: #f1c40f;
+      --vtc-bg: #2c3e50;
+      --vtc-text: #ecf0f1;
+      --vtc-card: rgba(255,255,255,0.05);
+      --vtc-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      --vtc-gradient: linear-gradient(135deg, var(--vtc-primary) 0%, var(--vtc-accent) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--vtc-bg);
+      color: var(--vtc-text);
+    }
+
+    .showcase-header {
+      text-align: center;
+      padding: 5rem 0;
+      background: var(--vtc-gradient);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: var(--vtc-shadow);
+      cursor: pointer;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+      text-align: center;
+      transition: bottom 0.3s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      bottom: 0;
+    }
+
+    /* Modal for Image Zoom */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-image {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 1rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .gallery { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="showcase-header">
+    <h1>Premium VTC Showcase</h1>
+    <p>Explore our premium fleet and convoys</p>
+  </header>
+
+  <section class="gallery">
+    <div class="gallery-item" onclick="showImageModal('https://placehold.co/300x300/2980b9/ecf0f1?text=Convoy+1')">
+      <img src="https://placehold.co/300x300/2980b9/ecf0f1?text=Convoy+1" alt="Convoy 1" class="gallery-image">
+      <div class="gallery-overlay">
+        <h3>Convoy Event 1</h3>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="showImageModal('https://placehold.co/300x300/f1c40f/2c3e50?text=Truck+Premium')">
+      <img src="https://placehold.co/300x300/f1c40f/2c3e50?text=Truck+Premium" alt="Truck Premium" class="gallery-image">
+      <div class="gallery-overlay">
+        <h3>Premium Truck</h3>
+      </div>
+    </div>
+    <!-- Add more gallery items as needed -->
+  </section>
+
+  <!-- Modal for Image Zoom -->
+  <div class="modal" id="imageModal" onclick="closeImageModal()">
+    <span class="modal-close" onclick="closeImageModal()">&times;</span>
+    <img id="modalImg" class="modal-image" src="">
+  </div>
+
+  <script>
+    function showImageModal(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('imageModal').classList.add('active');
+    }
+
+    function closeImageModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>`;
+  }
 }
 
 // Payment Maintenance System
