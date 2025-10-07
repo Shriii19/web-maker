@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="assets/animations.css">
 </head>
 <body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navigation will be inserted by JavaScript -->
 
   <!-- Main Content -->
@@ -181,6 +184,37 @@
   </main>
 
   <!-- Footer will be inserted by JavaScript -->
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "TruckCraft Studio Pricing",
+    "description": "Simple, transparent pricing for TruckCraft Studio. Free plan available. Pro plans starting at Rs 9/month for VTC websites.",
+    "url": "https://truckcraft-studio.com/pricing.html",
+    "mainEntity": {
+      "@type": "Product",
+      "name": "TruckCraft Studio",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free Plan",
+          "price": "0",
+          "priceCurrency": "INR",
+          "description": "Basic VTC website with essential features"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "9",
+          "priceCurrency": "INR",
+          "description": "Advanced VTC website with premium features"
+        }
+      ]
+    }
+  }
+  </script>
 
   <script src="assets/global-error-handler.js"></script>
   <script src="assets/main.js"></script>
