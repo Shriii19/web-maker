@@ -1,11 +1,338 @@
-// Pro Templates JavaScript - Click-to-Edit Functionality
+// Pro Templates JavaScript - Premium Access & Click-to-Edit Functionality
 // TruckCraft Studio Pro
 
 class ProTemplateEditor {
   constructor() {
     this.currentTemplate = null;
     this.editMode = false;
+    this.proAccess = this.checkProAccess();
     this.init();
+  }
+
+  checkProAccess() {
+    // Check if user has pro access (can be localStorage, session, or API call)
+    const proStatus = localStorage.getItem('truckcraft_pro_access');
+    const proExpiry = localStorage.getItem('truckcraft_pro_expiry');
+    
+    if (proStatus === 'active' && proExpiry && new Date(proExpiry) > new Date()) {
+      return true;
+    }
+    
+    // Check for trial access
+    const trialStatus = localStorage.getItem('truckcraft_trial_access');
+    const trialExpiry = localStorage.getItem('truckcraft_trial_expiry');
+    
+    if (trialStatus === 'active' && trialExpiry && new Date(trialExpiry) > new Date()) {
+      return true;
+    }
+    
+    return false;
+  }
+
+  activateProTrial() {
+    // Activate 14-day trial
+    const expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + 14);
+    
+    localStorage.setItem('truckcraft_trial_access', 'active');
+    localStorage.setItem('truckcraft_trial_expiry', expiryDate.toISOString());
+    
+    this.proAccess = true;
+    
+    // Show success message
+    this.showAccessModal(
+      '🎉 Pro Trial Activated!',
+      'You now have full access to all Pro VTC templates for 14 days. Start building your professional VTC website!',
+      'success'
+    );
+    
+    // Refresh the page to update access state
+    setTimeout(() => location.reload(), 2000);
+  }
+
+  showAccessModal(title, message, type = 'info') {
+    const modal = document.createElement('div');
+    modal.className = 'access-modal';
+    modal.innerHTML = `
+      <div class="access-modal-overlay"></div>
+      <div class="access-modal-content ${type}">
+        <div class="access-modal-header">
+          <h3>${title}</h3>
+          <button onclick="this.closest('.access-modal').remove()" class="close-btn">×</button>
+        </div>
+        <div class="access-modal-body">
+          <p>${message}</p>
+        </div>
+        <div class="access-modal-footer">
+          <button onclick="this.closest('.access-modal').remove()" class="btn btn-primary">Got it!</button>
+        </div>
+      </div>
+    `;
+    
+    // Add modal styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .access-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .access-modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+      }
+      
+      .access-modal-content {
+        position: relative;
+        background: white;
+        border-radius: 16px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+      
+      .access-modal-content.success {
+        border-top: 4px solid #10b981;
+      }
+      
+      .access-modal-content.warning {
+        border-top: 4px solid #f59e0b;
+      }
+      
+      .access-modal-header {
+        padding: 2rem 2rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .access-modal-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+      
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #64748b;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .close-btn:hover {
+        background: #f1f5f9;
+        color: #475569;
+      }
+      
+      .access-modal-body {
+        padding: 0 2rem 1rem;
+      }
+      
+      .access-modal-body p {
+        margin: 0;
+        color: #475569;
+        line-height: 1.6;
+      }
+      
+      .access-modal-footer {
+        padding: 1rem 2rem 2rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+      }
+    `;
+    modal.appendChild(style);
+    
+    document.body.appendChild(modal);
+  }
+
+  requireProAccess(templateId) {
+    if (this.proAccess) {
+      return true;
+    }
+    
+    // Show access required modal
+    const modal = document.createElement('div');
+    modal.className = 'access-modal';
+    modal.innerHTML = `
+      <div class="access-modal-overlay"></div>
+      <div class="access-modal-content warning">
+        <div class="access-modal-header">
+          <h3>✨ Pro Access Required</h3>
+          <button onclick="this.closest('.access-modal').remove()" class="close-btn">×</button>
+        </div>
+        <div class="access-modal-body">
+          <p>This is a premium VTC template that requires Pro access. Get instant access with our 14-day free trial - no credit card required!</p>
+          <div style="background: rgba(124, 58, 237, 0.1); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;">
+            <div style="font-weight: 600; color: #7c3aed; margin-bottom: 0.5rem;">✨ Pro Trial Includes:</div>
+            <ul style="margin: 0; padding-left: 1.25rem; color: #475569;">
+              <li>6 Premium VTC Templates</li>
+              <li>Advanced Customization Tools</li>
+              <li>Professional Features</li>
+              <li>Priority Support</li>
+            </ul>
+          </div>
+        </div>
+        <div class="access-modal-footer">
+          <button onclick="this.closest('.access-modal').remove()" class="btn btn-outline">Cancel</button>
+          <button onclick="this.closest('.access-modal').remove(); proEditor.activateProTrial();" class="btn btn-primary">Start Free Trial</button>
+        </div>
+      </div>
+    `;
+    
+    // Add modal styles if not present
+    if (!document.querySelector('#access-modal-styles')) {
+      const style = document.createElement('style');
+      style.id = 'access-modal-styles';
+      style.textContent = `
+        .access-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 2000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .access-modal-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+        }
+        
+        .access-modal-content {
+          position: relative;
+          background: white;
+          border-radius: 16px;
+          max-width: 500px;
+          width: 90%;
+          box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+          overflow: hidden;
+        }
+        
+        .access-modal-content.success {
+          border-top: 4px solid #10b981;
+        }
+        
+        .access-modal-content.warning {
+          border-top: 4px solid #f59e0b;
+        }
+        
+        .access-modal-header {
+          padding: 2rem 2rem 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .access-modal-header h3 {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #1e293b;
+        }
+        
+        .close-btn {
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: #64748b;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .close-btn:hover {
+          background: #f1f5f9;
+          color: #475569;
+        }
+        
+        .access-modal-body {
+          padding: 0 2rem 1rem;
+        }
+        
+        .access-modal-body p {
+          margin: 0;
+          color: #475569;
+          line-height: 1.6;
+        }
+        
+        .access-modal-footer {
+          padding: 1rem 2rem 2rem;
+          display: flex;
+          justify-content: flex-end;
+          gap: 1rem;
+        }
+        
+        .btn {
+          padding: 0.75rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 600;
+          text-decoration: none;
+          cursor: pointer;
+          border: none;
+          font-size: 0.875rem;
+          transition: all 0.2s;
+        }
+        
+        .btn-primary {
+          background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+          color: white;
+        }
+        
+        .btn-primary:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        }
+        
+        .btn-outline {
+          background: transparent;
+          color: #7c3aed;
+          border: 1px solid #7c3aed;
+        }
+        
+        .btn-outline:hover {
+          background: #7c3aed;
+          color: white;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(modal);
+    return false;
   }
 
   init() {
@@ -204,11 +531,17 @@ class ProTemplateEditor {
 
 // Template editing functions
 function editTemplate(templateId) {
+  // Check pro access before allowing template editing
+  if (!proEditor.requireProAccess(templateId)) {
+    return;
+  }
+  
   // Allow direct access to editing mode
   showEditMode(templateId);
 }
 
 function previewTemplate(templateId) {
+  // Previews are allowed for everyone
   showPreview(templateId);
 }
 
@@ -352,6 +685,13 @@ function closePreview() {
 
 function getTemplateName(templateId) {
   const names = {
+    'vtc-dashboard': 'VTC Dashboard Pro',
+    'vtc-recruitment': 'VTC Recruitment Pro',
+    'vtc-community': 'VTC Community Pro',
+    'vtc-fleet-management': 'VTC Fleet Management Pro',
+    'vtc-event-convoy': 'VTC Event Convoy Pro',
+    'vtc-premium-showcase': 'VTC Premium Showcase Pro',
+    // Legacy template support
     'elite-transport': 'Elite Transport Pro',
     'cargo-masters': 'Cargo Masters Corporate',
     'highway-heroes': 'Highway Heroes Creative',
@@ -363,7 +703,14 @@ function getTemplateName(templateId) {
 }
 
 function getTemplatePreviewUrl(templateId) {
-  // In a real implementation, these would be actual template URLs
+  // Route VTC templates to the proper template editor
+  const vtcTemplates = ['vtc-dashboard', 'vtc-recruitment', 'vtc-community', 'vtc-fleet-management', 'vtc-event-convoy', 'vtc-premium-showcase'];
+  
+  if (vtcTemplates.includes(templateId)) {
+    return `${templateId}-template.html`;
+  }
+  
+  // For legacy/demo templates, use template preview
   return `template-preview.html?template=${templateId}`;
 }
 
@@ -792,7 +1139,7 @@ function initIframeEditing() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    new ProTemplateEditor();
+    window.proEditor = new ProTemplateEditor();
     console.log('Pro Template Editor application initialized successfully');
   } catch (error) {
     console.error('Pro Template Editor initialization failed:', error);
