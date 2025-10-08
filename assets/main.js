@@ -4,22 +4,35 @@
 class SiteComponents {
   static init() {
     try {
+      console.log('🚀 SiteComponents.init() called');
       this.createNavigation();
       this.createFooter();
       this.setActivePage();
-      console.log('SiteComponents initialized successfully');
+      console.log('✅ SiteComponents initialized successfully');
     } catch (error) {
-      console.error('SiteComponents initialization failed:', error);
+      console.error('❌ SiteComponents initialization failed:', error);
     }
   }
 
   static createNavigation() {
-    // Check if navigation should be excluded or already exists
-    if (document.body.hasAttribute('data-no-nav') || document.querySelector('.navbar, nav, .navigation')) {
-      console.log('Navigation creation skipped');
+    console.log('🎯 createNavigation() called');
+    
+    // Check if navigation should be excluded
+    if (document.body.hasAttribute('data-no-nav')) {
+      console.log('Navigation creation skipped - data-no-nav attribute');
       return;
     }
+    
+    // Check for existing TruckCraft navigation specifically (must have navbar class AND nav-container)
+    const existingNavbar = document.querySelector('.navbar .nav-container');
+    if (existingNavbar) {
+      console.log('TruckCraft navigation already exists, skipping creation');
+      return;
+    }
+    
+    console.log('No existing TruckCraft navigation found, creating new one...');
 
+    console.log('Creating navigation...');
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
     const navigationHTML = `
@@ -95,12 +108,18 @@ class SiteComponents {
       </nav>
     `;
 
-    // Replace existing navigation or insert at the beginning of body
-    const existingNavbar = document.querySelector('.navbar');
-    if (existingNavbar) {
-      existingNavbar.outerHTML = navigationHTML;
+    // Insert navigation at the beginning of body
+    console.log('📍 Inserting navigation into DOM...');
+    document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+    
+    console.log('✅ Navigation inserted successfully');
+    
+    // Verify navigation was created
+    const verifyNav = document.querySelector('.navbar .nav-container');
+    if (verifyNav) {
+      console.log('✅ Navigation verification: Found .navbar .nav-container');
     } else {
-      document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+      console.error('❌ Navigation verification failed: .navbar .nav-container not found');
     }
 
     // Add mobile menu functionality after navigation is created
@@ -3632,6 +3651,7 @@ class AnimationController {
 
 // Initialize components when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('🔧 DOM Content Loaded - Starting initialization...');
   try {
     // Initialize core components
     SiteComponents.init();
@@ -3656,6 +3676,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('❌ Initialization failed:', error);
     // Still try to show basic navigation even if other components fail
     try {
+      console.log('🔄 Attempting fallback navigation creation...');
       SiteComponents.createNavigation();
       SiteComponents.createFooter();
     } catch (fallbackError) {
@@ -3667,10 +3688,37 @@ document.addEventListener('DOMContentLoaded', function() {
 // Fallback for older browsers without DOMContentLoaded
 if (document.readyState === 'loading') {
   // DOM is still loading, wait for DOMContentLoaded
+  console.log('⏳ DOM still loading, waiting for DOMContentLoaded...');
 } else {
   // DOM is already loaded, initialize immediately
+  console.log('⚡ DOM already loaded, initializing immediately...');
   setTimeout(() => {
     const event = new Event('DOMContentLoaded');
     document.dispatchEvent(event);
   }, 0);
 }
+
+// Emergency fallback - force navigation creation after 2 seconds if still missing
+setTimeout(() => {
+  const navCheck = document.querySelector('.navbar .nav-container');
+  if (!navCheck) {
+    console.log('🚨 Emergency: TruckCraft navigation missing after timeout, creating now...');
+    try {
+      SiteComponents.createNavigation();
+      
+      // Double check after emergency creation
+      setTimeout(() => {
+        const finalCheck = document.querySelector('.navbar .nav-container');
+        if (finalCheck) {
+          console.log('✅ Emergency navigation creation successful');
+        } else {
+          console.error('❌ Emergency navigation creation failed - still not found');
+        }
+      }, 100);
+    } catch (error) {
+      console.error('❌ Emergency navigation creation failed:', error);
+    }
+  } else {
+    console.log('✅ Navigation verified present after 2 seconds');
+  }
+}, 2000);
