@@ -14,6 +14,12 @@ class SiteComponents {
   }
 
   static createNavigation() {
+    // Check if navigation should be excluded or already exists
+    if (document.body.hasAttribute('data-no-nav') || document.querySelector('.navbar, nav, .navigation')) {
+      console.log('Navigation creation skipped');
+      return;
+    }
+
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
     const navigationHTML = `
@@ -90,9 +96,9 @@ class SiteComponents {
     `;
 
     // Replace existing navigation or insert at the beginning of body
-    const existingNav = document.querySelector('.navbar');
-    if (existingNav) {
-      existingNav.outerHTML = navigationHTML;
+    const existingNavbar = document.querySelector('.navbar');
+    if (existingNavbar) {
+      existingNavbar.outerHTML = navigationHTML;
     } else {
       document.body.insertAdjacentHTML('afterbegin', navigationHTML);
     }
@@ -177,6 +183,12 @@ class SiteComponents {
   }
 
   static createFooter() {
+    // Check if footer should be excluded or already exists
+    if (document.body.hasAttribute('data-no-footer') || document.querySelector('footer, .footer, .simple-footer')) {
+      console.log('Footer creation skipped');
+      return;
+    }
+
     const footerHTML = `
       <footer class="simple-footer">
         <div class="simple-footer-container">
