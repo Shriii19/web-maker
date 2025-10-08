@@ -2979,19 +2979,299 @@ function selectTemplate(templateId) {
       button.disabled = false;
     }, 2000);
   }
-  showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Redirecting to editor...`, 'success');
-  setTimeout(() => {
-    window.location.href = 'create.html?t=' + encodeURIComponent(templateId);
-  }, 2000);
+  
+  // Check if this is a VTC template (our new templates)
+  if (templateId.startsWith('vtc-')) {
+    showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Opening in editor...`, 'success');
+    setTimeout(() => {
+      window.location.href = `vtc-template-editor.html?template=${templateId}`;
+    }, 1000);
+  } else {
+    // Original template workflow
+    showNotification(`Template "${getTemplateDisplayName(templateId)}" selected! Redirecting to editor...`, 'success');
+    setTimeout(() => {
+      window.location.href = 'create.html?t=' + encodeURIComponent(templateId);
+    }, 2000);
+  }
 }
 
 function previewTemplate(templateId) {
-  showTemplatePreview(templateId);
-  showNotification(`Opening preview for "${getTemplateDisplayName(templateId)}"...`, 'info');
+  // Check if this is a VTC template
+  if (templateId.startsWith('vtc-')) {
+    // Open the actual VTC template file in a new window
+    const templateFiles = {
+      'vtc-dashboard': 'vtc-dashboard-template.html',
+      'vtc-recruitment': 'vtc-recruitment-template.html',
+      'vtc-community': 'vtc-community-template.html',
+      'vtc-fleet-management': 'vtc-fleet-management-template.html',
+      'vtc-event-convoy': 'vtc-event-convoy-template.html',
+      'vtc-premium-showcase': 'vtc-premium-showcase-template.html'
+    };
+    
+    const templateFile = templateFiles[templateId];
+    if (templateFile) {
+      window.open(templateFile, '_blank');
+      showNotification(`Opening preview for "${getTemplateDisplayName(templateId)}"...`, 'info');
+    } else {
+      showNotification('Template preview not available', 'error');
+    }
+  } else {
+    // Original template preview
+    showTemplatePreview(templateId);
+    showNotification(`Opening preview for "${getTemplateDisplayName(templateId)}"...`, 'info');
+  }
 }
 
 function showTemplateInfo(templateId) {
-  showTemplateInfoModal(templateId);
+  if (templateId.startsWith('vtc-')) {
+    showVTCTemplateInfoModal(templateId);
+  } else {
+    showTemplateInfoModal(templateId);
+  }
+}
+
+function showVTCTemplateInfoModal(templateId) {
+  const templateDetails = {
+    'vtc-dashboard': {
+      name: 'Modern VTC Dashboard',
+      description: 'A comprehensive dashboard template designed specifically for VTC management.',
+      features: [
+        'Real-time driver statistics and analytics',
+        'Interactive charts and data visualization',
+        'Driver management with detailed profiles',
+        'Job tracking and completion status',
+        'Notification system for important updates',
+        'Dark theme with purple/cyan gradients',
+        'Fully responsive design for all devices',
+        'Accessibility features with ARIA labels'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Responsive Design'],
+      difficulty: 'Intermediate',
+      customizable: true
+    },
+    'vtc-recruitment': {
+      name: 'Advanced Recruitment Hub',
+      description: 'Modern recruitment platform with comprehensive application management.',
+      features: [
+        'Multi-step application form with validation',
+        'Testimonial carousel system',
+        'Interactive FAQ with smooth animations',
+        'Company showcase and benefits section',
+        'Application status tracking',
+        'Blue/orange color scheme',
+        'Mobile-first responsive design',
+        'Form validation and submission handling'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Flexbox', 'Form Validation'],
+      difficulty: 'Beginner to Intermediate',
+      customizable: true
+    },
+    'vtc-community': {
+      name: 'Community Hub',
+      description: 'Social platform for VTC members with community features.',
+      features: [
+        'Member directory with profile management',
+        'Event calendar with interactive events',
+        'Achievement and badge system',
+        'Online status tracking',
+        'Community statistics dashboard',
+        'Green/red color palette',
+        'Profile modal system',
+        'Real-time member activity'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Local Storage'],
+      difficulty: 'Intermediate',
+      customizable: true
+    },
+    'vtc-fleet-management': {
+      name: 'Fleet Management System',
+      description: 'Professional fleet tracking and vehicle management platform.',
+      features: [
+        'Vehicle tracking with status indicators',
+        'Maintenance scheduling system',
+        'Fleet overview with search and filters',
+        'Vehicle detail modals',
+        'Real-time status updates',
+        'Slate/cyan professional theme',
+        'Tabbed interface for organization',
+        'Data export capabilities'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Data Management'],
+      difficulty: 'Intermediate to Advanced',
+      customizable: true
+    },
+    'vtc-event-convoy': {
+      name: 'Event & Convoy Manager',
+      description: 'Complete event management with calendar and booking system.',
+      features: [
+        'Interactive calendar with event grid',
+        'Event registration and booking forms',
+        'Countdown timers for events',
+        'Route visualization system',
+        'Event categories and filtering',
+        'Purple/green gradient theme',
+        'Modal-based event details',
+        'Attendee management'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Date/Time APIs'],
+      difficulty: 'Advanced',
+      customizable: true
+    },
+    'vtc-premium-showcase': {
+      name: 'Premium Showcase',
+      description: 'Luxury template with advanced animations and premium feel.',
+      features: [
+        'Particle animation background',
+        'Parallax scrolling effects',
+        'Premium gold/black color scheme',
+        'Interactive portfolio gallery',
+        'Team member profiles',
+        'Statistics counter animations',
+        'Multiple modal systems',
+        'Advanced hover effects'
+      ],
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'CSS Animations', 'Advanced Effects'],
+      difficulty: 'Advanced',
+      customizable: true
+    }
+  };
+
+  const template = templateDetails[templateId];
+  if (!template) {
+    showNotification('Template information not available', 'error');
+    return;
+  }
+
+  const modal = createModal({
+    title: template.name,
+    content: `
+      <div style="padding: 2rem;">
+        <div style="margin-bottom: 2rem;">
+          <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            ${template.description}
+          </p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div>
+              <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem;">Template Details</h4>
+              <div style="background: var(--surface-hover); padding: 1rem; border-radius: 8px;">
+                <p style="margin-bottom: 0.5rem;"><strong>Difficulty:</strong> ${template.difficulty}</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Customizable:</strong> ${template.customizable ? 'Yes' : 'No'}</p>
+                <p><strong>Technologies:</strong> ${template.technologies.join(', ')}</p>
+              </div>
+            </div>
+            
+            <div>
+              <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem;">Quick Actions</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <button onclick="previewTemplate('${templateId}'); this.closest('[style*=\"position: fixed\"]').remove();" 
+                        style="padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">
+                  👁️ Live Preview
+                </button>
+                <button onclick="selectTemplate('${templateId}'); this.closest('[style*=\"position: fixed\"]').remove();" 
+                        style="padding: 0.75rem; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer;">
+                  🚀 Use Template
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem;">Features Included</h4>
+          <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: 8px;">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              ${template.features.map(feature => `
+                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);">
+                  <span style="color: var(--accent); font-size: 1rem; margin-top: 0.1rem;">✅</span>
+                  <span style="color: var(--text-secondary); line-height: 1.5;">${feature}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  });
+  
+  document.body.appendChild(modal);
+}
+
+function showComingSoonInfo() {
+  const modal = createModal({
+    title: 'More Templates Coming Soon!',
+    content: `
+      <div style="padding: 2rem; text-align: center;">
+        <div style="margin-bottom: 2rem;">
+          <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--primary)">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <h3 style="margin: 0; color: var(--primary); font-size: 1.3rem; font-weight: 600;">Exciting Templates in Development</h3>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 1rem;">
+              We're working on even more amazing VTC templates to help you create the perfect website for your trucking company.
+            </p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+            <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--primary); margin-bottom: 1rem;">📊 Analytics Dashboard</h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Advanced analytics with charts, graphs, and business intelligence for your VTC</p>
+            </div>
+            
+            <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--primary); margin-bottom: 1rem;">📱 Mobile-First Design</h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Templates optimized specifically for mobile users and touch interfaces</p>
+            </div>
+            
+            <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--primary); margin-bottom: 1rem;">🛍️ E-Commerce Integration</h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Sell merchandise and services directly from your VTC website</p>
+            </div>
+            
+            <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: 8px;">
+              <h4 style="color: var(--primary); margin-bottom: 1rem;">📚 Knowledge Base</h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Documentation and tutorial systems for driver training and support</p>
+            </div>
+          </div>
+          
+          <div style="background: var(--surface-hover); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+            <h4 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">Want to be notified when they're ready?</h4>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
+              Join our Discord community to get instant updates on new templates, features, and exclusive early access!
+            </p>
+            
+            <a href="https://discord.gg/D442vYePUR" target="_blank" style="
+              display: inline-flex; 
+              align-items: center; 
+              gap: 0.75rem; 
+              padding: 1rem 1.5rem; 
+              background: var(--gradient-accent); 
+              color: white; 
+              text-decoration: none; 
+              border-radius: var(--radius-lg); 
+              font-weight: 600;
+              transition: all 0.3s ease;
+              box-shadow: var(--shadow-sm);
+            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-sm)'">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              <span>Join Discord for Updates</span>
+            </a>
+          </div>
+        </div>
+        
+        <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1.5rem;">
+          💡 <strong>In the meantime:</strong> Try our existing VTC templates - they're fully functional and ready to use!
+        </p>
+      </div>
+    `
+  });
+  
+  document.body.appendChild(modal);
 }
 
 function showTemplatePreview(templateId) {
@@ -3104,9 +3384,16 @@ function getTemplateDisplayName(templateId) {
     'dashboard-pro': 'VTC Dashboard Pro',
     'landing-modern': 'VTC Landing Page',
     'profile-dashboard': 'Driver Profile Dashboard',
-  'fleet-tracker': 'Fleet Tracking System',
-  'convoy-planner': 'Convoy Planner Suite',
-  'recruitment-classic': 'Recruitment Classic'
+    'fleet-tracker': 'Fleet Tracking System',
+    'convoy-planner': 'Convoy Planner Suite',
+    'recruitment-classic': 'Recruitment Classic',
+    // VTC Templates
+    'vtc-dashboard': 'Modern VTC Dashboard',
+    'vtc-recruitment': 'Advanced Recruitment Hub',
+    'vtc-community': 'Community Hub',
+    'vtc-fleet-management': 'Fleet Management System',
+    'vtc-event-convoy': 'Event & Convoy Manager',
+    'vtc-premium-showcase': 'Premium Showcase'
   };
   return names[templateId] || templateId;
 }
