@@ -3617,3 +3617,48 @@ class AnimationController {
     }
   }
 }
+
+// Initialize components when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    // Initialize core components
+    SiteComponents.init();
+    
+    // Initialize animations only if the page has animated elements
+    const hasAnimatedElements = document.querySelectorAll('.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right').length > 0;
+    if (hasAnimatedElements) {
+      AnimationController.init();
+    }
+    
+    // Initialize VTC Studio only on create page
+    if (window.location.pathname.includes('create.html') || document.getElementById('create-section')) {
+      try {
+        window.vtcStudio = new VTCStudio();
+      } catch (error) {
+        console.warn('VTC Studio not needed on this page:', error.message);
+      }
+    }
+    
+    console.log('🚀 Web Maker initialized successfully');
+  } catch (error) {
+    console.error('❌ Initialization failed:', error);
+    // Still try to show basic navigation even if other components fail
+    try {
+      SiteComponents.createNavigation();
+      SiteComponents.createFooter();
+    } catch (fallbackError) {
+      console.error('❌ Fallback initialization also failed:', fallbackError);
+    }
+  }
+});
+
+// Fallback for older browsers without DOMContentLoaded
+if (document.readyState === 'loading') {
+  // DOM is still loading, wait for DOMContentLoaded
+} else {
+  // DOM is already loaded, initialize immediately
+  setTimeout(() => {
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+  }, 0);
+}

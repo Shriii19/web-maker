@@ -34,9 +34,10 @@
   --surface: #ffffff;
   --surface-elevated: #faf5ff;
   --surface-hover: #f3e8ff;
-  --text-primary: #581c87;
-  --text-secondary: #6b46c1;
-  --text-muted: #6b7280;
+  /* Text colors with improved contrast */
+  --text-primary: #1e1b4b; /* Darker for better contrast */
+  --text-secondary: #4c1d95; /* Improved contrast */
+  --text-muted: #4b5563; /* Better readability */
   --border: #e9d5ff;
   --border-light: #f3e8ff;
   --success: #10b981;
@@ -6897,4 +6898,79 @@ text-align: center;
 
 .elite-template:nth-child(3) {
   animation-delay: 1s;
+}
+
+/* Missing Animation Keyframes - Fix for mobile menu */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Ripple animation effect for buttons */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Fix for floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Performance optimization - will-change for animated elements */
+.fade-in-up, .fade-in-right, .slide-in-left, .slide-in-right, .floating, .elite-template {
+  will-change: transform, opacity;
+}
+
+/* Optimize font loading - Using Google Fonts with font-display: swap */
+/* This is handled by the Google Fonts link in HTML with &display=swap parameter */
+
+/* Preload critical assets */
+.hero-mockup, .template-card, .feature-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .floating {
+    animation: none;
+  }
 }

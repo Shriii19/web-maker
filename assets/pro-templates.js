@@ -1143,8 +1143,16 @@ function initIframeEditing() {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     window.proEditor = new ProTemplateEditor();
-    console.log('Pro Template Editor application initialized successfully');
+    console.log('✅ Pro Template Editor application initialized successfully');
   } catch (error) {
-    console.error('Pro Template Editor initialization failed:', error);
+    console.error('❌ Pro Template Editor initialization failed:', error);
+    
+    // Graceful degradation - still allow basic functionality
+    document.querySelectorAll('.template-select-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Template editor temporarily unavailable. Please refresh the page.');
+      });
+    });
   }
 });
