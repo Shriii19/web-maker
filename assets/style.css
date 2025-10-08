@@ -6664,3 +6664,84 @@ text-align: center;
   border-color: rgba(124, 58, 237, 0.2);
   background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(252, 250, 255, 1));
 }
+
+/* Ultimate Elite Template Special Styling */
+.template-card.featured {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 237, 78, 0.03));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
+  overflow: hidden;
+}
+
+.template-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  animation: ultimate-shine 4s infinite;
+  z-index: 1;
+}
+
+.template-card.featured:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 237, 78, 0.05));
+}
+
+.template-card.featured .template-info {
+  position: relative;
+  z-index: 2;
+}
+
+.template-card.featured .template-title {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+.template-card.featured .template-description {
+  color: #4a5568;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@keyframes ultimate-shine {
+  0% { left: -100%; }
+  50% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Ultimate badge special animation */
+.template-card.featured .pro-badge-corner {
+  animation: ultimate-pulse 2s infinite;
+}
+
+@keyframes ultimate-pulse {
+  0%, 100% { 
+    transform: translateY(-2px) scale(1);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  }
+  50% { 
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+  }
+}
+
+/* Ultimate button special styling */
+.template-card.featured .template-select-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
+}
+
+/* Featured template grid priority */
+.template-card.featured {
+  order: -1; /* Ensures it appears first */
+}

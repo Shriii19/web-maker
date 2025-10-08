@@ -685,6 +685,7 @@ function closePreview() {
 
 function getTemplateName(templateId) {
   const names = {
+    'vtc-ultimate-elite': 'VTC Ultimate Elite Pro',
     'vtc-dashboard': 'VTC Dashboard Pro',
     'vtc-recruitment': 'VTC Recruitment Pro',
     'vtc-community': 'VTC Community Pro',
@@ -704,7 +705,7 @@ function getTemplateName(templateId) {
 
 function getTemplatePreviewUrl(templateId) {
   // Route VTC templates to the proper template editor
-  const vtcTemplates = ['vtc-dashboard', 'vtc-recruitment', 'vtc-community', 'vtc-fleet-management', 'vtc-event-convoy', 'vtc-premium-showcase'];
+  const vtcTemplates = ['vtc-ultimate-elite', 'vtc-dashboard', 'vtc-recruitment', 'vtc-community', 'vtc-fleet-management', 'vtc-event-convoy', 'vtc-premium-showcase'];
   
   if (vtcTemplates.includes(templateId)) {
     return `${templateId}-template.html`;
