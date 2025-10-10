@@ -961,6 +961,28 @@ main {
   border-radius: var(--radius-sm);
 }
 
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 /* Quick Links Section */
 .quick-links-section {
   padding: var(--space-20) 0;
@@ -977,6 +999,259 @@ main {
   bottom: 0;
   background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.03) 0%, transparent 40%);
   pointer-events: none;
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  padding: var(--space-24) 0;
+  background: var(--gradient-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.step-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.step-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--surface-elevated);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-4) auto var(--space-6);
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: scale(1.1);
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.step-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.step-arrow {
+  color: var(--primary);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+/* Features Showcase Section */
+.features-showcase-section {
+  padding: var(--space-24) 0;
+  background: var(--surface);
+}
+
+.features-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.showcase-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.showcase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.showcase-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.showcase-card:hover .showcase-icon {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+}
+
+.showcase-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.showcase-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: var(--space-24) 0;
+  background: var(--gradient-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+  color: #fbbf24;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.author-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.author-info p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .quick-links-grid {
@@ -1625,6 +1900,35 @@ margin-left: 100px;
 }
 
 @media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .steps-container {
+    flex-direction: column;
+  }
+
+  .step-arrow {
+    transform: rotate(90deg);
+    opacity: 0.2;
+  }
+
+  .step-card {
+    max-width: 100%;
+  }
+
+  .features-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
   .nav-container {
     padding: var(--space-3) var(--space-4);
     gap: var(--space-4); /* Reduced gap on mobile */
