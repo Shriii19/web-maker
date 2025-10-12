@@ -2463,6 +2463,171 @@ margin-left: 100px;
   margin: 0 auto;
 }
 
+/* What We Do Section */
+.what-we-do-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+}
+
+.wwd-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lead-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.lead-text strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.service-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Who It's For Section */
+.wwd-audience {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xxl);
+  text-align: center;
+}
+
+.wwd-audience h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xl);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.audience-item {
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.audience-item:hover {
+  background: var(--surface-elevated);
+  transform: translateY(-4px);
+}
+
+.audience-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.audience-item h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.audience-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* What We Do CTA */
+.wwd-cta {
+  text-align: center;
+  padding: var(--space-xxl);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.wwd-cta h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.wwd-cta p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .about-content {
   display: flex;
   flex-direction: column;
@@ -5815,6 +5980,85 @@ text-align: center;
   .about-content p {
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  /* What We Do Section Mobile */
+  .what-we-do-content {
+    gap: var(--space-xl);
+  }
+
+  .lead-text {
+    font-size: 1rem;
+    padding: 0 var(--space-2);
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .service-card {
+    padding: var(--space-lg);
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .service-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+
+  .wwd-audience {
+    padding: var(--space-lg);
+  }
+
+  .wwd-audience h3 {
+    font-size: 1.5rem;
+  }
+
+  .audience-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .audience-icon {
+    font-size: 2.5rem;
+  }
+
+  .audience-item h4 {
+    font-size: 1.1rem;
+  }
+
+  .wwd-cta {
+    padding: var(--space-lg);
+  }
+
+  .wwd-cta h3 {
+    font-size: 1.5rem;
+  }
+
+  .wwd-cta p {
+    font-size: 1rem;
+  }
+
+  .wwd-cta .cta-buttons {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .wwd-cta .btn {
+    width: 100%;
   }
 
   /* General improvements for all pages */
