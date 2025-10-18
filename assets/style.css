@@ -3247,6 +3247,275 @@ text-align: center;
   box-shadow: 0 4px 12px rgba(251, 191, 36, 0.5);
 }
 
+/* Pro Badge Overlay */
+.pro-badge-overlay {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Upgrade Modal */
+.upgrade-modal-overlay,
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: var(--space-lg);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.upgrade-modal {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.upgrade-modal-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  z-index: 10;
+}
+
+.upgrade-modal-close:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: rotate(90deg);
+}
+
+.upgrade-modal-content {
+  padding: var(--space-xxl);
+  text-align: center;
+}
+
+.upgrade-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(124, 58, 237, 0);
+  }
+}
+
+.upgrade-modal-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.upgrade-main-text {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+.upgrade-benefits {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upgrade-benefit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(124, 58, 237, 0.05);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.upgrade-benefit svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.upgrade-benefit span {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.upgrade-pricing {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.price-highlight {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.price-amount {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.price-period {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.trial-info {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.upgrade-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.upgrade-actions .btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.upgrade-cancel {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: var(--space-sm);
+  transition: color 0.3s ease;
+}
+
+.upgrade-cancel:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.pro-note {
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: var(--space-md);
+}
+
+/* Pro Button Styling */
+.btn-pro {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 60%, #ec4899 100%);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pro::before {
+  content: '⭐ PRO';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 0 8px 0 8px;
+  z-index: 1;
+}
+
+.btn-pro:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #9333ea 60%, #db2777 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.4);
+}
+
 .template-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -7898,6 +8167,42 @@ text-align: center;
 
 /* Mobile Responsive Styles for Templates Page */
 @media (max-width: 768px) {
+  .upgrade-modal {
+    margin: var(--space-md);
+    max-height: calc(100vh - 2rem);
+  }
+
+  .upgrade-modal-content {
+    padding: var(--space-xl);
+  }
+
+  .upgrade-modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .upgrade-main-text {
+    font-size: 1rem;
+  }
+
+  .upgrade-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .upgrade-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .price-amount {
+    font-size: 2.5rem;
+  }
+
+  .upgrade-actions .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
   .promo-title {
     font-size: 1.5rem;
   }
