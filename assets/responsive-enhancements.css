@@ -618,7 +618,413 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   4. CARD GRIDS RESPONSIVE FIXES
+   4. HERO FEATURE CARDS RESPONSIVE FIXES
+   (Premium Templates, Easy Customization, Mobile Ready, 100% Free)
+   ========================================== */
+
+/* Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 550px;
+    margin: 0;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.35);
+    border-color: rgba(124, 58, 237, 0.5);
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .feature-icon-hero {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+    border-radius: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .hero-feature-card:hover .feature-icon-hero {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.45);
+  }
+
+  .hero-feature-card h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+/* Laptop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 1.125rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .feature-icon-hero {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 1rem;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+/* Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 1.125rem;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .feature-icon-hero {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 1rem;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile Large (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.75rem;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 1rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-height: 160px;
+  }
+
+  .feature-icon-hero {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    border-radius: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile Small (480px - 575px) */
+@media (min-width: 480px) and (max-width: 575px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 0.875rem;
+    padding: 1.125rem 0.875rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-height: 150px;
+  }
+
+  .feature-icon-hero {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile Extra Small (360px - 479px) */
+@media (min-width: 360px) and (max-width: 479px) {
+  .hero-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 0.75rem;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-height: 140px;
+  }
+
+  .feature-icon-hero {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 0.75rem;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.6875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile Very Small (< 360px) */
+@media (max-width: 359px) {
+  .hero-features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .hero-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 58, 237, 0.15);
+    border-radius: 0.875rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+  }
+
+  .feature-icon-hero {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .hero-feature-card h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .hero-feature-card > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+  }
+}
+
+/* Touch device hover fix */
+@media (hover: none) and (pointer: coarse) {
+  .hero-feature-card:hover {
+    transform: none;
+  }
+
+  .hero-feature-card:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+/* ==========================================
+   5. CARD GRIDS RESPONSIVE FIXES
    ========================================== */
 
 /* Quick Links Grid */
@@ -794,7 +1200,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   5. FOOTER RESPONSIVE FIXES
+   6. FOOTER RESPONSIVE FIXES
    ========================================== */
 
 @media (min-width: 768px) {
@@ -873,7 +1279,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   6. MODALS AND OVERLAYS RESPONSIVE FIXES
+   7. MODALS AND OVERLAYS RESPONSIVE FIXES
    ========================================== */
 
 /* Upgrade Modal */
@@ -1005,7 +1411,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   7. BUTTONS AND FORMS RESPONSIVE FIXES
+   8. BUTTONS AND FORMS RESPONSIVE FIXES
    ========================================== */
 
 /* Touch-friendly buttons */
@@ -1063,7 +1469,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   8. TYPOGRAPHY RESPONSIVE FIXES
+   9. TYPOGRAPHY RESPONSIVE FIXES
    ========================================== */
 
 @media (max-width: 767px) {
@@ -1114,7 +1520,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   9. CONTACT PAGE RESPONSIVE FIXES
+   10. CONTACT PAGE RESPONSIVE FIXES
    ========================================== */
 
 @media (min-width: 992px) {
@@ -1139,7 +1545,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   10. FEATURES PAGE RESPONSIVE FIXES
+   11. FEATURES PAGE RESPONSIVE FIXES
    ========================================== */
 
 @media (min-width: 992px) {
@@ -1172,7 +1578,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   11. CTA SECTION RESPONSIVE FIXES
+   12. CTA SECTION RESPONSIVE FIXES
    ========================================== */
 
 @media (max-width: 767px) {
@@ -1219,7 +1625,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   12. EDITOR PAGE RESPONSIVE FIXES
+   13. EDITOR PAGE RESPONSIVE FIXES
    ========================================== */
 
 @media (min-width: 1024px) {
@@ -1290,7 +1696,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   13. SAFE AREA SUPPORT FOR NOTCHED DEVICES
+   14. SAFE AREA SUPPORT FOR NOTCHED DEVICES
    ========================================== */
 
 @supports (padding: max(0px)) {
@@ -1312,7 +1718,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   14. LANDSCAPE ORIENTATION FIXES
+   15. LANDSCAPE ORIENTATION FIXES
    ========================================== */
 
 @media (max-height: 500px) and (orientation: landscape) {
@@ -1334,7 +1740,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   15. PRINT STYLES
+   16. PRINT STYLES
    ========================================== */
 
 @media print {
@@ -1370,7 +1776,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   16. ACCESSIBILITY - REDUCED MOTION
+   17. ACCESSIBILITY - REDUCED MOTION
    ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1385,7 +1791,7 @@ img, picture, video, canvas, svg {
 }
 
 /* ==========================================
-   17. HIGH CONTRAST MODE
+   18. HIGH CONTRAST MODE
    ========================================== */
 
 @media (prefers-contrast: high) {
