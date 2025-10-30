@@ -1,59 +1,38 @@
-# TruckCraft Studio - Professional VTC Website Builder
+# TruckCraft Studio - VTC Website Builder
 
-Welcome to TruckCraft Studio! This project allows you to create stunning websites for your Virtual Trucking Company (VTC) with ease. No coding required—just professional results.
+Professional website builder for Virtual Trucking Companies with modern animations and responsive design.
 
-## Features
-- Drag-and-drop website builder
-- Professional VTC templates
-- Pro templates with advanced editing
-- Mobile-responsive design
-- Custom domain support
-- SEO optimization
-- AI-powered templates
-- Global error handling
-- Template preview system
-- Contact form functionality
+## ✨ Key Features
+- 🎨 **10+ Professional VTC Templates** - Ready-to-use designs
+- ⚡ **60+ Smooth Animations** - Modern scroll effects & interactions
+- 📱 **Mobile-Responsive** - Optimized for all devices
+- 🚀 **Performance Optimized** - GPU-accelerated, 60fps animations
+- ♿ **Accessible** - Reduced motion support
+- 🎯 **SEO Ready** - Meta tags & structured data
 
-## Project Structure
-```
-about.html
-contact.html
-create.html
-error-test.html
-features.html
-index.html
-pricing.html
-pro-templates.html
-pro-trial.html
-template-preview.html
-templates.html
-assets/
-  animations.css
-  global-error-handler.js
-  logo.png
-  main.js
-  pro-templates.js
-  style.css
-```
-
-## Getting Started
+## 🚀 Quick Start
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/Shriii19/web-maker.git
    ```
-2. Open the project folder in your code editor.
-3. Open `index.html` in your browser to view the homepage.
+2. Open `index.html` in your browser
 
-## Customization
-- Edit the HTML files to update content for each page
-- Modify styles in `assets/style.css` for global styling changes
-- Use `assets/main.js` for navigation and core functionality
-- Pro template editing functionality in `assets/pro-templates.js`
-- Error handling managed by `assets/global-error-handler.js`
-- All pages include proper SEO meta tags and structured data
+## 📁 Core Files
+- **HTML Pages**: `index.html`, `templates.html`, `about.html`, `contact.html`, `features.html`, `pricing.html`
+- **Styles**: `assets/style.css`, `assets/animations.css`, `assets/responsive-enhancements.css`
+- **Scripts**: `assets/scroll-animations.js`, `assets/main.js`, `assets/global-error-handler.js`
+- **Documentation**: `ANIMATIONS-GUIDE.md` - Complete animation usage guide
 
-## License
-This project is licensed under the MIT License.
+## 🎬 Animation System
+- Page load animations (fade, slide, zoom)
+- Scroll-triggered reveals with Intersection Observer
+- Button ripple effects & hover states
+- Counter animations for statistics
+- Parallax scrolling support
+- 300-800ms timing for natural feel
 
-## Author
+## 📝 License
+MIT License
+
+## 👤 Author
 TruckCraft Studio
