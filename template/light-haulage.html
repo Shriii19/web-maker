@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Light Haulage - Minimalist Virtual Trucking Company | ETS2 & ATS VTC</title>
+    <meta name="title" content="Light Haulage - Minimalist Virtual Trucking Company | ETS2 & ATS VTC">
+    <meta name="description" content="Light Haulage is a minimalist VTC focused on quality over quantity. Join our elite community of professional drivers for ETS2 and ATS operations.">
+    <meta name="keywords" content="Light Haulage, VTC, Virtual Trucking Company, ETS2, ATS, Euro Truck Simulator 2, American Truck Simulator, TruckersMP, minimalist trucking">
+    <meta name="author" content="Sapphire Development">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lighthaulage.com/">
+    <meta property="og:title" content="Light Haulage - Minimalist Virtual Trucking Company">
+    <meta property="og:description" content="Light Haulage is a minimalist VTC focused on quality over quantity. Join our elite community of professional drivers.">
+    <meta property="og:image" content="https://lighthaulage.com/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lighthaulage.com/">
+    <meta property="twitter:title" content="Light Haulage - Minimalist Virtual Trucking Company">
+    <meta property="twitter:description" content="Light Haulage is a minimalist VTC focused on quality over quantity. Join our elite community.">
+    <meta property="twitter:image" content="https://lighthaulage.com/assets/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://steamcommunity.com">
+    <link rel="preconnect" href="https://discord.com">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1abc9c">
+    
+    <style>
+/* ============================================
+   Light Haulage - VTC Website Template
+   Color Palette: Teal (#1abc9c), White (#ffffff), Silver (#ecf0f1)
+   Minimal, futuristic design with glassmorphism and scroll effects
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   Glassmorphism Panel
+   ============================================ */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Added signature light bar animation */
+@keyframes signatureBar {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Floating Navigation Bar
+   ============================================ */
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideInDown 0.5s ease;
+  border-bottom: 1px solid rgba(26, 188, 156, 0.1);
+}
+
+.navbar.floating-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  border-radius: 12px;
+  margin: 0 20px;
+  animation: slideInDown 0.5s ease;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.nav-brand h1 {
+  color: #1abc9c;
+  font-size: 24px;
+  font-weight: 700;
+  animation: slideInLeft 0.6s ease;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1abc9c, #16a085);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #1abc9c;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #2c3e50;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================
+   Hero Section with Frosted Glass
+   ============================================ */
+
+.hero {
+  background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%), url("/placeholder.svg?height=600&width=1200") center /
+    cover;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 500px;
+  padding: 40px;
+  animation: fadeInUp 0.8s ease;
+  color: #2c3e50;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  padding: 12px 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background-color: #1abc9c;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(26, 188, 156, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #16a085;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(26, 188, 156, 0.5);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #1abc9c;
+  border: 2px solid #1abc9c;
+  box-shadow: 0 4px 15px rgba(26, 188, 156, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: #1abc9c;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(26, 188, 156, 0.4);
+}
+
+/* ============================================
+   About Section
+   ============================================ */
+
+.about {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.about h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease;
+}
+
+.about > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #666;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.about-item {
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-item:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.about-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.about-item:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.about-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(26, 188, 156, 0.15);
+}
+
+.about-item h3 {
+  color: #1abc9c;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.about-item p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* ============================================
+   Drivers Section with Hover Overlay
+   ============================================ */
+
+.drivers {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+}
+
+.drivers h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease;
+}
+
+.drivers > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #666;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.drivers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.driver-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.driver-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.driver-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.driver-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.driver-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.driver-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.driver-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.driver-image {
+  width: 100%;
+  height: 200px;
+  transition: all 0.3s ease;
+}
+
+.driver-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.driver-card:hover .driver-overlay {
+  transform: translateY(0);
+}
+
+.driver-card:hover .driver-image {
+  transform: scale(1.1);
+}
+
+.driver-overlay h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.driver-overlay p {
+  font-size: 13px;
+  color: #bbb;
+}
+
+.driver-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(26, 188, 156, 0.2);
+}
+
+/* ============================================
+   Steam Section
+   ============================================ */
+
+.steam-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.steam-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease;
+}
+
+.steam-section > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #666;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.steam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.steam-card {
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.steam-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.steam-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.steam-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(26, 188, 156, 0.15);
+}
+
+.steam-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #1abc9c;
+  font-weight: 700;
+}
+
+.steam-card p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* ============================================
+   Contact Section with Gradient Dividers
+   ============================================ */
+
+.contact {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-weight: 700;
+  animation: fadeInUp 0.8s ease;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.contact-card {
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-top: 3px solid transparent;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)) !important;
+}
+
+.contact-card:nth-child(1) {
+  animation-delay: 0.1s;
+  border-top-color: #1abc9c;
+}
+.contact-card:nth-child(2) {
+  animation-delay: 0.2s;
+  border-top-color: #3498db;
+}
+.contact-card:nth-child(3) {
+  animation-delay: 0.3s;
+  border-top-color: #9b59b6;
+}
+.contact-card:nth-child(4) {
+  animation-delay: 0.4s;
+  border-top-color: #e74c3c;
+}
+.contact-card:nth-child(5) {
+  animation-delay: 0.5s;
+  border-top-color: #f39c12;
+}
+.contact-card:nth-child(6) {
+  animation-delay: 0.6s;
+  border-top-color: #2ecc71;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(26, 188, 156, 0.15);
+}
+
+.contact-card h3 {
+  color: #1abc9c;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-card p {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* ============================================
+   Footer with Signature Animation
+   ============================================ */
+
+.footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #bbb;
+  padding: 60px 0 20px;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Signature light bar animation */
+.signature-bar {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #1abc9c, transparent);
+  animation: signatureBar 3s ease-in-out infinite;
+}
+
+.like-button-container {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.like-toggle {
+  display: none;
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid #1abc9c;
+  border-radius: 25px;
+  color: #1abc9c;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(26, 188, 156, 0.2);
+}
+
+.like-button:hover {
+  box-shadow: 0 0 25px rgba(26, 188, 156, 0.5);
+  transform: translateY(-2px);
+}
+
+.like-toggle:checked + .like-button {
+  background-color: #1abc9c;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(26, 188, 156, 0.8);
+}
+
+.like-toggle:checked + .like-button .heart-icon {
+  animation: heartPulse 0.6s ease;
+}
+
+.heart-icon {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.footer p {
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer strong {
+  color: #1abc9c;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar.floating-navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    max-height: 300px;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid #ecf0f1;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 15px 20px;
+  }
+
+  .hero {
+    height: 400px;
+    margin-top: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .about h2,
+  .drivers h2,
+  .steam-section h2,
+  .contact h2 {
+    font-size: 28px;
+  }
+
+  .drivers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .driver-image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand h1 {
+    font-size: 18px;
+  }
+
+  .hero {
+    height: 350px;
+  }
+
+  .hero-content {
+    padding: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .about-grid,
+  .steam-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drivers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .driver-image {
+    height: 200px;
+  }
+
+  .about,
+  .drivers,
+  .steam-section,
+  .contact {
+    padding: 50px 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Floating Navigation Bar -->
+    <nav class="navbar floating-navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Light Haulage</h1>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#drivers">Drivers</a></li>
+                <li><a href="#steam">Steam</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with frosted glass panel -->
+    <section class="hero">
+        <div class="hero-content glass-panel">
+            <h1>Light Haulage</h1>
+            <p>Minimal. Futuristic. Professional.</p>
+            <button class="btn btn-primary">Join Us</button>
+        </div>
+    </section>
+
+    <!-- About Section with scroll-based fade -->
+    <section id="about" class="about scroll-fade">
+        <div class="container">
+            <h2>About Light Haulage</h2>
+            <p>Light Haulage is a minimalist VTC focused on quality over quantity. We believe in a streamlined approach to trucking with cutting-edge technology and professional standards. Join our elite community of drivers.</p>
+            <div class="about-grid">
+                <div class="about-item glass-panel">
+                    <h3>Minimal Design</h3>
+                    <p>Clean, efficient operations</p>
+                </div>
+                <div class="about-item glass-panel">
+                    <h3>Tech Forward</h3>
+                    <p>Modern tools and systems</p>
+                </div>
+                <div class="about-item glass-panel">
+                    <h3>Elite Community</h3>
+                    <p>Selective membership</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drivers Section with image grid and hover overlay -->
+    <section id="drivers" class="drivers scroll-fade">
+        <div class="container">
+            <h2>Our Drivers</h2>
+            <p>Meet our professional team</p>
+            <div class="drivers-grid">
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #1abc9c, #16a085);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver One</h3>
+                        <p>Lead Coordinator</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #3498db, #2980b9);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver Two</h3>
+                        <p>Route Manager</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver Three</h3>
+                        <p>Community Lead</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver Four</h3>
+                        <p>Operations</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #f39c12, #d68910);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver Five</h3>
+                        <p>Support Team</p>
+                    </div>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-image" style="background: linear-gradient(135deg, #2ecc71, #27ae60);"></div>
+                    <div class="driver-overlay">
+                        <h3>Driver Six</h3>
+                        <p>Events Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steam Section -->
+    <section id="steam" class="steam-section scroll-fade">
+        <div class="container">
+            <h2>Join on Steam</h2>
+            <p>Connect with our community</p>
+            <div class="steam-grid">
+                <div class="steam-card glass-panel">
+                    <h3>Euro Truck Simulator 2</h3>
+                    <p>Professional ETS2 operations</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit</a>
+                </div>
+                <div class="steam-card glass-panel">
+                    <h3>American Truck Simulator</h3>
+                    <p>Elite ATS convoys</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with gradient line dividers -->
+    <section id="contact" class="contact scroll-fade">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card glass-panel">
+                    <h3>Discord</h3>
+                    <p>Join our community server</p>
+                    <a href="https://discord.com" target="_blank" class="btn btn-secondary">Join</a>
+                </div>
+                <div class="contact-card glass-panel">
+                    <h3>TruckersMP</h3>
+                    <p>Visit our profile</p>
+                    <a href="https://truckersmp.com" target="_blank" class="btn btn-secondary">Visit</a>
+                </div>
+                <div class="contact-card glass-panel">
+                    <h3>Steam</h3>
+                    <p>Connect on Steam</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-secondary">Connect</a>
+                </div>
+                <div class="contact-card glass-panel">
+                    <h3>YouTube</h3>
+                    <p>Watch our content</p>
+                    <a href="https://youtube.com" target="_blank" class="btn btn-secondary">Subscribe</a>
+                </div>
+                <div class="contact-card glass-panel">
+                    <h3>Instagram</h3>
+                    <p>Follow our updates</p>
+                    <a href="https://instagram.com" target="_blank" class="btn btn-secondary">Follow</a>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Footer with signature animation -->
+    <footer class="footer">
+        <div class="signature-bar"></div>
+        <div class="container">
+            <!-- CSS-only like button -->
+            <div class="like-button-container">
+                <input type="checkbox" id="likeToggle" class="like-toggle">
+                <label for="likeToggle" class="like-button">
+                    <span class="heart-icon">❤️</span>
+                    <span class="like-text">Like this page</span>
+                </label>
+            </div>
+            <p>&copy; 2025 Light Haulage. All rights reserved.</p>
+            <p>Powered by <strong>Sapphire Development</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll-based fade effect
+        const scrollFadeElements = document.querySelectorAll('.scroll-fade');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        scrollFadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.8s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
