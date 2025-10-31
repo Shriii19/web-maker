@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Highway Horizon - Professional Trucking Community | ETS2 & ATS VTC</title>
+    <meta name="title" content="Highway Horizon - Professional Trucking Community | ETS2 & ATS VTC">
+    <meta name="description" content="Highway Horizon is a professional VTC dedicated to creating an immersive and realistic trucking experience. Join our community for ETS2 and ATS convoys.">
+    <meta name="keywords" content="Highway Horizon, VTC, Virtual Trucking Company, ETS2, ATS, Euro Truck Simulator 2, American Truck Simulator, TruckersMP, trucking convoys">
+    <meta name="author" content="Sapphire Development">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://highwayhorizon.com/">
+    <meta property="og:title" content="Highway Horizon - Professional Trucking Community">
+    <meta property="og:description" content="Highway Horizon is a professional VTC dedicated to creating an immersive and realistic trucking experience.">
+    <meta property="og:image" content="https://highwayhorizon.com/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://highwayhorizon.com/">
+    <meta property="twitter:title" content="Highway Horizon - Professional Trucking Community">
+    <meta property="twitter:description" content="Highway Horizon is a professional VTC dedicated to creating an immersive and realistic trucking experience.">
+    <meta property="twitter:image" content="https://highwayhorizon.com/assets/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://steamcommunity.com">
+    <link rel="preconnect" href="https://discord.com">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3498db">
+    
+    <style>
+/* ============================================
+   Highway Horizon - VTC Website Template
+   Color Palette: Light Gray (#f5f5f5), Sky Blue (#3498db), White (#fff)
+   Enhanced with animated clouds, glassmorphism, and cinematic effects
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   Glassmorphism Panel
+   ============================================ */
+
+.glass-panel {
+  background: rgba(52, 152, 219, 0.08) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(52, 152, 219, 0.2) !important;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Added animated clouds keyframes */
+@keyframes floatCloud1 {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+    opacity: 0;
+  }
+}
+
+@keyframes floatCloud2 {
+  0% {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px));
+    opacity: 0;
+  }
+}
+
+@keyframes floatCloud3 {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0;
+  }
+}
+
+/* Added fleet zoom animation */
+@keyframes fleetZoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+  }
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Navigation Bar
+   ============================================ */
+
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideInDown 0.5s ease;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.nav-brand h1 {
+  color: #3498db;
+  font-size: 24px;
+  animation: slideInLeft 0.6s ease;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #3498db;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================
+   Hero Section with Animated Clouds
+   ============================================ */
+
+.hero {
+  background: linear-gradient(rgba(52, 152, 219, 0.5), rgba(52, 152, 219, 0.5)),
+    url("/placeholder.svg?height=550&width=1200") center / cover;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Added animated clouds */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 100px;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 100px;
+}
+
+.cloud-1 {
+  width: 100px;
+  height: 40px;
+  top: 20%;
+  animation: floatCloud1 20s linear infinite;
+}
+
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 10px;
+}
+
+.cloud-1::after {
+  width: 60px;
+  height: 40px;
+  top: -15px;
+  right: 10px;
+}
+
+.cloud-2 {
+  width: 120px;
+  height: 45px;
+  top: 40%;
+  animation: floatCloud2 25s linear infinite;
+}
+
+.cloud-2::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 15px;
+}
+
+.cloud-2::after {
+  width: 70px;
+  height: 45px;
+  top: -20px;
+  right: 15px;
+}
+
+.cloud-3 {
+  width: 90px;
+  height: 35px;
+  top: 60%;
+  animation: floatCloud3 22s linear infinite;
+}
+
+.cloud-3::before {
+  width: 45px;
+  height: 45px;
+  top: -22px;
+  left: 8px;
+}
+
+.cloud-3::after {
+  width: 55px;
+  height: 35px;
+  top: -12px;
+  right: 8px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 600px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero-content h2 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5);
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #3498db;
+  border: 2px solid #3498db;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: #3498db;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+/* ============================================
+   About Section
+   ============================================ */
+
+.about {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.about h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+  animation: fadeInUp 0.8s ease;
+}
+
+.about > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #666;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.about-card {
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  border-top: 4px solid #3498db;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.about-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.about-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.about-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2);
+  border-top-color: #2980b9;
+}
+
+.about-card h3 {
+  color: #3498db;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.about-card p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* ============================================
+   Fleet Section with Zoom Hover
+   ============================================ */
+
+.fleet {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+}
+
+.fleet h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #333;
+  animation: fadeInUp 0.8s ease;
+}
+
+.fleet > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #666;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.fleet-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.fleet-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.fleet-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.fleet-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.fleet-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.fleet-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.fleet-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.fleet-image {
+  width: 100%;
+  height: 150px;
+  transition: all 0.3s ease;
+}
+
+.fleet-card:hover .fleet-image {
+  animation: fleetZoom 0.6s ease;
+}
+
+.fleet-card h3 {
+  color: #3498db;
+  margin: 15px 0 5px;
+  font-size: 16px;
+}
+
+.fleet-card p {
+  color: #666;
+  font-size: 13px;
+  padding: 0 15px 15px;
+}
+
+.fleet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(52, 152, 219, 0.25);
+}
+
+/* ============================================
+   Gallery Section
+   ============================================ */
+
+.gallery {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.gallery h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #333;
+  animation: fadeInUp 0.8s ease;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-grid img:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.gallery-grid img:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.gallery-grid img:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.gallery-grid img:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.gallery-grid img:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.gallery-grid img:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+}
+
+/* ============================================
+   Steam Section
+   ============================================ */
+
+.steam-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+
+.steam-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 15px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.steam-section > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #bbb;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.steam-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.steam-card {
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.steam-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.steam-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.steam-card:hover {
+  transform: translateY(-8px);
+  border-color: #3498db;
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
+}
+
+.steam-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #3498db;
+}
+
+.steam-card p {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* ============================================
+   Join Us Section
+   ============================================ */
+
+.join-us {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
+  text-align: center;
+}
+
+.join-us h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.join-us > .container > p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.join-form input,
+.join-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.join-form input:focus,
+.join-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.join-form input::placeholder,
+.join-form textarea::placeholder {
+  color: #999;
+}
+
+.join-form button {
+  background-color: #fff;
+  color: #3498db;
+}
+
+.join-form button:hover {
+  background-color: #f0f0f0;
+}
+
+/* ============================================
+   Footer with Like Button
+   ============================================ */
+
+.footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #fff;
+  padding: 60px 0 20px;
+  border-top: 3px solid #3498db;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #3498db;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #bbb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-section a:hover {
+  color: #3498db;
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* CSS-only like button */
+.like-button-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.like-toggle {
+  display: none;
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid #3498db;
+  border-radius: 25px;
+  color: #3498db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+}
+
+.like-button:hover {
+  box-shadow: 0 0 25px rgba(52, 152, 219, 0.5);
+  transform: translateY(-2px);
+}
+
+.like-toggle:checked + .like-button {
+  background-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(52, 152, 219, 0.8);
+}
+
+.like-toggle:checked + .like-button .heart-icon {
+  animation: heartPulse 0.6s ease;
+}
+
+.heart-icon {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin-bottom: 5px;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    max-height: 300px;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 15px 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .about h2,
+  .fleet h2,
+  .gallery h2,
+  .join-us h2,
+  .steam-section h2 {
+    font-size: 28px;
+  }
+
+  .fleet-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .gallery-grid img {
+    height: 150px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-brand h1 {
+    font-size: 18px;
+  }
+
+  .hero {
+    height: 350px;
+  }
+
+  .hero-content h2 {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .about-grid,
+  .fleet-grid,
+  .steam-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    height: 200px;
+  }
+
+  .about,
+  .fleet,
+  .gallery,
+  .join-us,
+  .steam-section {
+    padding: 50px 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Highway Horizon</h1>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#fleet">Fleet</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#steam">Steam</a></li>
+                <li><a href="#join">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with animated clouds -->
+    <section class="hero">
+        <div class="clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Welcome to Highway Horizon</h2>
+            <p>Professional Trucking Community for Euro Truck Simulator 2 & American Truck Simulator</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Join Convoy</button>
+                <button class="btn btn-secondary">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with glassmorphism -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Highway Horizon</h2>
+            <p>Highway Horizon is a professional VTC dedicated to creating an immersive and realistic trucking experience. We pride ourselves on professionalism, community, and unforgettable journeys across virtual highways.</p>
+            <div class="about-grid">
+                <div class="about-card glass-panel">
+                    <h3>Professional</h3>
+                    <p>Organized convoys with experienced drivers and realistic routes.</p>
+                </div>
+                <div class="about-card glass-panel">
+                    <h3>Community</h3>
+                    <p>Join a welcoming community of trucking enthusiasts from around the world.</p>
+                </div>
+                <div class="about-card glass-panel">
+                    <h3>Realistic</h3>
+                    <p>Authentic trucking experience with attention to detail and immersion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section with zoom hover effect -->
+    <section id="fleet" class="fleet">
+        <div class="container">
+            <h2>Our Fleet</h2>
+            <p>Explore our diverse collection of premium trucks</p>
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #3498db, #2980b9);"></div>
+                    <h3>Volvo FH16</h3>
+                    <p>Premium European hauler</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #2ecc71, #27ae60);"></div>
+                    <h3>Scania R730</h3>
+                    <p>High-performance logistics</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                    <h3>MAN TGX</h3>
+                    <p>Reliable workhorse</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #f39c12, #d68910);"></div>
+                    <h3>Peterbilt 579</h3>
+                    <p>American icon</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);"></div>
+                    <h3>Kenworth T680</h3>
+                    <p>Modern American power</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-image" style="background: linear-gradient(135deg, #1abc9c, #16a085);"></div>
+                    <h3>Freightliner Cascadia</h3>
+                    <p>Fuel-efficient hauler</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="/placeholder.svg?height=250&width=250" alt="Convoy on European highway" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Truck at sunset" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Team convoy photo" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Night driving scene" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Mountain pass convoy" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="City delivery" loading="lazy" width="250" height="250">
+            </div>
+        </div>
+    </section>
+
+    <!-- Steam Section -->
+    <section id="steam" class="steam-section">
+        <div class="container">
+            <h2>Join on Steam</h2>
+            <p>Connect with our community on Steam and access exclusive content, updates, and community features.</p>
+            <div class="steam-content">
+                <div class="steam-card glass-panel">
+                    <h3>Euro Truck Simulator 2</h3>
+                    <p>Join our ETS2 community and participate in organized convoys across Europe.</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit Steam Community</a>
+                </div>
+                <div class="steam-card glass-panel">
+                    <h3>American Truck Simulator</h3>
+                    <p>Experience ATS convoys with our dedicated American trucking operations.</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit Steam Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section id="join" class="join-us">
+        <div class="container">
+            <h2>Join Highway Horizon</h2>
+            <p>Ready to become part of our community? Apply now and start your journey with us!</p>
+            <form class="join-form">
+                <input type="text" placeholder="Your In-Game Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Tell us about yourself..." rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer with like button -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#fleet">Fleet</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul class="social-links">
+                        <!-- Replace with your Discord link -->
+                        <li><a href="https://discord.com" target="_blank" title="Discord">Discord</a></li>
+                        <!-- Replace with your TruckersMP link -->
+                        <li><a href="https://truckersmp.com" target="_blank" title="TruckersMP">TMP</a></li>
+                        <!-- Replace with your Steam link -->
+                        <li><a href="https://steamcommunity.com" target="_blank" title="Steam">Steam</a></li>
+                        <!-- Replace with your YouTube link -->
+                        <li><a href="https://youtube.com" target="_blank" title="YouTube">YouTube</a></li>
+                        <!-- Replace with your Instagram link -->
+                        <li><a href="https://instagram.com" target="_blank" title="Instagram">Instagram</a></li>
+                                            </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CSS-only like button -->
+            <div class="like-button-container">
+                <input type="checkbox" id="likeToggle" class="like-toggle">
+                <label for="likeToggle" class="like-button">
+                    <span class="heart-icon">❤️</span>
+                    <span class="like-text">Like this page</span>
+                </label>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Highway Horizon. All rights reserved.</p>
+                <p>Powered by <strong>Sapphire Development</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
