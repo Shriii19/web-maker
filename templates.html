@@ -121,89 +121,20 @@
         
         <!-- Templates Grid -->
         <div class="templates-grid fade-in-up delay-2">
-          
-          <!-- 2. Modern VTC Dashboard (Most Popular) -->
-          <article class="template-card" data-category="dashboard">
-            <div class="template-preview-img">
-              <div class="popular-badge">🔥 Popular</div>
-              <div class="preview-placeholder" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="white" opacity="0.9">
-                  <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm5-18v4h3V3h-3z"/>
+          <div class="empty-templates-state">
+            <div class="empty-state-icon">🚀</div>
+            <h3 class="empty-state-title">Templates Coming Soon!</h3>
+            <p class="empty-state-description">We're preparing amazing VTC templates for you. Check back soon or explore our Pro Templates.</p>
+            <div class="empty-state-actions">
+              <a href="pro-templates.html" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
-                <span style="color: white;">Modern Dashboard</span>
-              </div>
-              <div class="template-overlay">
-                <button class="quick-preview-btn" onclick="previewTemplate('vtc-dashboard')">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                  </svg>
-                  Quick Preview
-                </button>
-              </div>
+                View Pro Templates
+              </a>
+              <a href="create.html" class="btn btn-outline">Start From Scratch</a>
             </div>
-            <div class="template-info">
-              <div class="template-header">
-                <h3 class="template-title">Modern VTC Dashboard</h3>
-                <span class="template-category">Dashboard</span>
-              </div>
-              <p class="template-description">Dark theme dashboard with purple/cyan gradients, interactive stats, and comprehensive modal system.</p>
-              <div class="template-features">
-                <span class="feature-tag">Real-time Stats</span>
-                <span class="feature-tag">Driver Management</span>
-                <span class="feature-tag">Dark Theme</span>
-              </div>
-              <div class="template-actions">
-                <button class="template-select-btn btn" data-template="vtc-dashboard" onclick="selectTemplate('vtc-dashboard')">
-                  <div class="btn-content">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span class="btn-text">Use Template</span>
-                    <span class="btn-subtext">Open in Builder</span>
-                  </div>
-                </button>
-                <div class="template-secondary-actions">
-                  <button class="template-preview-btn" onclick="previewTemplate('vtc-dashboard')">Preview</button>
-                  <button class="template-info-btn" onclick="showTemplateInfo('vtc-dashboard')">Info</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4. More Templates Coming Soon -->
-          <article class="template-card coming-soon-card" data-category="dashboard">
-            <div class="template-preview-img">
-              <div class="preview-placeholder" style="background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%); opacity: 0.7;">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="white" opacity="0.5">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
-                </svg>
-                <span style="color: white; opacity: 0.8;">Coming Soon...</span>
-              </div>
-            </div>
-            <div class="template-info">
-              <div class="template-header">
-                <h3 class="template-title">More Templates Coming</h3>
-                <span class="template-category">Various • Coming Soon</span>
-              </div>
-              <p class="template-description">We're developing more amazing VTC templates! Expect analytics dashboards, mobile-first designs, and multi-purpose layouts.</p>
-              <div class="template-features">
-                <span class="feature-tag">Analytics Dashboard</span>
-                <span class="feature-tag">Mobile-First</span>
-                <span class="feature-tag">Multi-Purpose</span>
-              </div>
-              <div class="template-actions">
-                <button class="template-select-btn btn" style="opacity: 0.6;" disabled>
-                  <div class="btn-content">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span class="btn-text">Coming Soon</span>
-                    <span class="btn-subtext">In Development</span>
-                  </div>
-                </button>
-                <div class="template-secondary-actions">
-                  <button class="template-preview-btn" disabled style="opacity: 0.6;">Preview</button>
-                  <button class="template-info-btn" onclick="showComingSoonInfo()">Info</button>
-                </div>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
           
       </div>
