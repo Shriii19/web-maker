@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Midnight Convoy - Elite Virtual Trucking Company | ETS2 & ATS VTC</title>
+    <meta name="title" content="Midnight Convoy - Elite Virtual Trucking Company | ETS2 & ATS VTC">
+    <meta name="description" content="Midnight Convoy represents the pinnacle of professional trucking communities. Join our elite night operations for ETS2 and ATS premium convoys.">
+    <meta name="keywords" content="Midnight Convoy, VTC, Virtual Trucking Company, ETS2, ATS, Euro Truck Simulator 2, American Truck Simulator, TruckersMP, night convoys, elite trucking">
+    <meta name="author" content="Sapphire Development">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://midnightconvoy.com/">
+    <meta property="og:title" content="Midnight Convoy - Elite Virtual Trucking Company">
+    <meta property="og:description" content="Midnight Convoy represents the pinnacle of professional trucking communities. Join our elite night operations.">
+    <meta property="og:image" content="https://midnightconvoy.com/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://midnightconvoy.com/">
+    <meta property="twitter:title" content="Midnight Convoy - Elite Virtual Trucking Company">
+    <meta property="twitter:description" content="Midnight Convoy represents the pinnacle of professional trucking communities. Join our elite night operations.">
+    <meta property="twitter:image" content="https://midnightconvoy.com/assets/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://steamcommunity.com">
+    <link rel="preconnect" href="https://discord.com">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#9b59b6">
+    
+    <style>
+/* ============================================
+   Midnight Convoy - VTC Website Template
+   Color Palette: Black (#1a1a1a), Neon Purple (#9b59b6), Deep Violet (#6c3483)
+   Enhanced with cinematic animations and glassmorphism
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background-color: #0a0a0a;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   Glassmorphism Panel
+   ============================================ */
+
+.glass-panel {
+  background: rgba(155, 89, 182, 0.08) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(155, 89, 182, 0.2) !important;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Added neon glow pulse animation */
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(155, 89, 182, 0.3), 0 0 30px rgba(155, 89, 182, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.6), 0 0 50px rgba(155, 89, 182, 0.3);
+  }
+}
+
+/* Added neon flicker animation for hamburger */
+@keyframes neonFlicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: 0 0 10px rgba(155, 89, 182, 0.8), 0 0 20px rgba(155, 89, 182, 0.5);
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 5px rgba(155, 89, 182, 0.3);
+    opacity: 0.8;
+  }
+}
+
+/* Added shimmer line animation for footer */
+@keyframes shimmerLine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Added heart pulse animation for like button */
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* Added light trail animation */
+@keyframes lightTrail {
+  0% {
+    box-shadow: 0 0 0 rgba(155, 89, 182, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.8), 0 0 60px rgba(155, 89, 182, 0.4);
+  }
+}
+
+/* ============================================
+   Navigation Bar
+   ============================================ */
+
+.navbar {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-bottom: 2px solid #9b59b6;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideInDown 0.5s ease;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.2);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.nav-brand h1 {
+  color: #9b59b6;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: slideInLeft 0.6s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #9b59b6;
+  text-shadow: 0 0 10px rgba(155, 89, 182, 0.8);
+}
+
+/* Enhanced hamburger menu with neon flicker effect */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #9b59b6;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+}
+
+.hamburger.active span {
+  animation: neonFlicker 0.5s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(0, 0, 0, 0.9)),
+    url("/placeholder.svg?height=550&width=1200") center / cover;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Added motion blur effect */
+.hero-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 1;
+  animation: fadeInUp 1s ease;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 700px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero-content h2 {
+  font-size: 56px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 30px rgba(155, 89, 182, 0.8), 0 0 60px rgba(155, 89, 182, 0.4);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #b0b0b0;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  padding: 12px 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background-color: #9b59b6;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.3);
+  border: 1px solid #9b59b6;
+}
+
+.btn-primary:hover {
+  background-color: #8e44ad;
+  box-shadow: 0 0 30px rgba(155, 89, 182, 0.8), 0 0 50px rgba(155, 89, 182, 0.4);
+  transform: translateY(-3px);
+  animation: lightTrail 0.6s ease;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #9b59b6;
+  border: 2px solid #9b59b6;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: #9b59b6;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(155, 89, 182, 0.8);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   About Section
+   ============================================ */
+
+.about {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-top: 1px solid #9b59b6;
+  border-bottom: 1px solid #9b59b6;
+  position: relative;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #9b59b6, transparent);
+}
+
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.about-content > p {
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #b0b0b0;
+  line-height: 1.8;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature {
+  padding: 25px;
+  border-left: 3px solid #9b59b6;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.1);
+}
+
+.feature:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.feature:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.feature:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.feature:hover {
+  box-shadow: 0 0 30px rgba(155, 89, 182, 0.4);
+  transform: translateY(-8px);
+  border-left-color: #8e44ad;
+}
+
+.feature h3 {
+  color: #9b59b6;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.feature p {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+/* ============================================
+   Operations Section
+   ============================================ */
+
+.operations {
+  padding: 80px 0;
+  background-color: #0a0a0a;
+}
+
+.operations h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.operations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.operation-card {
+  padding: 25px;
+  border: 1px solid #9b59b6;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.1);
+}
+
+.operation-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.operation-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.operation-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.operation-card:hover {
+  box-shadow: 0 0 40px rgba(155, 89, 182, 0.5);
+  transform: translateY(-10px);
+  border-color: #8e44ad;
+}
+
+.operation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.operation-card h3 {
+  color: #9b59b6;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge {
+  background-color: #9b59b6;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  animation: glowPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.6);
+}
+
+.operation-card p {
+  color: #b0b0b0;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* ============================================
+   Team Section
+   ============================================ */
+
+.team {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-top: 1px solid #9b59b6;
+}
+
+.team h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+}
+
+.team-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.team-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.team-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.team-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 3px solid #9b59b6;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.3);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-image {
+  box-shadow: 0 0 50px rgba(155, 89, 182, 0.8);
+  transform: scale(1.15) rotate(5deg);
+}
+
+.team-card h3 {
+  color: #9b59b6;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.team-card p {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+/* ============================================
+   Gallery Section
+   ============================================ */
+
+.gallery {
+  padding: 80px 0;
+  background-color: #0a0a0a;
+}
+
+.gallery h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border: 2px solid #9b59b6;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.2);
+}
+
+.gallery-grid img:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.gallery-grid img:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.gallery-grid img:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.gallery-grid img:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.gallery-grid img:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.gallery-grid img:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 0 40px rgba(155, 89, 182, 0.6);
+  border-color: #8e44ad;
+}
+
+/* ============================================
+   Steam Section
+   ============================================ */
+
+.steam-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #fff;
+  border-top: 1px solid #9b59b6;
+  border-bottom: 1px solid #9b59b6;
+}
+
+.steam-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.steam-section > .container > p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #b0b0b0;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.steam-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.steam-card {
+  padding: 30px;
+  border-radius: 3px;
+  border: 1px solid rgba(155, 89, 182, 0.4);
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.1);
+}
+
+.steam-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.steam-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.steam-card:hover {
+  transform: translateY(-10px);
+  border-color: #9b59b6;
+  box-shadow: 0 0 40px rgba(155, 89, 182, 0.4);
+}
+
+.steam-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.steam-card p {
+  margin-bottom: 20px;
+  color: #b0b0b0;
+}
+
+/* ============================================
+   Join Us Section
+   ============================================ */
+
+.join-us {
+  padding: 80px 0;
+  background-color: #0a0a0a;
+  border-top: 1px solid #9b59b6;
+  text-align: center;
+}
+
+.join-us h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeInUp 0.8s ease;
+  text-shadow: 0 0 15px rgba(155, 89, 182, 0.4);
+}
+
+.join-us > .container > p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #b0b0b0;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.join-form input,
+.join-form textarea,
+.join-form select {
+  padding: 12px;
+  border: 1px solid #9b59b6;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.join-form input:focus,
+.join-form textarea:focus,
+.join-form select:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+  border-color: #8e44ad;
+  transform: translateY(-2px);
+}
+
+.join-form input::placeholder,
+.join-form textarea::placeholder {
+  color: #666;
+}
+
+/* ============================================
+   Footer with Shimmer and Like Button
+   ============================================ */
+
+.footer {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #b0b0b0;
+  padding: 60px 0 20px;
+  border-top: 2px solid #9b59b6;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Added shimmer line animation */
+.footer-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #9b59b6, transparent);
+  animation: shimmerLine 3s ease-in-out infinite;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #9b59b6;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-section a:hover {
+  color: #9b59b6;
+  text-shadow: 0 0 10px rgba(155, 89, 182, 0.8);
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Added CSS-only like button with toggle functionality */
+.like-button-container {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.like-toggle {
+  display: none;
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid #9b59b6;
+  border-radius: 25px;
+  color: #9b59b6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.2);
+}
+
+.like-button:hover {
+  box-shadow: 0 0 25px rgba(155, 89, 182, 0.5);
+  transform: translateY(-2px);
+}
+
+.like-toggle:checked + .like-button {
+  background-color: #9b59b6;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(155, 89, 182, 0.8);
+}
+
+.like-toggle:checked + .like-button .heart-icon {
+  animation: heartPulse 0.6s ease;
+}
+
+.heart-icon {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #9b59b6;
+  padding-top: 20px;
+  color: #666;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-bottom p {
+  margin-bottom: 5px;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #0f0f0f;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-bottom: 1px solid #9b59b6;
+  }
+
+  .nav-links.active {
+    max-height: 300px;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 15px 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .about-content h2,
+  .operations h2,
+  .team h2,
+  .gallery h2,
+  .join-us h2,
+  .steam-section h2 {
+    font-size: 28px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .gallery-grid img {
+    height: 150px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-brand h1 {
+    font-size: 18px;
+  }
+
+  .hero {
+    height: 350px;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .about-features,
+  .operations-grid,
+  .team-grid,
+  .steam-content {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    height: 200px;
+  }
+
+  .about,
+  .operations,
+  .team,
+  .gallery,
+  .join-us,
+  .steam-section {
+    padding: 50px 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Midnight Convoy</h1>
+            </div>
+            <!-- Added neon flicker effect to hamburger menu -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#operations">Operations</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#steam">Steam</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with motion blur effect -->
+    <section class="hero">
+        <div class="hero-blur"></div>
+        <div class="hero-content">
+            <h2>Midnight Convoy</h2>
+            <p>Premium Trucking Experience for Elite Drivers</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Apply Now</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with glassmorphism -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Midnight Convoy</h2>
+                <p>Midnight Convoy represents the pinnacle of professional trucking communities. We operate with precision, professionalism, and a commitment to delivering an unparalleled virtual trucking experience. Our drivers are carefully selected to maintain the highest standards of conduct and skill.</p>
+                <!-- Enhanced feature cards with glassmorphism -->
+                <div class="about-features">
+                    <div class="feature glass-panel">
+                        <h3>Elite Selection</h3>
+                        <p>Handpicked drivers who meet our rigorous standards</p>
+                    </div>
+                    <div class="feature glass-panel">
+                        <h3>Premium Routes</h3>
+                        <p>Exclusive convoy routes across Europe and America</p>
+                    </div>
+                    <div class="feature glass-panel">
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated support team available around the clock</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operations Section -->
+    <section id="operations" class="operations">
+        <div class="container">
+            <h2>Operations Schedule</h2>
+            <div class="operations-grid">
+                <div class="operation-card glass-panel">
+                    <div class="operation-header">
+                        <h3>European Night Runs</h3>
+                        <span class="badge">Active</span>
+                    </div>
+                    <p><strong>Frequency:</strong> Daily 20:00 - 23:00 UTC</p>
+                    <p><strong>Routes:</strong> Berlin, Prague, Vienna, Budapest</p>
+                    <p><strong>Max Drivers:</strong> 20</p>
+                </div>
+                <div class="operation-card glass-panel">
+                    <div class="operation-header">
+                        <h3>American Highways</h3>
+                        <span class="badge">Active</span>
+                    </div>
+                    <p><strong>Frequency:</strong> Weekends 18:00 - 21:00 UTC</p>
+                    <p><strong>Routes:</strong> Cross-country expeditions</p>
+                    <p><strong>Max Drivers:</strong> 25</p>
+                </div>
+                <div class="operation-card glass-panel">
+                    <div class="operation-header">
+                        <h3>Special Operations</h3>
+                        <span class="badge">Scheduled</span>
+                    </div>
+                    <p><strong>Frequency:</strong> Monthly special convoys</p>
+                    <p><strong>Routes:</strong> Challenging and scenic routes</p>
+                    <p><strong>Max Drivers:</strong> 30</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2>Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);"></div>
+                    <h3>Commander</h3>
+                    <p>VTC Founder & Lead</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image" style="background: linear-gradient(135deg, #3498db, #2980b9);"></div>
+                    <h3>Operations Manager</h3>
+                    <p>Route Planning & Logistics</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image" style="background: linear-gradient(135deg, #e74c3c, #c0392b);"></div>
+                    <h3>Community Lead</h3>
+                    <p>Member Support & Events</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2>Convoy Highlights</h2>
+            <div class="gallery-grid">
+                <img src="/placeholder.svg?height=250&width=250" alt="Night convoy on highway" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Team formation driving" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Mountain pass convoy" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="City night driving" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Scenic route convoy" loading="lazy" width="250" height="250">
+                <img src="/placeholder.svg?height=250&width=250" alt="Convoy celebration" loading="lazy" width="250" height="250">
+            </div>
+        </div>
+    </section>
+
+    <!-- Steam Section -->
+    <section id="steam" class="steam-section">
+        <div class="container">
+            <h2>Join on Steam</h2>
+            <p>Connect with our elite community on Steam and access exclusive premium content.</p>
+            <div class="steam-content">
+                <div class="steam-card glass-panel">
+                    <h3>Euro Truck Simulator 2</h3>
+                    <p>Premium ETS2 operations with elite drivers and exclusive routes.</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit Steam Community</a>
+                </div>
+                <div class="steam-card glass-panel">
+                    <h3>American Truck Simulator</h3>
+                    <p>Exclusive ATS convoys for our most dedicated members.</p>
+                    <a href="https://steamcommunity.com" target="_blank" class="btn btn-primary">Visit Steam Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join-us">
+        <div class="container">
+            <h2>Join Midnight Convoy</h2>
+            <p>Are you ready to join an elite trucking community? Submit your application below.</p>
+            <form class="join-form">
+                <input type="text" placeholder="In-Game Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <select required>
+                    <option value="">Select Your Experience Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                <textarea placeholder="Why do you want to join Midnight Convoy?" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer with like button and shimmer animation -->
+    <footer class="footer">
+        <div class="footer-shimmer"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#operations">Operations</a></li>
+                        <li><a href="#team">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="social-links">
+                        <!-- Replace with your Discord link -->
+                        <li><a href="https://discord.com" target="_blank" title="Discord">Discord</a></li>
+                        <!-- Replace with your TruckersMP link -->
+                        <li><a href="https://truckersmp.com" target="_blank" title="TruckersMP">TMP</a></li>
+                        <!-- Replace with your Steam link -->
+                        <li><a href="https://steamcommunity.com" target="_blank" title="Steam">Steam</a></li>
+                        <!-- Replace with your YouTube link -->
+                        <li><a href="https://youtube.com" target="_blank" title="YouTube">YouTube</a></li>
+                        <!-- Replace with your Instagram link -->
+                        <li><a href="https://instagram.com" target="_blank" title="Instagram">Instagram</a></li>
+                                            </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Added CSS-only like button with toggle functionality -->
+            <div class="like-button-container">
+                <input type="checkbox" id="likeToggle" class="like-toggle">
+                <label for="likeToggle" class="like-button">
+                    <span class="heart-icon">❤️</span>
+                    <span class="like-text">Like this page</span>
+                </label>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Midnight Convoy. All rights reserved.</p>
+                <p>Powered by <strong>Sapphire Development</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
