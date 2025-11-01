@@ -11,8 +11,9 @@
 
   // Error tracking storage
   let errorCount = 0;
-  const maxErrors = 10;
+  const maxErrors = 3; // Reduced from 10
   const errorLog = [];
+  const shownErrors = new Set(); // Track which errors we've already shown
 
   // Create error notification system
   function createErrorNotification() {
@@ -71,7 +72,17 @@
 
   // Log error with details
   function logError(error, context = '') {
+    // Create a unique error signature to prevent duplicates
+    const errorSignature = `${error.message || String(error)}-${context}`;
+    
+    // Skip if we've already shown this error
+    if (shownErrors.has(errorSignature)) {
+      return;
+    }
+    
+    shownErrors.add(errorSignature);
     errorCount++;
+    
     const errorInfo = {
       timestamp: new Date().toISOString(),
       message: error.message || String(error),
@@ -120,13 +131,18 @@
   function handleResourceError(event) {
     if (event.target && event.target !== window) {
       const resource = event.target;
+      
+      // Ignore certain resource types that commonly fail
+      if (resource.tagName === 'IMG') {
+        return; // Don't show errors for missing images
+      }
+      
       const errorMsg = `Failed to load ${resource.tagName.toLowerCase()}: ${resource.src || resource.href || 'unknown'}`;
       logError(new Error(errorMsg), 'Resource Load Error');
       
       // Try to provide fallbacks for critical resources
       if (resource.tagName === 'SCRIPT') {
         console.warn('Script failed to load:', resource.src);
-        showErrorNotification('Some features may not work correctly.', 'warning');
       } else if (resource.tagName === 'LINK' && resource.rel === 'stylesheet') {
         console.warn('Stylesheet failed to load:', resource.href);
       }
