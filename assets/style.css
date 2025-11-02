@@ -3598,17 +3598,87 @@ text-align: center;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(124, 58, 237, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
+  gap: 0.75rem;
+  padding: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
+.template-overlay .btn {
+  width: 100%;
+  max-width: 220px;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.template-overlay .btn-primary {
+  background: white;
+  color: var(--primary);
+  border: 2px solid white;
+}
+
+.template-overlay .btn-primary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+.template-overlay .btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.template-overlay .btn-outline:hover {
+  background: white;
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
 .template-card:hover .template-overlay {
   opacity: 1;
+}
+
+/* Template Actions */
+.template-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-text-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+}
+
+.btn-text-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
 }
 
 .template-info {
