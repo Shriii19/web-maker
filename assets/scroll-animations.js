@@ -11,9 +11,9 @@
 
   // Configuration
   const config = {
-    threshold: 0.15, // Percentage of element visible before triggering
+    threshold: 0.15, // Percentage of element visible before triggering (15% visibility)
     rootMargin: '0px 0px -50px 0px', // Trigger slightly before element enters viewport
-    once: true // Animate only once
+    once: true // Animate only once (improves performance)
   };
 
   // Check if Intersection Observer is supported
@@ -33,10 +33,11 @@
    */
   const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
+      // Check if element is visible in viewport
       if (entry.isIntersecting) {
         const element = entry.target;
         
-        // Add revealed class for scroll-reveal elements
+        // Add revealed class for scroll-reveal elements (triggers CSS animation)
         if (element.classList.contains('scroll-reveal') ||
             element.classList.contains('scroll-fade') ||
             element.classList.contains('scroll-slide-left') ||
@@ -88,7 +89,7 @@
       .scroll-zoom
     `);
 
-    // Observe each element
+    // Observe each element (starts tracking their visibility)
     animatedElements.forEach(element => {
       observer.observe(element);
     });
@@ -340,7 +341,7 @@
    * Initialize all animations
    */
   const init = () => {
-    // Check for reduced motion preference
+    // Check for reduced motion preference (accessibility feature for users with motion sensitivity)
     if (prefersReducedMotion()) {
       console.log('⚠️ Reduced motion preference detected. Animations disabled.');
       return;
