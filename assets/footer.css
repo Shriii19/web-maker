@@ -142,7 +142,7 @@
 .footer-social-link:hover {
   background: var(--footer-accent);
   border-color: var(--footer-accent);
-  color: white;
+  color: var(--footer-heading);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
@@ -272,7 +272,7 @@
 .newsletter-button {
   padding: 0.875rem 1.5rem;
   background: var(--footer-accent);
-  color: white;
+  color: var(--footer-heading);
   border: none;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -402,7 +402,7 @@
 .theme-toggle:hover {
   background: var(--footer-accent);
   border-color: var(--footer-accent);
-  color: white;
+  color: var(--footer-heading);
   transform: scale(1.05);
 }
 
