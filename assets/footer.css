@@ -578,16 +578,22 @@
    FINAL OVERRIDES - Eliminate All White Backgrounds
    ========================================== */
 
-/* Force dark background on the footer itself - highest priority */
+/* Force dark background on the footer itself - highest priority
+   This prevents any white background from the body element from showing through.
+   The !important flags ensure these styles override any conflicting styles from parent elements.
+   The isolation property creates a new stacking context to prevent bleed-through. */
 body .site-footer {
-  background: #0f172a !important;
-  background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
-  margin: 0 !important;
-  border-top: 1px solid rgba(148, 163, 184, 0.1);
-  isolation: isolate;
+  background: #0f172a !important; /* Solid dark slate base color */
+  background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important; /* Subtle gradient for depth */
+  margin: 0 !important; /* Remove any margins that could expose white background */
+  border-top: 1px solid rgba(148, 163, 184, 0.1); /* Subtle separator line */
+  isolation: isolate; /* Create new stacking context to prevent background bleed */
 }
 
-/* Force transparent background on all footer children */
+/* Force transparent background on all footer children
+   This ensures no child elements create unwanted white boxes or panels.
+   All elements inherit the dark footer background, creating a uniform appearance.
+   The newsletter-status div is excluded as it needs its own colored background for success/error messages. */
 .site-footer .footer-container,
 .site-footer .footer-main,
 .site-footer .footer-brand,
@@ -599,7 +605,7 @@ body .site-footer {
 .site-footer li,
 .site-footer form,
 .site-footer div:not(.newsletter-status) {
-  background: transparent !important;
+  background: transparent !important; /* Inherit footer's dark background */
 }
 
 /* Ensure inputs have proper dark background */
