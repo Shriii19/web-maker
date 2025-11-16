@@ -244,6 +244,38 @@ input, button, textarea, select {
   width: 100%;
 }
 
+/* Back Link Button */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--animation-fast), box-shadow var(--animation-fast), background var(--animation-fast);
+}
+
+.back-link:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.back-link:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.back-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* Enhanced Navigation - Mobile First */
 .navbar {
   background: rgba(255, 255, 255, 0);
