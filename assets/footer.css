@@ -392,6 +392,7 @@
   flex-wrap: wrap;
   background: transparent;
   text-align: center;
+  flex-direction: column;
 }
 
 .footer-copyright {
