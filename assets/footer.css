@@ -465,9 +465,13 @@
 
 /* Tablet (iPad, etc.) */
 @media (max-width: 1024px) {
+  .footer-container {
+    padding: 0 1.75rem;
+  }
+
   .footer-main {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 2rem;
+    gap: 2.5rem 2rem;
   }
 
   .footer-brand {
@@ -477,77 +481,152 @@
     margin: 0 auto;
   }
 
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-tagline {
+    max-width: 500px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
   .footer-links {
     text-align: center;
+  }
+
+  .footer-links-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-bottom {
+    gap: 1.5rem;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .site-footer {
-    padding: 3rem 0 0;
+    padding: 2.5rem 0 0;
   }
 
   .footer-container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
 
   .footer-main {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+    padding-bottom: 2rem;
   }
 
   .footer-brand {
     grid-column: 1;
     max-width: 100%;
     text-align: center;
+    margin-bottom: 0.5rem;
   }
 
   .footer-logo {
     justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-logo svg {
+    width: 28px;
+    height: 28px;
   }
 
   .footer-tagline {
     margin-left: auto;
     margin-right: auto;
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 
   .footer-socials {
     justify-content: center;
     margin: 0 auto;
+    gap: 1rem;
   }
 
   .footer-social-link {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 
   .footer-links {
     text-align: center;
   }
 
+  .footer-links-title {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links-list li {
+    margin-bottom: 0;
+  }
+
+  .footer-links-list a {
+    font-size: 0.9rem;
+    padding: 0.25rem;
+  }
+
   .footer-links-list a:hover {
     transform: none;
+  }
+
+  .footer-links-list a::after {
+    display: none;
   }
 
   .newsletter-form {
     max-width: 100%;
   }
 
+  .newsletter-input {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.9rem;
+  }
+
   .newsletter-button {
     width: 100%;
-    padding: 1rem;
+    padding: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
+    gap: 1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
   }
 
   .footer-legal {
-    flex-direction: column;
-    gap: 0.75rem;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .footer-legal a {
+    font-size: 0.85rem;
   }
 
   /* Disable animations on mobile for performance */
@@ -629,23 +708,91 @@ body .site-footer {
 
 /* Small mobile */
 @media (max-width: 480px) {
+  .site-footer {
+    padding: 2rem 0 0;
+  }
+
   .footer-container {
     padding: 0 1rem;
   }
 
   .footer-main {
-    gap: 1.5rem;
+    gap: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .footer-brand {
+    margin-bottom: 0.25rem;
   }
 
   .footer-logo {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    gap: 0.6rem;
+  }
+
+  .footer-logo svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .footer-socials {
+    gap: 0.85rem;
+  }
+
+  .footer-social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-social-link svg {
+    width: 16px;
+    height: 16px;
   }
 
   .footer-links-title {
     font-size: 0.8rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-links-list {
+    gap: 0.4rem;
   }
 
   .footer-links-list a {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    padding: 0.2rem;
+  }
+
+  .newsletter-input {
+    font-size: 0.85rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .newsletter-button {
+    padding: 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    padding: 1rem 0;
+    gap: 0.85rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+
+  .footer-legal {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-legal a {
+    font-size: 0.8rem;
   }
 }
