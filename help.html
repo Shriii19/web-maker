@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - TruckCraft Studio</title>
+  <meta name="description" content="Get help with TruckCraft Studio. Find answers to common questions, tutorials, and support resources.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive-enhancements.css">
+  <link rel="stylesheet" href="assets/alignment-fixes.css">
+  <link rel="stylesheet" href="assets/animations.css">
+  <style>
+    .help-hero {
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      padding: 6rem 0 4rem;
+      text-align: center;
+      color: white;
+    }
+
+    .help-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .help-hero p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 1rem 3rem 1rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7c3aed;
+      font-size: 1.25rem;
+    }
+
+    .help-categories {
+      padding: 4rem 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-card h3 {
+      font-size: 1.5rem;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+    }
+
+    .category-card p {
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .category-count {
+      color: #7c3aed;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .faq-section {
+      padding: 4rem 0;
+      background: #f8fafc;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 1.125rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .faq-toggle {
+      font-size: 1.5rem;
+      color: #7c3aed;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .contact-support {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .support-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .support-card h3 {
+      font-size: 1.75rem;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .support-card p {
+      color: #64748b;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .help-hero h1 {
+        font-size: 2rem;
+      }
+
+      .help-hero p {
+        font-size: 1rem;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        padding: 1.5rem;
+      }
+
+      .faq-question {
+        font-size: 1rem;
+      }
+
+      .support-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation will be inserted by JavaScript -->
+
+  <main id="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="help-hero">
+      <div class="container">
+        <h1>How can we help you?</h1>
+        <p>Find answers, tutorials, and support resources</p>
+        <div class="search-box">
+          <input type="text" placeholder="Search for help..." id="helpSearch">
+          <span class="search-icon">🔍</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Help Categories -->
+    <section class="help-categories">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Browse by Category</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Choose a topic to get started</p>
+        
+        <div class="categories-grid">
+          <a href="#getting-started" class="category-card">
+            <div class="category-icon">🚀</div>
+            <h3>Getting Started</h3>
+            <p>Learn the basics of creating your VTC website with TruckCraft Studio</p>
+            <span class="category-count">8 articles</span>
+          </a>
+
+          <a href="#templates" class="category-card">
+            <div class="category-icon">🎨</div>
+            <h3>Templates & Design</h3>
+            <p>Customize templates and design your perfect VTC website</p>
+            <span class="category-count">12 articles</span>
+          </a>
+
+          <a href="#customization" class="category-card">
+            <div class="category-icon">⚙️</div>
+            <h3>Customization</h3>
+            <p>Advanced customization options and code editing</p>
+            <span class="category-count">10 articles</span>
+          </a>
+
+          <a href="#publishing" class="category-card">
+            <div class="category-icon">🌐</div>
+            <h3>Publishing & Hosting</h3>
+            <p>Deploy your website and manage hosting settings</p>
+            <span class="category-count">6 articles</span>
+          </a>
+
+          <a href="#account" class="category-card">
+            <div class="category-icon">👤</div>
+            <h3>Account & Billing</h3>
+            <p>Manage your account, subscription, and payments</p>
+            <span class="category-count">7 articles</span>
+          </a>
+
+          <a href="#troubleshooting" class="category-card">
+            <div class="category-icon">🔧</div>
+            <h3>Troubleshooting</h3>
+            <p>Fix common issues and errors</p>
+            <span class="category-count">15 articles</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Frequently Asked Questions</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 3rem;">Quick answers to common questions</p>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I create my first VTC website?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Creating your first website is easy! Click on "Create Website" in the navigation, choose a template that fits your VTC style, customize it with your company information, and publish. The entire process takes less than 10 minutes.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Are the templates free to use?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes! We offer 6 free templates that you can use and customize. We also have Pro Templates with advanced features available through our premium plans starting at $9/month.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I customize the templates?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Absolutely! All templates are fully customizable. You can change colors, fonts, layouts, add your own images, and even edit the HTML/CSS code directly if you have technical knowledge.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do I need coding knowledge?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              No coding knowledge is required! Our visual editor makes it easy to customize your website. However, if you do know HTML/CSS, you can access the code editor for advanced customization.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I publish my website?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Once you're happy with your design, click the "Publish" button. You can use our free hosting or download the files to host on your own server. We provide step-by-step instructions for both options.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What's included in the Pro plan?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Pro plans include access to 9 premium templates, custom domain support, priority support, advanced analytics, removal of TruckCraft branding, and up to 50GB storage. Check our pricing page for full details.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I contact support?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              You can reach our support team through the contact form below, via email at support@truckcraft.studio, or through our Discord community. Pro users get priority support with faster response times.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="contact-support">
+      <div class="container">
+        <h2 class="section-title">Still Need Help?</h2>
+        <div class="support-card">
+          <h3>Contact Our Support Team</h3>
+          <p>Can't find what you're looking for? Our support team is here to help. Send us a message and we'll get back to you as soon as possible.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo"><div class="footer-container"><div class="footer-main"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="TruckCraft Studio Home"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 2L3 9v14l13 7 13-7V9L16 2z" fill="currentColor" opacity="0.2"/><path d="M16 8l8 4.5v9L16 26l-8-4.5v-9L16 8z" fill="currentColor"/><circle cx="16" cy="16" r="3" fill="white"/></svg><span>TruckCraft Studio</span></a><p class="footer-tagline">Create stunning VTC websites with ease. Professional tools for virtual trucking companies.</p><div class="footer-socials" role="list"><a href="https://twitter.com/your-handle" class="footer-social-link" aria-label="Follow us on Twitter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a><a href="https://linkedin.com/company/your-company" class="footer-social-link" aria-label="Connect on LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/Shriii19/web-maker" class="footer-social-link" aria-label="View on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a></div></div><nav class="footer-links"><ul class="footer-links-list"><li><a href="about.html">About Us</a></li><li><a href="features.html">Features</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></nav><nav class="footer-links"><ul class="footer-links-list"><li><a href="templates.html">Templates</a></li><li><a href="pro-templates.html">Pro Templates</a></li><li><a href="create.html">Create Website</a></li></ul></nav><nav class="footer-links"><ul class="footer-links-list"><li><a href="help.html">Help Center</a></li><li><a href="#">Documentation</a></li><li><a href="#">Tutorials</a></li></ul></nav></div><div class="footer-bottom"><p class="footer-copyright">© <span id="current-year">2025</span> TruckCraft Studio. All rights reserved.</p><nav aria-label="Legal"><ul class="footer-legal"><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></nav></div></div></footer>
+
+  <link rel="stylesheet" href="assets/footer.css">
+  <script src="assets/scroll-animations.js"></script>
+  <script src="assets/global-error-handler.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/footer.js"></script>
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          otherItem.classList.remove('active');
+        });
+        
+        // Toggle current FAQ
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Search functionality (basic)
+    const searchInput = document.getElementById('helpSearch');
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      document.querySelectorAll('.category-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = searchTerm ? 'none' : 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
