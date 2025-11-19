@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - TruckCraft Studio</title>
+  <meta name="description" content="Complete documentation for TruckCraft Studio. Learn how to create, customize, and publish your VTC website.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive-enhancements.css">
+  <link rel="stylesheet" href="assets/alignment-fixes.css">
+  <link rel="stylesheet" href="assets/animations.css">
+  <style>
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      min-height: calc(100vh - 80px);
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .docs-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .docs-nav-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-nav-section-title {
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .docs-nav-items {
+      list-style: none;
+      padding-left: 0.75rem;
+      margin: 0;
+    }
+
+    .docs-nav-items li {
+      margin-bottom: 0.5rem;
+    }
+
+    .docs-nav-items a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: block;
+      padding: 0.375rem 0.5rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .docs-nav-items a:hover,
+    .docs-nav-items a.active {
+      color: #7c3aed;
+      background: #f3e8ff;
+    }
+
+    .docs-content {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      max-width: 900px;
+    }
+
+    .docs-content h1 {
+      font-size: 2.5rem;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+
+    .docs-content h2 {
+      font-size: 1.75rem;
+      color: #1e293b;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .docs-content h3 {
+      font-size: 1.375rem;
+      color: #334155;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .docs-content p {
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .docs-content ul,
+    .docs-content ol {
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    .docs-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .docs-content code {
+      background: #f1f5f9;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #7c3aed;
+    }
+
+    .docs-content pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-content pre code {
+      background: none;
+      padding: 0;
+      color: #e2e8f0;
+    }
+
+    .info-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box.warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+
+    .info-box.success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+
+    .info-box p {
+      margin-bottom: 0;
+    }
+
+    .docs-meta {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 2rem;
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+
+    .breadcrumb a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #7c3aed;
+      color: white;
+      border: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      cursor: pointer;
+      z-index: 100;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .docs-sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        background: white;
+        border-radius: 0;
+        padding: 2rem;
+        overflow-y: auto;
+      }
+
+      .docs-sidebar.active {
+        display: block;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .docs-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .docs-content h1 {
+        font-size: 2rem;
+      }
+
+      .docs-content h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .docs-layout {
+        padding: 1.5rem 1rem;
+      }
+
+      .docs-content {
+        padding: 1.5rem 1rem;
+      }
+
+      .docs-content h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation will be inserted by JavaScript -->
+
+  <main id="main-content" role="main">
+    <div class="docs-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="docs-sidebar" id="docsSidebar">
+        <div class="sidebar-title">Documentation</div>
+        <nav class="docs-nav">
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-title">Getting Started</div>
+            <ul class="docs-nav-items">
+              <li><a href="#introduction" class="active">Introduction</a></li>
+              <li><a href="#quick-start">Quick Start Guide</a></li>
+              <li><a href="#requirements">System Requirements</a></li>
+            </ul>
+          </div>
+
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-title">Templates</div>
+            <ul class="docs-nav-items">
+              <li><a href="#choosing-template">Choosing a Template</a></li>
+              <li><a href="#template-structure">Template Structure</a></li>
+              <li><a href="#customizing-templates">Customizing Templates</a></li>
+            </ul>
+          </div>
+
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-title">Customization</div>
+            <ul class="docs-nav-items">
+              <li><a href="#colors-fonts">Colors & Fonts</a></li>
+              <li><a href="#layouts">Layouts & Sections</a></li>
+              <li><a href="#images-media">Images & Media</a></li>
+              <li><a href="#custom-code">Custom Code</a></li>
+            </ul>
+          </div>
+
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-title">Publishing</div>
+            <ul class="docs-nav-items">
+              <li><a href="#preview-test">Preview & Test</a></li>
+              <li><a href="#export-download">Export & Download</a></li>
+              <li><a href="#hosting-options">Hosting Options</a></li>
+            </ul>
+          </div>
+
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-title">Advanced</div>
+            <ul class="docs-nav-items">
+              <li><a href="#api-reference">API Reference</a></li>
+              <li><a href="#integrations">Integrations</a></li>
+              <li><a href="#best-practices">Best Practices</a></li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <article class="docs-content">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Documentation</span>
+        </div>
+
+        <h1>Documentation</h1>
+        
+        <div class="docs-meta">
+          <span>📅 Last updated: November 19, 2025</span>
+          <span>⏱️ 15 min read</span>
+        </div>
+
+        <p>Welcome to the TruckCraft Studio documentation. This guide will help you create, customize, and publish professional VTC websites with ease.</p>
+
+        <h2 id="introduction">Introduction</h2>
+        <p>TruckCraft Studio is a powerful website builder designed specifically for Virtual Trucking Companies (VTCs). Whether you're starting a new VTC or upgrading your existing website, our platform provides all the tools you need to create a professional online presence.</p>
+
+        <div class="info-box">
+          <p><strong>💡 New to TruckCraft Studio?</strong> Start with our <a href="#quick-start" style="color: #7c3aed;">Quick Start Guide</a> to get up and running in minutes.</p>
+        </div>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li><strong>Professional Templates:</strong> Choose from 6 free templates or 9 premium designs</li>
+          <li><strong>No Coding Required:</strong> Visual editor makes customization easy</li>
+          <li><strong>Fully Responsive:</strong> Your website looks great on all devices</li>
+          <li><strong>Fast Loading:</strong> Optimized for performance and SEO</li>
+          <li><strong>Custom Code Support:</strong> Advanced users can edit HTML/CSS directly</li>
+        </ul>
+
+        <h2 id="quick-start">Quick Start Guide</h2>
+        <p>Get your VTC website up and running in just a few minutes:</p>
+
+        <h3>Step 1: Choose Your Template</h3>
+        <ol>
+          <li>Navigate to the <a href="templates.html" style="color: #7c3aed;">Templates</a> page</li>
+          <li>Browse through our collection of templates</li>
+          <li>Click "Get Code" on your preferred template</li>
+          <li>Copy the HTML code or download the file</li>
+        </ol>
+
+        <h3>Step 2: Customize Your Content</h3>
+        <p>Once you have your template, you can customize it to match your VTC:</p>
+        <ul>
+          <li>Replace placeholder text with your VTC name and information</li>
+          <li>Update images with your company logo and photos</li>
+          <li>Modify colors to match your brand</li>
+          <li>Add or remove sections as needed</li>
+        </ul>
+
+        <div class="info-box success">
+          <p><strong>✅ Pro Tip:</strong> Save your work frequently and preview changes in a browser before publishing.</p>
+        </div>
+
+        <h3>Step 3: Preview and Test</h3>
+        <p>Before publishing, make sure to:</p>
+        <ul>
+          <li>Test on different devices (desktop, tablet, mobile)</li>
+          <li>Check all links are working correctly</li>
+          <li>Verify contact forms function properly</li>
+          <li>Ensure images load quickly</li>
+        </ul>
+
+        <h3>Step 4: Publish Your Website</h3>
+        <p>When you're ready to go live, you have several options:</p>
+        <ul>
+          <li><strong>Free Hosting:</strong> Use our built-in hosting (coming soon)</li>
+          <li><strong>Custom Domain:</strong> Connect your own domain name</li>
+          <li><strong>Self-Hosting:</strong> Download files and host on your own server</li>
+        </ul>
+
+        <h2 id="requirements">System Requirements</h2>
+        <p>TruckCraft Studio works on any modern web browser. For the best experience, we recommend:</p>
+        <ul>
+          <li><strong>Browsers:</strong> Chrome 90+, Firefox 88+, Safari 14+, Edge 90+</li>
+          <li><strong>Screen Resolution:</strong> Minimum 1280x720 (1920x1080 recommended)</li>
+          <li><strong>Internet Connection:</strong> Stable broadband connection</li>
+        </ul>
+
+        <h2 id="choosing-template">Choosing a Template</h2>
+        <p>Selecting the right template is crucial for your VTC's online presence. Here's what to consider:</p>
+
+        <h3>Free Templates</h3>
+        <p>Our 6 free templates include:</p>
+        <ul>
+          <li><strong>Hero + CTA:</strong> Perfect for landing pages with clear call-to-action</li>
+          <li><strong>Cards Grid:</strong> Showcase services in an organized grid layout</li>
+          <li><strong>Features List:</strong> Highlight your VTC's key features</li>
+          <li><strong>Pricing Page:</strong> Display membership tiers and packages</li>
+          <li><strong>Contact Form:</strong> Professional contact page with validation</li>
+          <li><strong>Blog List:</strong> Share news and updates with your community</li>
+        </ul>
+
+        <h3>Pro Templates</h3>
+        <p>Premium templates offer advanced features and designs. Check out our <a href="pro-templates.html" style="color: #7c3aed;">Pro Templates</a> for more information.</p>
+
+        <h2 id="template-structure">Template Structure</h2>
+        <p>All templates follow a consistent structure:</p>
+
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Your VTC Name&lt;/title&gt;
+  &lt;style&gt;
+    /* Embedded CSS styles */
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Navigation --&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  
+  &lt;!-- Main Content --&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  
+  &lt;!-- Footer --&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+  
+  &lt;script&gt;
+    /* JavaScript for interactivity */
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h2 id="customizing-templates">Customizing Templates</h2>
+        <p>Templates are fully customizable. Here's how to make them your own:</p>
+
+        <h3>Basic Editing</h3>
+        <ol>
+          <li>Open the HTML file in a text editor</li>
+          <li>Find the text you want to change</li>
+          <li>Replace with your content</li>
+          <li>Save and preview in a browser</li>
+        </ol>
+
+        <div class="info-box warning">
+          <p><strong>⚠️ Important:</strong> Always keep a backup copy of the original template before making changes.</p>
+        </div>
+
+        <h2 id="colors-fonts">Colors & Fonts</h2>
+        <p>To customize colors and fonts, edit the CSS variables in the <code>&lt;style&gt;</code> section:</p>
+
+        <pre><code>:root {
+  --primary-color: #7c3aed;
+  --secondary-color: #ec4899;
+  --text-color: #1e293b;
+  --background-color: #ffffff;
+  --font-family: 'Inter', sans-serif;
+}</code></pre>
+
+        <h2 id="layouts">Layouts & Sections</h2>
+        <p>Add, remove, or rearrange sections by editing the HTML structure. Each section is clearly commented for easy identification.</p>
+
+        <h2 id="images-media">Images & Media</h2>
+        <p>To replace images:</p>
+        <ol>
+          <li>Upload your images to an image hosting service or your server</li>
+          <li>Find the <code>&lt;img&gt;</code> tags in the HTML</li>
+          <li>Replace the <code>src</code> attribute with your image URL</li>
+          <li>Update the <code>alt</code> text for accessibility</li>
+        </ol>
+
+        <h2 id="custom-code">Custom Code</h2>
+        <p>Advanced users can add custom HTML, CSS, and JavaScript. We recommend:</p>
+        <ul>
+          <li>Adding custom CSS in the existing <code>&lt;style&gt;</code> section</li>
+          <li>Placing custom JavaScript before the closing <code>&lt;/body&gt;</code> tag</li>
+          <li>Following web standards and best practices</li>
+        </ul>
+
+        <h2 id="preview-test">Preview & Test</h2>
+        <p>Before publishing, thoroughly test your website:</p>
+        <ul>
+          <li>Open in multiple browsers</li>
+          <li>Test responsive design on different screen sizes</li>
+          <li>Validate HTML and CSS</li>
+          <li>Check for broken links</li>
+          <li>Test form submissions</li>
+        </ul>
+
+        <h2 id="export-download">Export & Download</h2>
+        <p>Your template code is ready to use immediately. Simply:</p>
+        <ol>
+          <li>Click "Get Code" on any template</li>
+          <li>Copy the HTML code or download the file</li>
+          <li>Save with a <code>.html</code> extension</li>
+          <li>Open in a browser or upload to your host</li>
+        </ol>
+
+        <h2 id="hosting-options">Hosting Options</h2>
+        <p>You can host your website using several methods:</p>
+
+        <h3>GitHub Pages (Free)</h3>
+        <ol>
+          <li>Create a GitHub repository</li>
+          <li>Upload your HTML file</li>
+          <li>Enable GitHub Pages in settings</li>
+          <li>Your site will be live at <code>username.github.io/repo-name</code></li>
+        </ol>
+
+        <h3>Netlify (Free)</h3>
+        <ol>
+          <li>Sign up at netlify.com</li>
+          <li>Drag and drop your HTML file</li>
+          <li>Your site is instantly deployed</li>
+        </ol>
+
+        <h3>Custom Hosting</h3>
+        <p>Upload to any web hosting service that supports static HTML files.</p>
+
+        <h2 id="api-reference">API Reference</h2>
+        <p>For developers integrating with TruckCraft Studio, API documentation is coming soon.</p>
+
+        <h2 id="integrations">Integrations</h2>
+        <p>TruckCraft Studio templates work with popular tools:</p>
+        <ul>
+          <li><strong>TrucksBook:</strong> Display your company stats</li>
+          <li><strong>Discord:</strong> Embed your community server</li>
+          <li><strong>Google Analytics:</strong> Track visitor statistics</li>
+          <li><strong>Contact Forms:</strong> FormSpree, Netlify Forms, or custom solutions</li>
+        </ul>
+
+        <h2 id="best-practices">Best Practices</h2>
+        <p>Follow these guidelines for the best results:</p>
+
+        <h3>Performance</h3>
+        <ul>
+          <li>Optimize images (use WebP format when possible)</li>
+          <li>Minimize CSS and JavaScript</li>
+          <li>Use CDN for external resources</li>
+          <li>Enable browser caching</li>
+        </ul>
+
+        <h3>SEO</h3>
+        <ul>
+          <li>Use descriptive page titles and meta descriptions</li>
+          <li>Include alt text for all images</li>
+          <li>Use proper heading hierarchy (H1, H2, H3)</li>
+          <li>Create descriptive URLs</li>
+        </ul>
+
+        <h3>Accessibility</h3>
+        <ul>
+          <li>Ensure sufficient color contrast</li>
+          <li>Make all interactive elements keyboard accessible</li>
+          <li>Provide text alternatives for images</li>
+          <li>Use semantic HTML elements</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Need more help?</strong> Visit our <a href="help.html" style="color: #7c3aed;">Help Center</a> or <a href="contact.html" style="color: #7c3aed;">contact support</a>.</p>
+        </div>
+      </article>
+    </div>
+
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      📖
+    </button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo"><div class="footer-container"><div class="footer-main"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="TruckCraft Studio Home"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 2L3 9v14l13 7 13-7V9L16 2z" fill="currentColor" opacity="0.2"/><path d="M16 8l8 4.5v9L16 26l-8-4.5v-9L16 8z" fill="currentColor"/><circle cx="16" cy="16" r="3" fill="white"/></svg><span>TruckCraft Studio</span></a><p class="footer-tagline">Create stunning VTC websites with ease. Professional tools for virtual trucking companies.</p><div class="footer-socials" role="list"><a href="https://twitter.com/your-handle" class="footer-social-link" aria-label="Follow us on Twitter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a><a href="https://linkedin.com/company/your-company" class="footer-social-link" aria-label="Connect on LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/Shriii19/web-maker" class="footer-social-link" aria-label="View on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a></div></div><nav class="footer-links"><ul class="footer-links-list"><li><a href="about.html">About Us</a></li><li><a href="features.html">Features</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></nav><nav class="footer-links"><ul class="footer-links-list"><li><a href="templates.html">Templates</a></li><li><a href="pro-templates.html">Pro Templates</a></li><li><a href="create.html">Create Website</a></li></ul></nav><nav class="footer-links"><ul class="footer-links-list"><li><a href="help.html">Help Center</a></li><li><a href="documentation.html">Documentation</a></li><li><a href="#">Tutorials</a></li></ul></nav></div><div class="footer-bottom"><p class="footer-copyright">© <span id="current-year">2025</span> TruckCraft Studio. All rights reserved.</p><nav aria-label="Legal"><ul class="footer-legal"><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></nav></div></div></footer>
+
+  <link rel="stylesheet" href="assets/footer.css">
+  <script src="assets/scroll-animations.js"></script>
+  <script src="assets/global-error-handler.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/footer.js"></script>
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Update active state
+          document.querySelectorAll('.docs-nav-items a').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('docsSidebar');
+    
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking a link on mobile
+    document.querySelectorAll('.docs-nav-items a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+
+    // Update year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
