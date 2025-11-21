@@ -135,6 +135,9 @@
                 <a href="create.html?template=elite-haulage" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/elite-haulage.html', 'Elite Haulage')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/elite-haulage.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -156,6 +159,9 @@
                 <a href="create.html?template=highway-horizon" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/highway-horizon.html', 'Highway Horizon')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/highway-horizon.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -177,6 +183,9 @@
                 <a href="create.html?template=light-haulage" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/light-haulage.html', 'Light Haulage')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/light-haulage.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -198,6 +207,9 @@
                 <a href="create.html?template=midnight-convoy" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/midnight-convoy.html', 'Midnight Convoy')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/midnight-convoy.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -219,6 +231,9 @@
                 <a href="create.html?template=pacific-routes" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/pacific-routes.html', 'Pacific Routes')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/pacific-routes.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -240,6 +255,9 @@
                 <a href="create.html?template=velocity-vtc" class="btn btn-primary btn-block">
                   Use This Template
                 </a>
+                <button class="btn btn-secondary btn-block" onclick="showCode('template/velocity-vtc.html', 'Velocity VTC')" style="margin-top: 0.5rem;">
+                  Get Code
+                </button>
                 <a href="template/velocity-vtc.html" target="_blank" class="btn-text-link">Preview</a>
               </div>
             </div>
@@ -258,5 +276,35 @@
   <script src="assets/global-error-handler.js"></script>
   <script src="assets/main.js"></script>
   <script src="assets/footer.js"></script>
+  <script>
+    // Template Filter Functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      const templateCards = document.querySelectorAll('.template-card');
+      
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const category = tab.dataset.category;
+          
+          // Update active tab
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Filter templates
+          templateCards.forEach(card => {
+            if (category === 'all') {
+              card.style.display = 'flex';
+            } else {
+              if (card.dataset.category === category) {
+                card.style.display = 'flex';
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
