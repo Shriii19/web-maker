@@ -17,11 +17,31 @@ Professional website builder for Virtual Trucking Companies with modern animatio
    ```
 2. Open `index.html` in your browser
 
-## 📁 Core Files
-- **HTML Pages**: `index.html`, `about.html`, `contact.html`, `features.html`, `pricing.html`
-- **Styles**: `assets/style.css`, `assets/animations.css`, `assets/responsive-enhancements.css`
-- **Scripts**: `assets/scroll-animations.js`, `assets/main.js`, `assets/global-error-handler.js`
-- **Documentation**: `ANIMATIONS-GUIDE.md` - Complete animation usage guide
+## 📁 Project Structure
+```
+web-maker/
+├── index.html              # Homepage
+├── templates.html          # Template gallery (6 free templates)
+├── create.html            # Visual website builder
+├── about.html, features.html, pricing.html, contact.html
+├── help.html              # Help center with FAQ
+├── documentation.html     # Complete documentation
+├── tutorials.html         # Video tutorials
+├── assets/
+│   ├── style.css          # Main styles
+│   ├── animations.css     # Animation effects
+│   ├── footer.css         # Footer styling
+│   ├── scroll-animations.js  # Scroll effects
+│   ├── template-loader.js    # Template loading system
+│   └── main.js            # Core functionality
+└── template/
+    ├── elite-haulage.html
+    ├── highway-horizon.html
+    ├── light-haulage.html
+    ├── midnight-convoy.html
+    ├── pacific-routes.html
+    └── velocity-vtc.html
+```
 
 ## 🎬 Animation System
 - Page load animations (fade, slide, zoom)
