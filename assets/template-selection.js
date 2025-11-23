@@ -32,7 +32,7 @@ function hasProAccess() {
 // Select template function
 function selectTemplate(templateId) {
   console.log('Selecting template:', templateId);
-  
+
   // Check if this is a pro template
   if (PRO_TEMPLATES.includes(templateId)) {
     if (!hasProAccess()) {
@@ -40,15 +40,15 @@ function selectTemplate(templateId) {
       return;
     }
   }
-  
+
   // If free template or user has pro access, proceed to editor
-  window.location.href = `vtc-template-editor.html?template=${templateId}`;
+  window.location.href = `create.html?template=${templateId}`;
 }
 
 // New function to handle when user clicks edit/customize on pro template
 function editTemplate(templateId) {
   console.log('Attempting to edit template:', templateId);
-  
+
   // Check if this is a pro template
   if (PRO_TEMPLATES.includes(templateId)) {
     if (!hasProAccess()) {
@@ -56,9 +56,9 @@ function editTemplate(templateId) {
       return;
     }
   }
-  
+
   // If free template or user has pro access, proceed to editor
-  window.location.href = `vtc-template-editor.html?template=${templateId}&mode=edit`;
+  window.location.href = `create.html?template=${templateId}&mode=edit`;
 }
 
 // Show payment required modal specifically for editing pro templates
@@ -122,17 +122,17 @@ function showPaymentRequiredModal(templateId) {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
-  
+
   // Add click outside to close
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeUpgradeModal();
     }
   });
-  
+
   // Add escape key to close
   const handleEscape = (e) => {
     if (e.key === 'Escape') {
@@ -180,10 +180,10 @@ function showTemplateInfo(templateId) {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
-  
+
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeInfoModal();
@@ -261,17 +261,17 @@ function showUpgradeModal(templateId) {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
-  
+
   // Add click outside to close
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeUpgradeModal();
     }
   });
-  
+
   // Add escape key to close
   const handleEscape = (e) => {
     if (e.key === 'Escape') {
@@ -292,9 +292,9 @@ function closeUpgradeModal() {
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('Template selection system initialized');
-  
+
   // Add pro badges to pro templates
   PRO_TEMPLATES.forEach(templateId => {
     const templateCard = document.querySelector(`[data-template="${templateId}"]`)?.closest('.template-card');
@@ -318,25 +318,25 @@ window.hasProAccess = hasProAccess;
 window.trackPaymentClick = trackPaymentClick;
 
 // Check for successful payment on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('Template selection system initialized');
-  
+
   // Check if user just completed payment
   const paymentInitiated = localStorage.getItem('paymentInitiated');
   const pendingTemplate = localStorage.getItem('pendingTemplate');
-  
+
   if (paymentInitiated && pendingTemplate) {
     // Check if payment was recent (within last 30 minutes)
     const paymentTime = parseInt(paymentInitiated);
     const now = Date.now();
     const thirtyMinutes = 30 * 60 * 1000;
-    
+
     if (now - paymentTime < thirtyMinutes) {
       // Show confirmation modal asking if payment was successful
       showPaymentConfirmation(pendingTemplate);
     }
   }
-  
+
   // Add pro badges to pro templates
   PRO_TEMPLATES.forEach(templateId => {
     const templateCard = document.querySelector(`[data-template="${templateId}"]`)?.closest('.template-card');
@@ -377,7 +377,7 @@ function showPaymentConfirmation(templateId) {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
 }
@@ -387,26 +387,26 @@ function confirmPaymentSuccess(templateId) {
   // Grant pro access (set expiry for 1 year from now)
   const expiryDate = new Date();
   expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-  
+
   const subscription = {
     type: 'pro',
     expiryDate: expiryDate.toISOString(),
     activatedOn: new Date().toISOString()
   };
-  
+
   localStorage.setItem('proSubscription', JSON.stringify(subscription));
   localStorage.removeItem('paymentInitiated');
   localStorage.removeItem('pendingTemplate');
-  
+
   // Close modal and redirect to editor
   closePaymentConfirmation();
-  
+
   // Show success message
   showSuccessMessage();
-  
+
   // Redirect to editor after 2 seconds
   setTimeout(() => {
-    window.location.href = `vtc-template-editor.html?template=${templateId}&mode=edit`;
+    window.location.href = `create.html?template=${templateId}&mode=edit`;
   }, 2000);
 }
 
@@ -433,9 +433,9 @@ function showSuccessMessage() {
       <span>Pro access activated! Redirecting to editor...</span>
     </div>
   `;
-  
+
   document.body.appendChild(successDiv);
-  
+
   setTimeout(() => {
     successDiv.remove();
   }, 3000);
