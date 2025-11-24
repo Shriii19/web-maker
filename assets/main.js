@@ -7,13 +7,11 @@
 class SiteComponents {
   static init() {
     try {
-      console.log('🚀 SiteComponents.init() called');
       this.createNavigation();
       this.createFooter();
       this.setActivePage();
-      console.log('✅ SiteComponents initialized successfully');
     } catch (error) {
-      console.error('❌ SiteComponents initialization failed:', error);
+      console.error('SiteComponents initialization failed:', error);
     }
   }
 
@@ -24,7 +22,8 @@ class SiteComponents {
     // Check for existing navigation
     if (document.querySelector('.navbar .nav-container')) return;
 
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const pathname = window.location.pathname.split('/').pop();
+    const currentPage = pathname || (window.location.pathname === '/' ? 'index.html' : 'index.html');
 
     const navigationHTML = `
       <nav class="navbar" role="navigation" aria-label="Main Navigation">
