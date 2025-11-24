@@ -4,7 +4,10 @@
 class PreloaderHandler {
   static init() {
     const preloader = document.getElementById('preloader');
-    if (!preloader) return;
+    if (!preloader) {
+      console.warn('Preloader element not found');
+      return;
+    }
 
     // Check if this is a page refresh (not navigation)
     const isPageRefresh = performance.navigation.type === 1 || 
