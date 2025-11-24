@@ -94,7 +94,7 @@
       observer.observe(element);
     });
 
-    console.log(`🎬 Scroll animations initialized for ${animatedElements.length} elements`);
+    // Scroll animations initialized
   };
 
   /**
