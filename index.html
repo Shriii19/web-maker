@@ -33,8 +33,41 @@
   <link rel="stylesheet" href="assets/responsive-enhancements.css">
   <link rel="stylesheet" href="assets/alignment-fixes.css">
   <link rel="stylesheet" href="assets/animations.css">
+  <link rel="stylesheet" href="assets/preloader.css">
+  <script src="assets/preloader.js"></script>
 </head>
 <body>
+  <!-- Truck Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <div class="truck-container">
+        <svg class="truck" viewBox="0 0 200 100" width="200" height="100">
+          <!-- Truck Body -->
+          <rect x="80" y="30" width="70" height="35" fill="var(--primary)" rx="3"/>
+          <!-- Truck Cabin -->
+          <path d="M 150 30 L 165 30 L 175 45 L 175 65 L 150 65 Z" fill="var(--primary-light)"/>
+          <!-- Truck Window -->
+          <path d="M 155 35 L 168 35 L 173 45 L 173 50 L 155 50 Z" fill="var(--accent)" opacity="0.9"/>
+          <!-- Cargo Area -->
+          <rect x="85" y="35" width="60" height="25" fill="var(--primary-dark)" rx="2"/>
+          <!-- Wheels -->
+          <circle cx="100" cy="65" r="8" fill="var(--text-primary)" stroke="var(--border)" stroke-width="2"/>
+          <circle cx="100" cy="65" r="4" fill="var(--accent)"/>
+          <circle cx="160" cy="65" r="8" fill="var(--text-primary)" stroke="var(--border)" stroke-width="2"/>
+          <circle cx="160" cy="65" r="4" fill="var(--accent)"/>
+          <!-- Headlights -->
+          <circle cx="172" cy="50" r="2" fill="var(--accent)"/>
+          <circle cx="172" cy="56" r="2" fill="var(--accent)"/>
+        </svg>
+        <div class="road"></div>
+      </div>
+      <div class="loading-text">Loading TruckCraft Studio...</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
