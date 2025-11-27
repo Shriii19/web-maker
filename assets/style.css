@@ -440,7 +440,6 @@ input, button, textarea, select {
   min-width: 200px;
   text-align: center;
   -webkit-tap-highlight-color: transparent;
-  margin-bottom: var(--space-3);
 }
 
 .nav-link::before {
@@ -568,7 +567,7 @@ main {
 .hero-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--space-8);
   align-items: center;
   position: relative;
   z-index: 1;
@@ -581,7 +580,7 @@ main {
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
   order: 2;
   text-align: center;
   width: 100%;
