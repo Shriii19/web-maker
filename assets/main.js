@@ -99,12 +99,12 @@ class SiteComponents {
                 <span>TruckCraft Studio</span>
               </a>
               <p class="footer-tagline">Create stunning VTC websites with ease. Professional tools for virtual trucking companies.</p>
-              <div class="footer-socials" role="list">
+              <div class="footer-socials" role="list" aria-label="Social media links">
                 <!-- Social links will be injected by footer.js -->
               </div>
             </div>
             
-            <nav class="footer-links">
+            <nav class="footer-links" aria-label="Company information">
               <ul class="footer-links-list">
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="features.html">Features</a></li>
