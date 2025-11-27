@@ -126,8 +126,6 @@
         }
       });
     });
-
-    console.log('✨ Smooth scroll initialized');
   };
 
   /**
@@ -163,8 +161,6 @@
         setTimeout(() => ripple.remove(), 600);
       });
     });
-
-    console.log('💧 Button ripple effects initialized');
   };
 
   /**
@@ -194,10 +190,8 @@
       if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
-      }
+      });
     });
-
-    console.log('🌊 Parallax effects initialized');
   };
 
   /**

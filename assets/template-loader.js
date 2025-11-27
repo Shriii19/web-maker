@@ -6,8 +6,6 @@
   const urlParams = new URLSearchParams(window.location.search);
   const templateName = urlParams.get('template');
   
-  console.log('Template Loader: Template parameter =', templateName);
-  
   // Wait for DOM and VTCStudio to be ready
   const checkAndLoadTemplate = () => {
     const codeEditor = document.getElementById('code-editor');
@@ -49,7 +47,12 @@
         })
         .catch(error => {
           console.error('Template Loader: Error loading template:', error);
-          alert(`Failed to load template. Make sure you're viewing this through a web server.\n\nError: ${error.message}`);
+          const errorMsg = `Failed to load template: ${templateName}. Please ensure you're accessing this through a web server.`;
+          if (window.vtcStudio && window.vtcStudio.showNotification) {
+            window.vtcStudio.showNotification(errorMsg, 'error');
+          } else {
+            alert(errorMsg);
+          }
         });
     } else if (!templateName) {
       console.log('Template Loader: No template parameter found, using default');

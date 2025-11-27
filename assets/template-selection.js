@@ -31,8 +31,6 @@ function hasProAccess() {
 
 // Select template function
 function selectTemplate(templateId) {
-  console.log('Selecting template:', templateId);
-
   // Check if this is a pro template
   if (PRO_TEMPLATES.includes(templateId)) {
     if (!hasProAccess()) {
