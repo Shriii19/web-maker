@@ -3740,13 +3740,15 @@ text-align: center;
 }
 
 .template-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 14px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .template-card::before {
@@ -3762,9 +3764,9 @@ text-align: center;
 }
 
 .template-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #d1d5db;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(124, 58, 237, 0.12);
+  border-color: rgba(209, 213, 219, 0.9);
 }
 
 .template-card:hover::before {
@@ -3772,27 +3774,31 @@ text-align: center;
 }
 
 .template-card.featured {
-  border-color: #d1d5db;
+  background: rgba(250, 245, 255, 0.95);
+  border-color: rgba(209, 213, 219, 0.8);
 }
 
 .template-card.featured::before {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .template-preview {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  border-radius: 14px 14px 0 0;
 }
 
 .template-preview img {
   width: 100%;
-  height: 250px;
+  height: 180px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
 .template-card:hover .template-preview img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .template-overlay {
@@ -3848,66 +3854,91 @@ text-align: center;
 
 /* Template Actions */
 .template-actions {
-  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
+  gap: 0.5rem;
+  align-items: stretch;
 }
 
 .btn-block {
   width: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.5rem;
-  font-weight: 600;
-  font-size: 1rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: white;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.2);
+  text-decoration: none;
+}
+
+.btn-block:hover {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+
+.btn-block:active {
+  transform: translateY(0);
 }
 
 .btn-text-link {
-  color: var(--primary);
+  color: #7c3aed;
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 600;
   transition: all 0.2s ease;
-  padding: 0.5rem;
+  padding: 0.375rem 0;
+  text-align: center;
+  display: inline-block;
 }
 
 .btn-text-link:hover {
-  color: var(--primary-dark);
+  color: #6d28d9;
   text-decoration: underline;
 }
 
 .template-info {
-  padding: 1.25rem;
+  padding: 1.125rem 1.25rem 1rem;
   position: relative;
+  background: transparent;
 }
 
 .template-badge {
   position: absolute;
-  top: -2rem;
+  top: -1.75rem;
   right: 1.25rem;
-  background: var(--accent);
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
 .template-info h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: #111827;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;
+  line-height: 1.3;
 }
 
 .template-info p {
   color: #6b7280;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
 }
 
 .template-actions {
@@ -3924,16 +3955,17 @@ text-align: center;
 .template-features {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0;
+  margin-bottom: 0.75rem;
 }
 
 .template-features span {
-  background: #f3f4f6;
-  color: #6b7280;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
+  background: transparent;
+  color: #374151;
+  padding: 0;
+  font-size: 0.8125rem;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 /* Pricing Section Styles */
@@ -6408,72 +6440,51 @@ text-align: center;
   }
   
   .template-card {
-    height: 380px;
-    min-height: 380px;
-    max-height: 380px;
-    max-width: 320px;
-    width: 100%;
+    height: auto;
+    min-height: auto;
+    max-height: none;
   }
 
   .template-preview {
-    height: 180px;
+    height: 160px;
   }
 
   .template-info {
-    padding: 16px;
+    padding: 1rem 1.125rem 0.875rem;
   }
 
-  .template-title {
-    font-size: 1rem;
-    margin-bottom: 8px;
+  .template-info h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.3rem;
   }
 
-  .template-description {
-    font-size: 0.875rem;
+  .template-info p {
+    font-size: 0.8rem;
     line-height: 1.4;
-    margin-bottom: 12px;
-    min-height: 40px;
+    margin-bottom: 0.5rem;
   }
 
   .template-features {
-    gap: 6px;
-    margin-bottom: 12px;
-    min-height: 60px;
+    gap: 0;
+    margin-bottom: 0.625rem;
   }
 
-  .feature-tag {
-    font-size: 0.75rem;
-    padding: 4px 8px;
+  .template-features span {
+    font-size: 0.8rem;
   }
 
   .template-actions {
-    gap: 8px;
+    gap: 0.4rem;
   }
 
-  .btn-preview,
-  .btn-use {
-    padding: 8px 12px;
-    font-size: 0.875rem;
+  .btn-block {
+    padding: 0.5625rem 1rem;
+    font-size: 0.8125rem;
   }
   
-  .template-card {
-    max-width: none;
-    height: 450px;
-    min-height: 450px;
-    max-height: 450px;
-  }
-  
-  .template-preview {
-    height: 200px;
-  }
-  
-  .template-info {
-    padding: 24px;
-  }
-  /* keep responsive extras within this media query */
-  
-  .template-actions {
-    gap: 12px;
+  .btn-text-link {
+    font-size: 0.8rem;
+    padding: 0.3rem 0;
   }
   
   .preview-modal-content {
