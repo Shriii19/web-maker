@@ -216,6 +216,65 @@
             </div>
           </article>
 
+          <!-- PRO TEMPLATES START -->
+          
+          <!-- Template Card: Ultimate Elite PRO -->
+          <article class="template-card template-card-pro" data-category="landing" data-pro="true">
+            <span class="pro-badge">PRO</span>
+            <div class="template-content">
+              <h3 class="template-title">Ultimate Elite</h3>
+              <p class="template-description">Premium corporate design with advanced animations and click-to-edit interface</p>
+              <span class="template-category">Landing Page • Pro</span>
+              <div class="template-actions">
+                <button onclick="showPaymentModal('ultimate-elite')" class="template-btn template-btn-pro">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Upgrade to Use
+                </button>
+                <a href="#" onclick="openPreview('template/ultimate-elite.html'); return false;" class="template-preview-link">Preview</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Template Card: Metro Express PRO -->
+          <article class="template-card template-card-pro" data-category="dashboard" data-pro="true">
+            <span class="pro-badge">PRO</span>
+            <div class="template-content">
+              <h3 class="template-title">Metro Express</h3>
+              <p class="template-description">Modern dashboard with real-time analytics and visual editing tools</p>
+              <span class="template-category">Dashboard • Pro</span>
+              <div class="template-actions">
+                <button onclick="showPaymentModal('metro-express')" class="template-btn template-btn-pro">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Upgrade to Use
+                </button>
+                <a href="#" onclick="openPreview('template/metro-express.html'); return false;" class="template-preview-link">Preview</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Template Card: Platinum Routes PRO -->
+          <article class="template-card template-card-pro" data-category="profile" data-pro="true">
+            <span class="pro-badge">PRO</span>
+            <div class="template-content">
+              <h3 class="template-title">Platinum Routes</h3>
+              <p class="template-description">Luxury driver profile template with interactive galleries and live editing</p>
+              <span class="template-category">Driver Profile • Pro</span>
+              <div class="template-actions">
+                <button onclick="showPaymentModal('platinum-routes')" class="template-btn template-btn-pro">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Upgrade to Use
+                </button>
+                <a href="#" onclick="openPreview('template/platinum-routes.html'); return false;" class="template-preview-link">Preview</a>
+              </div>
+            </div>
+          </article>
+
         </div>
           
       </div>
@@ -242,6 +301,94 @@
         <button class="btn btn-outline" onclick="closePreview()">Close</button>
         <a id="previewFullscreen" href="#" target="_blank" class="btn btn-primary">Open in New Tab</a>
       </div>
+    </div>
+  </div>
+
+  <!-- Payment/Upgrade Modal -->
+  <div id="paymentModal" class="payment-modal" style="display: none;">
+    <div class="payment-modal-overlay" onclick="closePaymentModal()"></div>
+    <div class="payment-modal-content">
+      <button class="payment-modal-close" onclick="closePaymentModal()" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="payment-header">
+        <div class="payment-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#gradient)" stroke="currentColor" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#7c3aed"/>
+                <stop offset="100%" style="stop-color:#ec4899"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h2 class="payment-title">Upgrade to Pro</h2>
+        <p class="payment-subtitle">Unlock premium templates with visual editing</p>
+      </div>
+
+      <div class="payment-features">
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span><strong>Click-to-Edit</strong> - No coding required</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span><strong>9 Premium Templates</strong> - Advanced designs</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span><strong>Visual Editor</strong> - See changes instantly</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span><strong>Priority Support</strong> - Get help fast</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span><strong>Lifetime Updates</strong> - New templates added</span>
+        </div>
+      </div>
+
+      <div class="payment-pricing">
+        <div class="price-tag">
+          <span class="price-currency">$</span>
+          <span class="price-amount">29</span>
+          <span class="price-period">one-time</span>
+        </div>
+        <p class="price-note">No monthly fees • Lifetime access</p>
+      </div>
+
+      <div class="payment-actions">
+        <button class="btn btn-primary btn-large btn-payment" onclick="processPayment()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Upgrade Now
+        </button>
+        <button class="btn btn-outline" onclick="closePaymentModal()">Maybe Later</button>
+      </div>
+
+      <p class="payment-guarantee">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        30-day money-back guarantee
+      </p>
     </div>
   </div>
 
@@ -319,6 +466,48 @@
           });
         });
       });
+    });
+
+    // Payment Modal Functions
+    let selectedTemplate = '';
+
+    function showPaymentModal(templateName) {
+      selectedTemplate = templateName;
+      const modal = document.getElementById('paymentModal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePaymentModal() {
+      const modal = document.getElementById('paymentModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      selectedTemplate = '';
+    }
+
+    function processPayment() {
+      // Simulate payment processing
+      alert('Payment processing would happen here!\\n\\nIn production, this would:\\n1. Integrate with Stripe/PayPal\\n2. Process the $29 payment\\n3. Grant access to Pro templates\\n4. Redirect to the visual editor\\n\\nFor demo: Redirecting to editor with the template...');
+      
+      // Store pro access in localStorage (demo purposes)
+      localStorage.setItem('proAccess', 'true');
+      localStorage.setItem('proAccessDate', new Date().toISOString());
+      
+      // Redirect to visual editor with selected template
+      window.location.href = `create.html?template=${selectedTemplate}&mode=visual&pro=true`;
+    }
+
+    // Check if user has pro access
+    function hasProAccess() {
+      return localStorage.getItem('proAccess') === 'true';
+    }
+
+    // Close payment modal on Escape
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('paymentModal');
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closePaymentModal();
+      }
     });
   </script>
 </body>
