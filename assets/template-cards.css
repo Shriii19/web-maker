@@ -1,0 +1,286 @@
+/* ============================================
+   OPTIMIZED TEMPLATE CARD STYLES
+   Compact, clean design with glass-like background
+   ============================================ */
+
+/* Templates Grid Layout */
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Base Card Styling - Compact & Clean */
+.template-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(209, 213, 219, 0.4);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(124, 58, 237, 0.04);
+  min-height: auto;
+  height: auto;
+}
+
+/* Subtle gradient border highlight at top */
+.template-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7c3aed, #ec4899, #7c3aed);
+  background-size: 200% 100%;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, background-position 0.6s ease;
+}
+
+.template-card:hover::before {
+  opacity: 1;
+  background-position: -100% 0;
+}
+
+/* Hover Effect - Subtle lift and shadow */
+.template-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* Card Content Container */
+.template-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Title - Smaller and cleaner */
+.template-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Description - Lighter and more compact */
+.template-description {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #64748b;
+  margin: 0;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Category Badge - Compact inline style */
+.template-category {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+  padding: 0.375rem 0.625rem;
+  border-radius: 6px;
+  width: fit-content;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+/* Actions Container - Compact spacing */
+.template-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Primary Button - Smaller and more compact */
+.template-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.2);
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+}
+
+.template-btn:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+
+.template-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.2);
+}
+
+/* Preview Link - Smaller text below button */
+.template-preview-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7c3aed;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.25rem 0;
+  transition: all 0.2s ease;
+}
+
+.template-preview-link:hover {
+  color: #6d28d9;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .templates-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+  
+  .template-card {
+    padding: 1.5rem;
+  }
+  
+  .template-title {
+    font-size: 1.25rem;
+  }
+  
+  .template-description {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .templates-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Focus states for accessibility */
+.template-btn:focus-visible,
+.template-preview-link:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Animation on card appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.template-card {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggered animation for multiple cards */
+.template-card:nth-child(1) { animation-delay: 0.05s; }
+.template-card:nth-child(2) { animation-delay: 0.1s; }
+.template-card:nth-child(3) { animation-delay: 0.15s; }
+.template-card:nth-child(4) { animation-delay: 0.2s; }
+.template-card:nth-child(5) { animation-delay: 0.25s; }
+.template-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* Smooth transitions for filter changes */
+.template-card.hidden {
+  display: none;
+}
+
+/* Micro-interaction: Button shimmer effect on hover */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.template-btn:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Make button position relative for shimmer effect */
+.template-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Refined glass effect on hover */
+.template-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.92) 100%
+  );
+}
+
+/* Mobile: Ensure cards don't get too small */
+@media (max-width: 480px) {
+  .templates-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .template-card {
+    max-width: 100%;
+  }
+}
