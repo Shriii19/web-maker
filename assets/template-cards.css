@@ -298,6 +298,7 @@
   );
   border: 1.5px solid rgba(124, 58, 237, 0.25);
   position: relative;
+  min-height: auto;
 }
 
 .template-card-pro::before {
@@ -423,7 +424,7 @@
 .payment-modal-close:hover {
   background: rgba(0, 0, 0, 0.1);
   color: #1e293b;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.05);
 }
 
 .payment-header {
