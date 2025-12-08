@@ -410,6 +410,12 @@ class VisualEditor {
 
   closeInlineEditor() {
     if (this.inlineEditor) {
+      // Remove event listeners to prevent memory leaks
+      const saveBtn = this.inlineEditor.querySelector('.inline-editor-btn-save');
+      const cancelBtn = this.inlineEditor.querySelector('.inline-editor-btn-cancel');
+      if (saveBtn) saveBtn.replaceWith(saveBtn.cloneNode(true));
+      if (cancelBtn) cancelBtn.replaceWith(cancelBtn.cloneNode(true));
+      
       this.inlineEditor.remove();
       this.inlineEditor = null;
     }
@@ -558,7 +564,7 @@ class VisualEditor {
 
   setupAutoSave() {
     // Auto-save every 2 minutes if there are changes
-    setInterval(() => {
+    this.autoSaveInterval = setInterval(() => {
       if (this.isDirty) {
         this.save();
         console.log('Auto-saved at', new Date().toLocaleTimeString());
@@ -566,12 +572,24 @@ class VisualEditor {
     }, 120000);
     
     // Warn before closing if there are unsaved changes
-    window.addEventListener('beforeunload', (e) => {
+    this.beforeUnloadHandler = (e) => {
       if (this.isDirty) {
         e.preventDefault();
         e.returnValue = '';
       }
-    });
+    };
+    window.addEventListener('beforeunload', this.beforeUnloadHandler);
+  }
+
+  destroy() {
+    // Cleanup method to prevent memory leaks
+    if (this.autoSaveInterval) {
+      clearInterval(this.autoSaveInterval);
+    }
+    if (this.beforeUnloadHandler) {
+      window.removeEventListener('beforeunload', this.beforeUnloadHandler);
+    }
+    this.closeInlineEditor();
   }
 
   showNotification(message, type = 'info') {
