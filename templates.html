@@ -305,10 +305,10 @@
   </div>
 
   <!-- Payment/Upgrade Modal -->
-  <div id="paymentModal" class="payment-modal" style="display: none;">
+  <div id="paymentModal" class="payment-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title">
     <div class="payment-modal-overlay" onclick="closePaymentModal()"></div>
     <div class="payment-modal-content">
-      <button class="payment-modal-close" onclick="closePaymentModal()" aria-label="Close">
+      <button class="payment-modal-close" onclick="closePaymentModal()" aria-label="Close payment modal">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -316,7 +316,7 @@
       </button>
       
       <div class="payment-header">
-        <div class="payment-icon">
+        <div class="payment-icon" aria-hidden="true">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#gradient)" stroke="currentColor" stroke-width="1.5"/>
             <defs>
@@ -327,7 +327,7 @@
             </defs>
           </svg>
         </div>
-        <h2 class="payment-title">Upgrade to Pro</h2>
+        <h2 id="payment-modal-title" class="payment-title">Upgrade to Pro</h2>
         <p class="payment-subtitle">Unlock premium templates with visual editing</p>
       </div>
 
@@ -374,13 +374,13 @@
       </div>
 
       <div class="payment-actions">
-        <button class="btn btn-primary btn-large btn-payment" onclick="processPayment()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <button class="btn btn-primary btn-large btn-payment" onclick="processPayment()" aria-label="Upgrade to Pro for $29">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
           Upgrade Now
         </button>
-        <button class="btn btn-outline" onclick="closePaymentModal()">Maybe Later</button>
+        <button class="btn btn-outline" onclick="closePaymentModal()" aria-label="Close and maybe upgrade later">Maybe Later</button>
       </div>
 
       <p class="payment-guarantee">
