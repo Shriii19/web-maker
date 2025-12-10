@@ -120,6 +120,7 @@
   outline: 2px solid transparent;
   outline-offset: 4px;
   border-radius: 4px;
+  will-change: outline-color, background;
 }
 
 [data-editable]:hover {
