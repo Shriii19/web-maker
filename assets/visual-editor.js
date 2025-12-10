@@ -353,6 +353,13 @@ class VisualEditor {
   }
 
   saveTextEdit(element, newText) {
+    // Validate input
+    if (!newText || newText.trim() === '') {
+      console.warn('Empty text not saved');
+      this.closeInlineEditor();
+      return;
+    }
+    
     if (newText !== element.textContent.trim()) {
       this.addToHistory({
         element: element,
@@ -372,6 +379,13 @@ class VisualEditor {
   }
 
   saveImageEdit(element, newSrc) {
+    // Validate URL
+    if (!newSrc || newSrc.trim() === '') {
+      console.warn('Empty image URL not saved');
+      this.closeInlineEditor();
+      return;
+    }
+    
     if (newSrc && newSrc !== element.src) {
       this.addToHistory({
         element: element,
