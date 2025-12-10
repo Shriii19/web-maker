@@ -472,10 +472,16 @@
     let selectedTemplate = '';
 
     function showPaymentModal(templateName) {
+      if (!templateName) {
+        console.error('No template name provided');
+        return;
+      }
       selectedTemplate = templateName;
       const modal = document.getElementById('paymentModal');
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closePaymentModal() {
@@ -486,15 +492,26 @@
     }
 
     function processPayment() {
+      // Validate template selection
+      if (!selectedTemplate) {
+        alert('Error: No template selected. Please try again.');
+        return;
+      }
+      
       // Simulate payment processing
-      alert('Payment processing would happen here!\\n\\nIn production, this would:\\n1. Integrate with Stripe/PayPal\\n2. Process the $29 payment\\n3. Grant access to Pro templates\\n4. Redirect to the visual editor\\n\\nFor demo: Redirecting to editor with the template...');
+      alert('Payment processing would happen here!\n\nIn production, this would:\n1. Integrate with Stripe/PayPal\n2. Process the $29 payment\n3. Grant access to Pro templates\n4. Redirect to the visual editor\n\nFor demo: Redirecting to editor with the template...');
       
-      // Store pro access in localStorage (demo purposes)
-      localStorage.setItem('proAccess', 'true');
-      localStorage.setItem('proAccessDate', new Date().toISOString());
-      
-      // Redirect to visual editor with selected template
-      window.location.href = `create.html?template=${selectedTemplate}&mode=visual&pro=true`;
+      try {
+        // Store pro access in localStorage (demo purposes)
+        localStorage.setItem('proAccess', 'true');
+        localStorage.setItem('proAccessDate', new Date().toISOString());
+        
+        // Redirect to visual editor with selected template
+        window.location.href = `create.html?template=${selectedTemplate}&mode=visual&pro=true`;
+      } catch (error) {
+        console.error('Error processing payment:', error);
+        alert('An error occurred. Please try again.');
+      }
     }
 
     // Check if user has pro access
