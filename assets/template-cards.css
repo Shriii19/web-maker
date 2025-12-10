@@ -138,6 +138,11 @@
   line-height: 1;
 }
 
+.template-btn:focus-visible {
+  outline: 3px solid #7c3aed;
+  outline-offset: 3px;
+}
+
 .template-btn:hover {
   background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
   transform: translateY(-1px);
@@ -159,6 +164,12 @@
   text-align: center;
   padding: 0.25rem 0;
   transition: all 0.2s ease;
+}
+
+.template-preview-link:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .template-preview-link:hover {
