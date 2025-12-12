@@ -6,9 +6,10 @@
 /* Templates Grid Layout */
 .templates-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 /* Base Card Styling - Compact & Clean */
@@ -179,9 +180,23 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 639px) {
+  .template-card {
+    padding: 1rem;
+  }
+  
+  .template-title {
+    font-size: 1rem;
+  }
+  
+  .template-description {
+    font-size: 0.8125rem;
+  }
+}
+
 @media (min-width: 640px) {
   .templates-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 1.75rem;
   }
   
@@ -343,6 +358,13 @@
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(251, 191, 36, 0.4);
   z-index: 10;
+}
+
+@media (max-width: 480px) {
+  .pro-badge {
+    font-size: 0.5625rem;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 /* Pro Button Styling */
@@ -582,8 +604,13 @@
 
 /* Responsive Payment Modal */
 @media (max-width: 640px) {
+  .payment-modal {
+    padding: 0.5rem;
+  }
+
   .payment-modal-content {
     padding: 2rem 1.5rem;
+    max-height: 95vh;
   }
 
   .payment-title {
@@ -600,5 +627,29 @@
 
   .feature-item {
     font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-modal-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .payment-title {
+    font-size: 1.25rem;
+  }
+
+  .price-amount {
+    font-size: 2.25rem;
+  }
+
+  .feature-item {
+    font-size: 0.8125rem;
+    gap: 0.5rem;
+  }
+
+  .btn-large {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
   }
 }
