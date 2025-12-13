@@ -374,11 +374,17 @@
       </div>
 
       <div class="payment-actions">
-        <button class="btn btn-primary btn-large btn-payment" onclick="processPayment()" aria-label="Upgrade to Pro for $29">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <button class="btn btn-primary btn-large btn-payment" id="paymentBtn" onclick="processPayment()" aria-label="Upgrade to Pro for $29">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="btn-icon">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
-          Upgrade Now
+          <span class="btn-text">Upgrade Now</span>
+          <span class="btn-spinner" style="display: none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <circle cx="12" cy="12" r="10" opacity="0.25"/>
+              <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+            </svg>
+          </span>
         </button>
         <button class="btn btn-outline" onclick="closePaymentModal()" aria-label="Close and maybe upgrade later">Maybe Later</button>
       </div>
@@ -498,20 +504,45 @@
         return;
       }
       
-      // Simulate payment processing
-      alert('Payment processing would happen here!\n\nIn production, this would:\n1. Integrate with Stripe/PayPal\n2. Process the $29 payment\n3. Grant access to Pro templates\n4. Redirect to the visual editor\n\nFor demo: Redirecting to editor with the template...');
+      // Get button elements
+      const paymentBtn = document.getElementById('paymentBtn');
+      const btnText = paymentBtn.querySelector('.btn-text');
+      const btnIcon = paymentBtn.querySelector('.btn-icon');
+      const btnSpinner = paymentBtn.querySelector('.btn-spinner');
       
-      try {
-        // Store pro access in localStorage (demo purposes)
-        localStorage.setItem('proAccess', 'true');
-        localStorage.setItem('proAccessDate', new Date().toISOString());
+      // Set loading state
+      paymentBtn.disabled = true;
+      paymentBtn.style.opacity = '0.7';
+      paymentBtn.style.cursor = 'not-allowed';
+      btnText.textContent = 'Processing...';
+      btnIcon.style.display = 'none';
+      btnSpinner.style.display = 'inline-block';
+      
+      // Simulate payment processing delay
+      setTimeout(() => {
+        alert('Payment processing would happen here!\n\nIn production, this would:\n1. Integrate with Stripe/PayPal\n2. Process the $29 payment\n3. Grant access to Pro templates\n4. Redirect to the visual editor\n\nFor demo: Redirecting to editor with the template...');
         
-        // Redirect to visual editor with selected template
-        window.location.href = `create.html?template=${selectedTemplate}&mode=visual&pro=true`;
-      } catch (error) {
-        console.error('Error processing payment:', error);
-        alert('An error occurred. Please try again.');
-      }
+        try {
+          // Store pro access in localStorage (demo purposes)
+          localStorage.setItem('proAccess', 'true');
+          localStorage.setItem('proAccessDate', new Date().toISOString());
+          
+          // Redirect to visual editor with selected template
+          window.location.href = `create.html?template=${selectedTemplate}&mode=visual&pro=true`;
+        } catch (error) {
+          console.error('Error processing payment:', error);
+          
+          // Reset button state on error
+          paymentBtn.disabled = false;
+          paymentBtn.style.opacity = '1';
+          paymentBtn.style.cursor = 'pointer';
+          btnText.textContent = 'Upgrade Now';
+          btnIcon.style.display = 'inline-block';
+          btnSpinner.style.display = 'none';
+          
+          alert('An error occurred. Please try again.');
+        }
+      }, 800);
     }
 
     // Check if user has pro access
