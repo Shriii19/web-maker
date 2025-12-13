@@ -783,6 +783,21 @@ main {
   box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5), 0 4px 15px rgba(236, 72, 153, 0.3);
 }
 
+.btn-primary:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.5);
+  outline-offset: 3px;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5), 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+.btn-primary:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid rgba(124, 58, 237, 0.6);
+  outline-offset: 3px;
+}
+
 .btn-primary:active {
   transform: translateY(-2px) scale(0.98);
 }
@@ -835,6 +850,21 @@ main {
   border-color: transparent;
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35), 0 4px 15px rgba(236, 72, 153, 0.25);
+}
+
+.btn-secondary:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.4);
+  outline-offset: 3px;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35), 0 0 0 4px rgba(124, 58, 237, 0.08);
+}
+
+.btn-secondary:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid rgba(124, 58, 237, 0.5);
+  outline-offset: 3px;
 }
 
 .btn-outline {
