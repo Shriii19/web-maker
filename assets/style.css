@@ -21,6 +21,9 @@
 }
 
 :root {
+  /* Performance optimization */
+  font-display: swap;
+  
   /* Colors - Royal Purple & Pink Theme */
   --primary: #7c3aed;
   --primary-light: #8b5cf6;
@@ -756,6 +759,9 @@ main {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   animation: gradient-shift 3s ease infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 @keyframes gradient-shift {
@@ -985,6 +991,8 @@ main {
   box-shadow: 0 8px 25px rgba(124, 58, 237, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
+  contain: layout style paint;
+  will-change: transform;
 }
 
 .hero-feature-card::before {
