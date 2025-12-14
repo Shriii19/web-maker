@@ -51,8 +51,6 @@ web-maker/
 - Parallax scrolling support
 - 300-800ms timing for natural feel
 
-## 📝 License
-MIT License
 
 ## 👤 Author
 TruckCraft Studio
