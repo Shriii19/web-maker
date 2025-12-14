@@ -43,13 +43,7 @@ web-maker/
     └── velocity-vtc.html
 ```
 
-## 🎬 Animation System
-- Page load animations (fade, slide, zoom)
-- Scroll-triggered reveals with Intersection Observer
-- Button ripple effects & hover states
-- Counter animations for statistics
-- Parallax scrolling support
-- 300-800ms timing for natural feel
+
 
 
 ## 👤 Author
