@@ -44,7 +44,5 @@ web-maker/
 ```
 
 
-
-
 ## 👤 Author
 TruckCraft Studio
